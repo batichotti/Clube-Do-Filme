@@ -1,0 +1,61 @@
+/* FONTES IMPORTADAS, BAIXAR DPS */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata&family=Karla&family=Oswald&display=swap');
+
+
+:root {
+    --colorBackground: #050004;
+    --colorPrimary: #03fc20;
+    --colorSecondary: #012316;
+    --colorAccent: #e8a1e0;
+    --colorText: #ffffff;
+}
+
+* {
+    list-style: none;
+    color: var(--colorText);
+    font-family: "Bebas neue";
+    
+    /* border: 1px dashed red; */
+}
+
+h1{
+    font-size: 40px;
+}
+
+
+a{
+    color: var(--colorText);
+    text-decoration: none;
+
+    border-bottom: 2px solid var(--colorText);
+}
+
+body {
+    background-image: url("https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg");
+    background-repeat: no-repeat;
+    background-color: var(--colorBackground);
+    background-size: 30% 500px;
+
+    height: 100vh;
+    /* valor fixo trocar */
+    background-position-x: 100px;
+    background-position-y: 150px;
+
+}
+
+header{
+    background-color: var(--colorBackground);
+    z-index: 2;
+}
+header> nav{
+    z-index: 2;
+}
+
+/* -- */
+.linkRegistro{
+    border: 1px dashed teal;
+}
+.botaoRegistro{
+    background-color: var(--colorPrimary);
+    border: 1px solid var(--colorSecondary);
+}
