@@ -1,5 +1,4 @@
-// const cursor = document.querySelector("#cursor");
-const cursor = document.getElementById("cursor");
+const cursor = document.querySelector("#cursor");
 
 window.onpointermove = (e) => {
   const { clientX, clientY } = e;

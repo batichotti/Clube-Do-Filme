@@ -3,6 +3,7 @@
 
 :root {
   --colorBackground: #050004;
+  --colorBackGroundTransparent: rgba(5, 0, 4, 0);
   --colorPrimary: #03fc20;
   --colorSecondary: #012316;
   --colorAccent: #e8a1e0;
@@ -16,8 +17,6 @@
   list-style: none;
   color: var(--colorText);
   font-family: var(--fontPrimary);
-
-  /* border: 1px dashed red; */
 }
 
 h1 {
@@ -32,7 +31,7 @@ a {
 }
 
 body {
-  background-image: url("https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg");
+  background-image: url("../images/bgClubeDoFilme.jpeg");
   background-repeat: no-repeat;
   background-color: var(--colorBackground);
   background-size: 30% 500px;
@@ -65,7 +64,7 @@ mark {
 
 .botaoRegistro {
   background-color: var(--colorPrimary);
-  color: var(--colorText);
+  color: var(--colorBackground);
 }
 
 .botaoLogin {
@@ -81,12 +80,32 @@ mark {
   padding: 0px 0px 1px 10px;
   width: 30%;
 
-  background-color: rgba(5, 0, 4, 0);
+  background-color: var(--colorBackGroundTransparent);
   border: 2px solid var(--colorText);
   outline: none;
   color: var(--colorAccent);
   font-family: var(--fonteSecondary);
 }
+
+.inputRegistro, .inputRegistro>label{
+  font-size: 20px;
+  font-family: var(--fonteSecondary);
+}
+.cabecalhoRegistro>a>img{
+  width: 30px;
+  height: 30px;
+}
+.cabecalhoRegistro{
+  background-color: var(--colorBackground);
+  font-size: 25px;
+}
+
+.corpoRegistro{
+  background-color: rgba(5, 0, 4, 0.970);
+}
+
 ::placeholder {
   font-family: var(--fonteSecondary);
 }
+
+
