@@ -12,6 +12,7 @@ function animacaoCard() {
 
 function fecharCard(telaRegistro, desfoque) {
   desfoque.style.zIndex = "-2";
-  telaRegistro.style.animation = "cardLogin 0.5s backwards";
+  // telaRegistro.style.animation = "cardLogin 0.5s backwards";
+  // telaRegistro.style.animationFillMode = "backwards;";
   telaRegistro.setAttribute("hidden", "");
 }

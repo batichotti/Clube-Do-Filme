@@ -13,6 +13,20 @@
   --fonteSecondary: "Oswald";
 }
 
+html::-webkit-scrollbar{
+  width: 5px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+ 
+html::-webkit-scrollbar-thumb {
+  background-color: var(--colorText);
+  height: 10px;
+  border-radius: 20px;
+}
+
 * {
   list-style: none;
   color: var(--colorText);
@@ -40,7 +54,8 @@ body {
   background-position-x: 100px;
   background-position-y: 150px;
 
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 header {
