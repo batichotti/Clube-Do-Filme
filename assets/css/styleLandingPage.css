@@ -13,14 +13,14 @@
   --fonteSecondary: "Oswald";
 }
 
-html::-webkit-scrollbar{
+html::-webkit-scrollbar {
   width: 5px;
 }
 
 html::-webkit-scrollbar-track {
   background: transparent;
 }
- 
+
 html::-webkit-scrollbar-thumb {
   background-color: var(--colorText);
   height: 10px;
@@ -102,25 +102,29 @@ mark {
   font-family: var(--fonteSecondary);
 }
 
-.inputRegistro, .inputRegistro>label{
+.inputRegistro,
+.inputRegistro > label {
   font-size: 20px;
   font-family: var(--fonteSecondary);
 }
-.cabecalhoRegistro>a>img{
+.cabecalhoRegistro > a > img {
   width: 30px;
   height: 30px;
 }
-.cabecalhoRegistro{
+.cabecalhoRegistro {
   background-color: var(--colorBackground);
   font-size: 25px;
 }
 
-.corpoRegistro{
-  background-color: rgba(5, 0, 4, 0.970);
+.corpoRegistro {
+  background-color: rgba(5, 0, 4, 0.97);
+}
+
+.cardFilmes {
+  margin: 100px 0px 0px 0px;
+  height: 50%;
 }
 
 ::placeholder {
   font-family: var(--fonteSecondary);
 }
-
-

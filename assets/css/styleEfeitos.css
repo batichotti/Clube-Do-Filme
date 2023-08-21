@@ -30,6 +30,8 @@ a:hover::before {
 
 .camadaTransparente {
   position: absolute;
+  height: 75%;
+
   background-image: linear-gradient(
     to bottom,
     var(--colorBackground),
@@ -39,6 +41,9 @@ a:hover::before {
   background-size: 100% 100%;
 
   z-index: -1;
+}
+
+.cardFilmes:hover {
 }
 
 #desfoque {
@@ -90,11 +95,21 @@ a:hover::before {
   right: 20%;
   top: 50%;
 
-  animation: cardLogin 0.5s;
-  animation-fill-mode: forwards;
+  animation: cardLogin 0.5s forwards;
   z-index: 3;
 
   content-visibility: hidden;
+}
+
+#navbar {
+  position: fixed;
+  left: 40%;
+  z-index: 5;
+
+  background-color: var(--colorText);
+  width: 20%;
+  height: 40px;
+  visibility: hidden;
 }
 
 @keyframes cardLogin {
@@ -102,13 +117,6 @@ a:hover::before {
     width: 20%;
     height: 5px;
     right: 12%;
-    content-visibility: hidden;
-  }
-
-  50% {
-    width: 35%;
-    height: 5px;
-    right: 8%;
     content-visibility: hidden;
   }
 
@@ -128,5 +136,27 @@ a:hover::before {
 
   to {
     rotate: 360deg;
+  }
+}
+
+@keyframes navbarAparecer {
+  from {
+    top: 100vh;
+    visibility: visible;
+  }
+  to {
+    top: 92vh;
+    visibility: visible;
+  }
+}
+
+@keyframes navbarFechar {
+  from {
+    top: 92vh;
+    visibility: visible;
+  }
+  to {
+    top: 100vh;
+    visibility: visible;
   }
 }
