@@ -43,9 +43,6 @@ a:hover::before {
   z-index: -1;
 }
 
-.cardFilmes:hover {
-}
-
 #desfoque {
   position: absolute;
   backdrop-filter: blur(10px);
@@ -85,7 +82,34 @@ a:hover::before {
   color: var(--colorText);
 }
 
+.filmes{
+  cursor: pointer;
+  transition: 0.5s;
+  filter: grayscale(100%);
+}
+
+.filmes:hover{
+  transition: 0.5s;
+  filter: grayscale(0%);
+}
+
 #telaRegistro {
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  right: 20%;
+  top: 50%;
+
+  animation: cardLogin 0.5s forwards;
+  z-index: 3;
+
+  content-visibility: hidden;
+}
+
+#telaLogin {
   position: absolute;
 
   display: flex;
@@ -106,10 +130,15 @@ a:hover::before {
   left: 40%;
   z-index: 5;
 
-  background-color: var(--colorText);
+  background-color: transparent;
+  border: 3px solid var(--colorSecondary);
+
   width: 20%;
   height: 40px;
   visibility: hidden;
+}
+#navbar > a > img {
+  height: 30px;
 }
 
 @keyframes cardLogin {

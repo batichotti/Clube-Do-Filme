@@ -9,7 +9,7 @@
   --colorAccent: #e8a1e0;
   --colorText: #ffffff;
 
-  --fontPrimary: "Bebas neue";
+  --fontPrimary: "Bebas neue", sans-serif;
   --fonteSecondary: "Oswald";
 }
 
@@ -34,7 +34,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 6vh;
 }
 
 a {
@@ -104,7 +104,7 @@ mark {
 
 .inputRegistro,
 .inputRegistro > label {
-  font-size: 20px;
+  font-size: 3vh;
   font-family: var(--fonteSecondary);
 }
 .cabecalhoRegistro > a > img {
@@ -113,7 +113,7 @@ mark {
 }
 .cabecalhoRegistro {
   background-color: var(--colorBackground);
-  font-size: 25px;
+  font-size: 3vh;
 }
 
 .corpoRegistro {
@@ -121,10 +121,23 @@ mark {
 }
 
 .cardFilmes {
-  margin: 100px 0px 0px 0px;
   height: 50%;
+  background-color: red;
 }
 
+.filmes {
+  background-color: black;
+  width: 30vh;
+  height: 50vh;
+}
+.passaFilme {
+  width: 50px;
+  aspect-ratio: 1;
+
+  background-color: transparent;
+  color: var(--colorAccent);
+  border: 1px solid var(--colorAccent);
+}
 ::placeholder {
   font-family: var(--fonteSecondary);
 }
