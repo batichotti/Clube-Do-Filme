@@ -32,7 +32,11 @@ public class registro extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session;
-            response.sendRedirect("/index");
+            String nome = String.valueOf(request.getAttribute("nome"));
+            String email = String.valueOf(request.getAttribute("email"));
+            String senha = String.valueOf(request.getAttribute("senha"));
+            
+            
         }
     }
 
