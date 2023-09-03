@@ -10,15 +10,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import DAOs.DAOUser;
-import Entidades.User;
 
 /**
  *
  * @author Mateus Cohuzer
  */
-public class registro extends HttpServlet {
+public class login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,28 +30,16 @@ public class registro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            try {
-                HttpSession session = request.getSession();
-                String nome = String.valueOf(request.getParameter("nome"));
-                String email = String.valueOf(request.getParameter("email"));
-                String senha = String.valueOf(request.getParameter("senha"));
-                
-                DAOUser daoUser = new DAOUser();
-                User usuario = new User();
-                
-                usuario.setEmail(email);
-                usuario.setNick(nome);
-                usuario.setPassword(senha);
-                usuario.setRole(0);
-                
-                daoUser.inserir(usuario);
-                session.setAttribute("logado", "True");
-                response.sendRedirect("index.html");
-                
-            } catch (Exception e) {
-                System.out.println("aisdhuahusdihuasidhu");
-            }
-
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet login</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet login at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

@@ -104,7 +104,7 @@
         </div>
         <form
           id="formRegistro"
-          method="get"
+          method="post"
           action="registro"
           class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
         >
@@ -112,27 +112,33 @@
             <label for="nome">Nome: </label>
             <input
               id="nome"
+              name="nome"
               type="text"
               class="inputBuscar input-group-text h-75 w-75 p-2"
               placeholder="Digite seu nome..."
+              required
             />
           </div>
           <div class="inputRegistro d-flex align-items-center column-gap-2">
             <label for="email">Email: </label>
             <input
               id="email"
+              name="email"
               type="email"
               class="inputBuscar input-group-text h-75 w-75 p-2"
               placeholder="Digite seu email..."
+              required
             />
           </div>
           <div class="inputRegistro d-flex align-items-center column-gap-2">
             <label for="senha">Senha: </label>
             <input
               id="senha"
-              type="text"
+              name="senha"
+              type="password"
               class="inputBuscar input-group-text h-75 w-75 p-2"
               placeholder="Digite sua senha..."
+              required
             />
           </div>
           <button type="submit" class="botaoRegistro btn">Registrar</button>
@@ -153,25 +159,29 @@
         </div>
         <form
           id="formLogin"
-          method="get"
+          method="post"
           class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
         >
           <div class="inputRegistro d-flex align-items-center column-gap-2">
             <label for="email">Email: </label>
             <input
               id="email"
+              name="email"
               type="text"
               class="inputBuscar input-group-text h-75 w-75 p-2"
               placeholder="Digite seu email..."
+              required
             />
           </div>
           <div class="inputRegistro d-flex align-items-center column-gap-2">
             <label for="senha">Senha: </label>
             <input
               id="senha"
-              type="text"
+              name="senha"
+              type="password"
               class="inputBuscar input-group-text h-75 w-75 p-2"
               placeholder="Digite sua senha..."
+              required
             />
           </div>
           <button type="submit" class="botaoLogin btn">Entrar</button>
