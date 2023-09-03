@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import DAOs.DAOUser;
+import Entidades.User;
 
 /**
  *
@@ -31,12 +33,28 @@ public class registro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session;
-            String nome = String.valueOf(request.getAttribute("nome"));
-            String email = String.valueOf(request.getAttribute("email"));
-            String senha = String.valueOf(request.getAttribute("senha"));
-            
-            
+            try {
+                HttpSession session = request.getSession();
+                String nome = String.valueOf(request.getAttribute("nome"));
+                String email = String.valueOf(request.getAttribute("email"));
+                String senha = String.valueOf(request.getAttribute("senha"));
+                
+                DAOUser daoUser = new DAOUser();
+                User usuario = new User();
+                
+                usuario.setEmail(email);
+                usuario.setNick(nome);
+                usuario.setPassword(senha);
+                usuario.setRole(0);
+                
+                daoUser.inserir(usuario);
+                session.setAttribute("logado", "True");
+                response.sendRedirect("www.google.com");
+                
+            } catch (Exception e) {
+                System.out.println("aisdhuahusdihuasidhu");
+            }
+
         }
     }
 

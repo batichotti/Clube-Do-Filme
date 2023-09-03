@@ -13,7 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -51,14 +50,6 @@ public class Movie implements Serializable {
     private String overview;
     @Column(name = "runtime")
     private Integer runtime;
-    @ManyToMany(mappedBy = "movieList")
-    private List<Keyword> keywordList;
-    @ManyToMany(mappedBy = "movieList")
-    private List<Country> countryList;
-    @ManyToMany(mappedBy = "movieList")
-    private List<Genre> genreList;
-    @ManyToMany(mappedBy = "movieList")
-    private List<ProductionCompany> productionCompanyList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieHasUser> movieHasUserList;
 
@@ -115,38 +106,6 @@ public class Movie implements Serializable {
 
     public void setRuntime(Integer runtime) {
         this.runtime = runtime;
-    }
-
-    public List<Keyword> getKeywordList() {
-        return keywordList;
-    }
-
-    public void setKeywordList(List<Keyword> keywordList) {
-        this.keywordList = keywordList;
-    }
-
-    public List<Country> getCountryList() {
-        return countryList;
-    }
-
-    public void setCountryList(List<Country> countryList) {
-        this.countryList = countryList;
-    }
-
-    public List<Genre> getGenreList() {
-        return genreList;
-    }
-
-    public void setGenreList(List<Genre> genreList) {
-        this.genreList = genreList;
-    }
-
-    public List<ProductionCompany> getProductionCompanyList() {
-        return productionCompanyList;
-    }
-
-    public void setProductionCompanyList(List<ProductionCompany> productionCompanyList) {
-        this.productionCompanyList = productionCompanyList;
     }
 
     public List<MovieHasUser> getMovieHasUserList() {
