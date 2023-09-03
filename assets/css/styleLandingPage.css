@@ -102,6 +102,21 @@ mark {
   font-family: var(--fonteSecondary);
 }
 
+.inputEntrar {
+  display: flex;
+  align-items: center;
+
+  transition: 0.3s;
+  padding: 0px 0px 1px 10px;
+  width: 70%;
+
+  background-color: var(--colorBackGroundTransparent);
+  border: 2px solid var(--colorText);
+  outline: none;
+  color: var(--colorAccent);
+  font-family: var(--fonteSecondary);
+}
+
 .inputRegistro,
 .inputRegistro > label {
   font-size: 3vh;
@@ -124,12 +139,33 @@ mark {
   height: 50%;
   background-color: red;
 }
+.cardFilmes > aside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.filmes {
-  background-color: black;
-  width: 30vh;
+  /* max-width: 150vh; */
+  flex: 0 0 50%;
   height: 50vh;
+
+  background-color: yellow;
+  overflow-x: scroll;
 }
+
+.slidePrincipal {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+}
+
+.filme {
+  width: 100%;
+  height: 30vh;
+  cursor: pointer;
+  transition: 0.5s;
+  filter: grayscale(100%);
+}
+
 .passaFilme {
   width: 50px;
   aspect-ratio: 1;
@@ -138,6 +174,7 @@ mark {
   color: var(--colorAccent);
   border: 1px solid var(--colorAccent);
 }
+
 ::placeholder {
   font-family: var(--fonteSecondary);
 }

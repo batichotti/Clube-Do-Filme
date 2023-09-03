@@ -70,6 +70,12 @@ a:hover::before {
   width: 35%;
 }
 
+.inputEntrar:focus {
+  transition: 0.3s;
+  border: 2px solid var(--colorAccent);
+  width: 75%;
+}
+
 .botaoLogin:hover {
   transition: 0.3s;
   background-color: var(--colorAccent);
@@ -82,13 +88,7 @@ a:hover::before {
   color: var(--colorText);
 }
 
-.filmes{
-  cursor: pointer;
-  transition: 0.5s;
-  filter: grayscale(100%);
-}
-
-.filmes:hover{
+.filme:hover {
   transition: 0.5s;
   filter: grayscale(0%);
 }
