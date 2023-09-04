@@ -197,12 +197,12 @@ mark {
   border: none;
 }
 
-.arrow-left:hover,
-.arrow-right:hover {
+.botaoEsquerdo:hover,
+.botaoDireito:hover {
   opacity: 1;
 }
 
-.arrow-right {
+.botaoEsquerdo {
   right: 0;
   left: auto;
   text-align: right;

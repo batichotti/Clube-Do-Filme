@@ -13,8 +13,7 @@ controles.forEach((control) => {
     filmes.forEach((item) => item.classList.remove("current-item"));
 
     filmes[filmeSelecionado].scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
+      behavior: "smooth"
     });
 
     filmes[filmeSelecionado].classList.add("current-item");
