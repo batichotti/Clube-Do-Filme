@@ -189,72 +189,45 @@
     >
       <h1>Filmes em destaque</h1>
 
-      <aside class="d-flex">
-        <button
-          class="passaFilme slideEsquerdo controleSlide rounded-circle"
-          aria-label="anterior"
-        >
+      <aside class="container">
+        <button class="botaoEsquerdo control" aria-label="Previous image">
           ◀
         </button>
-
-        <ul id="slidePrincipal" class="slidePrincipal">
-          <li>
+        <button class="botaoDireito control" aria-label="Next Image">▶</button>
+        <div class="gallery-wrapper">
+          <div class="gallery">
             <img
-              class="filme rounded"
               src="./assets/images/placeholder.png"
+              class="item current-item"
               alt=""
             />
-          </li>
-          <li>
             <img
-              class="filme rounded"
               src="./assets/images/placeholder.png"
+              class="item current-item"
               alt=""
             />
-          </li>
-          <li>
             <img
-              class="filme rounded"
               src="./assets/images/placeholder.png"
+              class="item current-item"
               alt=""
             />
-          </li>
-          <li>
             <img
-              class="filme rounded"
               src="./assets/images/placeholder.png"
+              class="item current-item"
               alt=""
             />
-          </li>
-          <li>
             <img
-              class="filme rounded"
               src="./assets/images/placeholder.png"
+              class="item current-item"
               alt=""
             />
-          </li>
-          <li>
             <img
-              class="filme rounded"
               src="./assets/images/placeholder.png"
+              class="item current-item"
               alt=""
             />
-          </li>
-          <li>
-            <img
-              class="filme rounded"
-              src="./assets/images/placeholder.png"
-              alt=""
-            />
-          </li>
-        </ul>
-
-        <button
-          class="passaFilme slideDireito controleSlide rounded-circle"
-          aria-label="proxima"
-        >
-          ▶
-        </button>
+          </div>
+        </div>
       </aside>
     </aside>
 

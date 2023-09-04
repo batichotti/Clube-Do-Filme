@@ -1,17 +1,22 @@
-const controlesSlide = document.querySelectorAll(".controleSlide");
-const filmes = document.querySelectorAll(".filme");
+const controles = document.querySelectorAll(".control");
+let filmeSelecionado = 0;
+const filmes = document.querySelectorAll(".item");
 const maximoFilmes = filmes.length;
-let filmeAtual = 0;
 
-controlesSlide.forEach((botao) =>{
-    botao.addEventListener("click", e =>{
-        e.target.classList.contains("slideEsquerdo") ? filmeAtual -= 1 : filmeAtual += 1;
-        filmeAtual >= maximoFilmes ? filmeAtual = 0 : filmeAtual;
-        filmeAtual < 0 ? filmeAtual = maximoFilmes - 1 : filmeAtual;
+controles.forEach((control) => {
+  control.addEventListener("click", (e) => {
+    e.target.classList.contains("arrow-left") ? (filmeSelecionado -= 1) : (filmeSelecionado += 1);
 
-        filmes[filmeAtual].scrollIntoView({
-            behavior: "smooth",
-            inline: "center"
-        });
-    })
-})
+    filmeSelecionado >= maximoFilmes ? (filmeSelecionado = 0) : filmeSelecionado;
+    filmeSelecionado < 0 ? (filmeSelecionado = maximoFilmes - 1) : filmeSelecionado;
+
+    filmes.forEach((item) => item.classList.remove("current-item"));
+
+    filmes[filmeSelecionado].scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+    });
+
+    filmes[filmeSelecionado].classList.add("current-item");
+  });
+});
