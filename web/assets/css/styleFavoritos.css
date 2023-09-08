@@ -1,0 +1,34 @@
+:root {
+  --colorBackground: #050004;
+  --colorBackgroundTransparent: rgba(5, 0, 4, 0);
+  --colorPrimary: #03fc20;
+  --colorSecondary: #012316;
+  --colorAccent: #e8a1e0;
+  --colorText: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+
+  background-color: var(--colorBackground);
+  height: 100vh;
+}
+
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--colorSecondary);
+  width: 40vh;
+}
+.mainFilmes {
+  display: grid;
+  background-color: var(--colorAccent);
+  width: 100%;
+}

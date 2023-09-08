@@ -5,7 +5,8 @@ const maximoFilmes = filmes.length;
 
 controles.forEach((control) => {
   control.addEventListener("click", (e) => {
-    e.target.classList.contains("arrow-left") ? (filmeSelecionado -= 1) : (filmeSelecionado += 1);
+    console.log(e.target.classList.contains("botaoEsquerdo"));
+    e.target.classList.contains("botaoEsquerdo") ? (filmeSelecionado -= 1) : (filmeSelecionado += 1);
 
     filmeSelecionado >= maximoFilmes ? (filmeSelecionado = 0) : filmeSelecionado;
     filmeSelecionado < 0 ? (filmeSelecionado = maximoFilmes - 1) : filmeSelecionado;
