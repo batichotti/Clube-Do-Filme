@@ -89,15 +89,6 @@ h4 > mark {
   background-color: var(--colorPrimary);
   color: var(--colorBackground);
 }
-.botaoRegistro,
-.botaoLogin > a {
-  color: #050004;
-}
-
-.botaoLogin {
-  border-color: var(--colorAccent);
-  color: var(--colorAccent);
-}
 
 .inputBuscar {
   display: flex;

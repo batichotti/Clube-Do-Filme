@@ -3,7 +3,7 @@ function animacaoCard() {
   const desfoque = document.querySelector("#desfoque");
 
   window.addEventListener("keydown", (e) => {
-    if (e.key == "Escape"){
+    if (e.key == "Escape") {
       cards("fechar", telaRegistro, desfoque);
     }
   });
@@ -18,7 +18,7 @@ function animacaoCardLogin() {
   const desfoque = document.querySelector("#desfoque");
 
   window.addEventListener("keydown", (e) => {
-    if (e.key == "Escape"){
+    if (e.key == "Escape") {
       cards("fechar", telaLogin, desfoque);
     }
   });
