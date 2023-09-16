@@ -104,41 +104,34 @@
         </div>
         <form
           id="formRegistro"
-          method="post"
-          action="registro"
+          method="get"
           class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
         >
           <div class="inputRegistro d-flex align-items-center column-gap-2">
             <label for="nome">Nome: </label>
             <input
               id="nome"
-              name="nome"
               type="text"
               class="inputBuscar input-group-text h-75 w-75 p-2"
               placeholder="Digite seu nome..."
-              required
             />
           </div>
           <div class="inputRegistro d-flex align-items-center column-gap-2">
             <label for="email">Email: </label>
             <input
               id="email"
-              name="email"
               type="email"
               class="inputBuscar input-group-text h-75 w-75 p-2"
               placeholder="Digite seu email..."
-              required
             />
           </div>
           <div class="inputRegistro d-flex align-items-center column-gap-2">
             <label for="senha">Senha: </label>
             <input
               id="senha"
-              name="senha"
-              type="password"
+              type="text"
               class="inputBuscar input-group-text h-75 w-75 p-2"
               placeholder="Digite sua senha..."
-              required
             />
           </div>
           <button type="submit" class="botaoRegistro btn">Registrar</button>
@@ -159,29 +152,29 @@
         </div>
         <form
           id="formLogin"
-          method="post"
+          method="get"
           class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
         >
-          <div class="inputRegistro d-flex align-items-center column-gap-2">
+          <div
+            class="inputRegistro d-flex align-items-center column-gap-2 w-100"
+          >
             <label for="email">Email: </label>
             <input
               id="email"
-              name="email"
               type="text"
-              class="inputBuscar input-group-text h-75 w-75 p-2"
+              class="inputEntrar input-group-text p-2"
               placeholder="Digite seu email..."
-              required
             />
           </div>
-          <div class="inputRegistro d-flex align-items-center column-gap-2">
+          <div
+            class="inputRegistro d-flex align-items-center column-gap-2 w-100"
+          >
             <label for="senha">Senha: </label>
             <input
               id="senha"
-              name="senha"
-              type="password"
-              class="inputBuscar input-group-text h-75 w-75 p-2"
+              type="text"
+              class="inputEntrar input-group-text p-2"
               placeholder="Digite sua senha..."
-              required
             />
           </div>
           <button type="submit" class="botaoLogin btn">Entrar</button>
@@ -196,47 +189,52 @@
     >
       <h1>Filmes em destaque</h1>
 
-      <aside
-        class="d-flex justify-content-center align-items-center column-gap-3"
-      >
-        <button class="passaFilme rounded-circle"><</button>
-
-        <div class="filmes rounded">
-          <img
-            src="https://i.ytimg.com/vi/Q3Uu428HfIU/hq720_2.jpg?sqp=-oaymwEkCJQDENAFSFryq4qpAxYIARUAAAAAJQAAyEI9AICiQ3gB0AEB&rs=AOn4CLAbfs723g6Hlg5Rp5Sy3fi3v5EM_A"
-            alt=""
-            class="w-100 h-100 rounded"
-          />
+      <aside class="container w-100">
+        <button class="botaoDireito control" aria-label="Next image">▶</button>
+        <button class="botaoEsquerdo control" aria-label="Previous Image">
+          ◀
+        </button>
+        <div class="gallery-wrapper">
+          <div class="gallery">
+            <img
+              src="./assets/images/placeholder.png"
+              class="item current-item"
+              alt=""
+            />
+            <img
+              src="./assets/images/placeholder.png"
+              class="item current-item"
+              alt=""
+            />
+            <img
+              src="./assets/images/placeholder.png"
+              class="item current-item"
+              alt=""
+            />
+            <img
+              src="./assets/images/placeholder.png"
+              class="item current-item"
+              alt=""
+            />
+            <img
+              src="./assets/images/placeholder.png"
+              class="item current-item"
+              alt=""
+            />
+            <img
+              src="./assets/images/placeholder.png"
+              class="item current-item"
+              alt=""
+            />
+          </div>
         </div>
-        <div class="filmes rounded">
-          <img
-            src="https://i.ytimg.com/vi/Q3Uu428HfIU/hq720_2.jpg?sqp=-oaymwEkCJQDENAFSFryq4qpAxYIARUAAAAAJQAAyEI9AICiQ3gB0AEB&rs=AOn4CLAbfs723g6Hlg5Rp5Sy3fi3v5EM_A"
-            alt=""
-            class="w-100 h-100 rounded"
-          />
-        </div>
-        <div class="filmes rounded">
-          <img
-            src="https://i.ytimg.com/vi/Q3Uu428HfIU/hq720_2.jpg?sqp=-oaymwEkCJQDENAFSFryq4qpAxYIARUAAAAAJQAAyEI9AICiQ3gB0AEB&rs=AOn4CLAbfs723g6Hlg5Rp5Sy3fi3v5EM_A"
-            alt=""
-            class="w-100 h-100 rounded"
-          />
-        </div>
-        <div class="filmes rounded">
-          <img
-            src="https://i.ytimg.com/vi/Q3Uu428HfIU/hq720_2.jpg?sqp=-oaymwEkCJQDENAFSFryq4qpAxYIARUAAAAAJQAAyEI9AICiQ3gB0AEB&rs=AOn4CLAbfs723g6Hlg5Rp5Sy3fi3v5EM_A"
-            alt=""
-            class="w-100 h-100 rounded"
-          />
-        </div>
-
-        <button class="passaFilme rounded-circle">></button>
       </aside>
     </aside>
 
     <!-- importacao js -->
     <script src="./assets/js/efeitosGerais.js"></script>
     <script src="./assets/js/cursor.js"></script>
+    <script src="./assets/js/slideFIlmes.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
