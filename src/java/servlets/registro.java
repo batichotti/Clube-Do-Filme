@@ -46,13 +46,14 @@ public class registro extends HttpServlet {
                 usuario.setNick(nome);
                 usuario.setPassword(senha);
                 usuario.setRole(0);
-                
-                daoUser.inserir(usuario);
-                session.setAttribute("logado", "True");
-                response.sendRedirect("index.html");
-                
+                //daoUser.inserir(usuario);
+                //session.setAttribute("logado", "True");
+                //response.sendRedirect("index.html");
+                out.write(nome);
+                out.write(email);
+                out.write(senha);
             } catch (Exception e) {
-                System.out.println("aisdhuahusdihuasidhu");
+                out.write(e.getMessage());
             }
 
         }
