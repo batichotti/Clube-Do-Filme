@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,7 +43,7 @@
         <div class="d-flex gap column-gap-2 ps-5">
           <!-- <img src="" alt="Logo" class=".img-fluid"> -->
           <h1 class=".img-fluid">🧼</h1>
-          <h1>Clube do Filme</h1>
+          <h1 class="segredo">***** do *****</h1>
         </div>
         <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
           <div class="d-flex gap column-gap-5">
@@ -56,6 +56,8 @@
             class="inputBuscar rounded-pill"
             placeholder="Buscar"
           />
+
+          <img src="./assets/images/icons/iconConta.png" class="rounded"></img>
         </nav>
       </header>
 
@@ -65,121 +67,15 @@
         <div
           class="d-flex flex-column align-items-center justify-content-center w-50"
         >
-          <h5>
-            1ª regra do clube do filme: <mark>Descubra</mark> novos filmes.
-          </h5>
-          <h5>2ª regra do clube do filme: <mark>Avalie</mark> novos filmes.</h5>
-          <h5>3ª regra do clube do filme: <mark>Salve</mark> novos filmes.</h5>
-          <h2>Ainda não está cadastrado? Registre-se!</h2>
-          <nav clas>
-            <button
-              type="button"
-              class="botaoRegistro btn"
-              onclick="animacaoCard()"
-            >
-              Registrar
-            </button>
-            <button
-              type="button"
-              class="botaoLogin btn btn-outline-secondary"
-              onclick="animacaoCardLogin()"
-            >
-              Já tenho uma conta
-            </button>
+          <h2>Bem vindo ao <span class="segredo">***** do *****</span> ...</h2>
+          <h4>Deseja um <mark>passeio</mark> por nossas ferramentas? Veja <mark>abaixo</mark>!</h4>
+          <nav class="d-flex column-gap-2">
+            <button class="botaoRegistro btn">Filmes avaliados</button>
+            <a class="botaoRegistro btn">Seus favoritos</a>
           </nav>
         </div>
       </aside>
 
-      <article id="telaRegistro" hidden>
-        <div
-          class="cabecalhoRegistro w-100 d-flex justify-content-between align-items-center p-2 pe-4 ps-4"
-        >
-          <h3>Registro</h3>
-          <a onclick="animacaoCard()"
-            ><img
-              src="./assets/images/icons/iconFecharBranco.png"
-              class=".img-fluid"
-              alt="X"
-          /></a>
-        </div>
-        <form
-          id="formRegistro"
-          method="get"
-          class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
-        >
-          <div class="inputRegistro d-flex align-items-center column-gap-2">
-            <label for="nome">Nome: </label>
-            <input
-              id="nome"
-              type="text"
-              class="inputBuscar input-group-text h-75 w-75 p-2"
-              placeholder="Digite seu nome..."
-            />
-          </div>
-          <div class="inputRegistro d-flex align-items-center column-gap-2">
-            <label for="email">Email: </label>
-            <input
-              id="email"
-              type="email"
-              class="inputBuscar input-group-text h-75 w-75 p-2"
-              placeholder="Digite seu email..."
-            />
-          </div>
-          <div class="inputRegistro d-flex align-items-center column-gap-2">
-            <label for="senha">Senha: </label>
-            <input
-              id="senha"
-              type="text"
-              class="inputBuscar input-group-text h-75 w-75 p-2"
-              placeholder="Digite sua senha..."
-            />
-          </div>
-          <button type="submit" class="botaoRegistro btn">Registrar</button>
-        </form>
-      </article>
-
-      <article id="telaLogin" hidden>
-        <div
-          class="cabecalhoRegistro w-100 d-flex justify-content-between align-items-center p-2 pe-4 ps-4"
-        >
-          <h3>Login</h3>
-          <a onclick="animacaoCardLogin()"
-            ><img
-              src="./assets/images/icons/iconFecharBranco.png"
-              class=".img-fluid"
-              alt="X"
-          /></a>
-        </div>
-        <form
-          id="formLogin"
-          method="get"
-          class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
-        >
-          <div
-            class="inputRegistro d-flex align-items-center column-gap-2 w-100"
-          >
-            <label for="email">Email: </label>
-            <input
-              id="email"
-              type="text"
-              class="inputEntrar input-group-text p-2"
-              placeholder="Digite seu email..."
-            />
-          </div>
-          <div
-            class="inputRegistro d-flex align-items-center column-gap-2 w-100"
-          >
-            <label for="senha">Senha: </label>
-            <input
-              id="senha"
-              type="text"
-              class="inputEntrar input-group-text p-2"
-              placeholder="Digite sua senha..."
-            />
-          </div>
-          <button type="submit" class="botaoLogin btn">Entrar</button>
-        </form>
-      </article>
     </main>
 
     <!-- Parte dos filmes -->
@@ -230,9 +126,11 @@
         </div>
       </aside>
     </aside>
+    </aside>
 
     <!-- importacao js -->
     <script src="./assets/js/efeitosGerais.js"></script>
+    <script src="./assets/js/mudarPalavras.js"></script>
     <script src="./assets/js/cursor.js"></script>
     <script src="./assets/js/slideFIlmes.js"></script>
     <script

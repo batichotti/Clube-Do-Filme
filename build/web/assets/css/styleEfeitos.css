@@ -7,7 +7,7 @@
   --colorText: #ffffff;
 }
 
-a::before {
+header > nav > div > a::before {
   position: absolute;
   width: 100%;
   height: 2px;
@@ -23,7 +23,7 @@ a::before {
   transform: scaleX(0);
   transition: transform 0.3s ease-in-out;
 }
-a:hover::before {
+header > nav > div > a:hover::before {
   transform-origin: left;
   transform: scaleX(1);
 }
@@ -70,6 +70,12 @@ a:hover::before {
   width: 35%;
 }
 
+.inputEntrar:focus {
+  transition: 0.3s;
+  border: 2px solid var(--colorAccent);
+  width: 75%;
+}
+
 .botaoLogin:hover {
   transition: 0.3s;
   background-color: var(--colorAccent);
@@ -82,13 +88,7 @@ a:hover::before {
   color: var(--colorText);
 }
 
-.filmes{
-  cursor: pointer;
-  transition: 0.5s;
-  filter: grayscale(100%);
-}
-
-.filmes:hover{
+.filme:hover {
   transition: 0.5s;
   filter: grayscale(0%);
 }
@@ -130,8 +130,8 @@ a:hover::before {
   left: 40%;
   z-index: 5;
 
-  background-color: transparent;
-  border: 3px solid var(--colorSecondary);
+  background-color: var(--colorAccent);
+  border: 3px solid var(--colorAccent);
 
   width: 20%;
   height: 40px;

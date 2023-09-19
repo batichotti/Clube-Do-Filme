@@ -38,10 +38,13 @@ h1 {
 }
 
 a {
-  position: relative;
-  color: var(--colorText);
   text-decoration: none;
+  color: var(--colorText);
   font-family: var(--fonteSecondary);
+}
+
+header > nav > div > a {
+  position: relative;
 }
 
 body {
@@ -69,9 +72,14 @@ header {
   z-index: 2;
 }
 
-mark {
+h5 > mark {
   background-color: var(--colorAccent);
   color: var(--colorSecondary);
+  padding: 0.5px 6px 0.5px 6px;
+}
+h4 > mark {
+  background-color: var(--colorPrimary);
+  color: var(--colorBackground);
   padding: 0.5px 6px 0.5px 6px;
 }
 
@@ -82,11 +90,6 @@ mark {
   color: var(--colorBackground);
 }
 
-.botaoLogin {
-  border-color: var(--colorAccent);
-  color: var(--colorAccent);
-}
-
 .inputBuscar {
   display: flex;
   align-items: center;
@@ -94,6 +97,21 @@ mark {
   transition: 0.3s;
   padding: 0px 0px 1px 10px;
   width: 30%;
+
+  background-color: var(--colorBackGroundTransparent);
+  border: 2px solid var(--colorText);
+  outline: none;
+  color: var(--colorAccent);
+  font-family: var(--fonteSecondary);
+}
+
+.inputEntrar {
+  display: flex;
+  align-items: center;
+
+  transition: 0.3s;
+  padding: 0px 0px 1px 10px;
+  width: 70%;
 
   background-color: var(--colorBackGroundTransparent);
   border: 2px solid var(--colorText);
@@ -122,14 +140,22 @@ mark {
 
 .cardFilmes {
   height: 50%;
-  background-color: red;
 }
 
-.filmes {
-  background-color: black;
-  width: 30vh;
-  height: 50vh;
+.slidePrincipal {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
 }
+
+.filme {
+  width: 100%;
+  height: 30vh;
+  cursor: pointer;
+  transition: 0.5s;
+  filter: grayscale(100%);
+}
+
 .passaFilme {
   width: 50px;
   aspect-ratio: 1;
@@ -138,6 +164,72 @@ mark {
   color: var(--colorAccent);
   border: 1px solid var(--colorAccent);
 }
+
 ::placeholder {
   font-family: var(--fonteSecondary);
+}
+
+.container {
+  position: relative;
+  padding: 15px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-wrapper {
+  overflow-x: auto;
+  max-width: 150vh;
+}
+
+.botaoEsquerdo,
+.botaoDireito {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: auto;
+  bottom: 0;
+
+  font-size: 20px;
+  line-height: 250px;
+  width: 40px;
+  color: var(--colorAccent);
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+.botaoDireito {
+  right: 0;
+  left: auto;
+  text-align: right;
+}
+
+.gallery {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 15px;
+}
+
+.item {
+  width: 250px;
+  height: 250px;
+  flex-shrink: 0;
+  transition: all 600ms ease-in-out;
+  opacity: 0.5;
+}
+
+.current-item {
+  opacity: 1;
+}
+
+.gallery-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-wrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

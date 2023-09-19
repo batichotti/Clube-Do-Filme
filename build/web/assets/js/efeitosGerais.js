@@ -2,20 +2,30 @@ function animacaoCard() {
   const telaRegistro = document.querySelector("#telaRegistro");
   const desfoque = document.querySelector("#desfoque");
 
-  let acao =
-    telaRegistro.attributes.getNamedItem("hidden") === null
-      ? cards("fechar", telaRegistro, desfoque)
-      : cards("abrir", telaRegistro, desfoque);
+  window.addEventListener("keydown", (e) => {
+    if (e.key == "Escape") {
+      cards("fechar", telaRegistro, desfoque);
+    }
+  });
+
+  telaRegistro.attributes.getNamedItem("hidden") === null
+    ? cards("fechar", telaRegistro, desfoque)
+    : cards("abrir", telaRegistro, desfoque);
 }
 
 function animacaoCardLogin() {
   const telaLogin = document.querySelector("#telaLogin");
   const desfoque = document.querySelector("#desfoque");
 
-  let acao =
-    telaLogin.attributes.getNamedItem("hidden") === null
-      ? cards("fechar", telaLogin, desfoque)
-      : cards("abrir", telaLogin, desfoque);
+  window.addEventListener("keydown", (e) => {
+    if (e.key == "Escape") {
+      cards("fechar", telaLogin, desfoque);
+    }
+  });
+
+  telaLogin.attributes.getNamedItem("hidden") === null
+    ? cards("fechar", telaLogin, desfoque)
+    : cards("abrir", telaLogin, desfoque);
 }
 
 function cards(acao, tela, desfoque) {
@@ -34,10 +44,9 @@ function slideFilmes() {
     window.innerHeight - cardFilmes.getBoundingClientRect().top;
 
   // navbar
-  let acaoNavbar =
-    distanciaPercorrida > 80
-      ? (navbar.style.animation = "navbarAparecer 0.5s forwards")
-      : (navbar.style.animation = "navbarFechar 0.5s forwards");
+  distanciaPercorrida > 80
+    ? (navbar.style.animation = "navbarAparecer 0.5s forwards")
+    : (navbar.style.animation = "navbarFechar 0.5s forwards");
 }
 
 window.addEventListener("scroll", slideFilmes);
