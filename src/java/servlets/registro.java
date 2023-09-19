@@ -60,7 +60,7 @@ public class registro extends HttpServlet {
                     session.setAttribute("logado", "True");
                     response.sendRedirect("homeLogado.jsp");
                 } else {
-                    response.sendRedirect("index.html#registrar");
+                    response.sendRedirect("index.html");
                 }
 
             } catch (Exception e) {
