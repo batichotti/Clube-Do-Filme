@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import DAOs.DAOUser;
 import Entidades.User;
+import java.util.List;
 
 /**
  *
@@ -38,17 +39,30 @@ public class registro extends HttpServlet {
                 String nome = String.valueOf(request.getParameter("nome"));
                 String email = String.valueOf(request.getParameter("email"));
                 String senha = String.valueOf(request.getParameter("senha"));
-                
+
                 DAOUser daoUser = new DAOUser();
                 User usuario = new User();
-                
-                usuario.setEmail(email);
-                usuario.setNick(nome);
-                usuario.setPassword(senha);
-                usuario.setRole(0);
-                daoUser.inserir(usuario);
-                session.setAttribute("logado", "True");
-                response.sendRedirect("homeLogado.jsp");
+
+                List<User> listinha = daoUser.listInOrderId();
+                boolean is_mail_unique = true;
+                for (int i = 0; i < listinha.size(); i++) {
+                    if (listinha.get(i).getEmail().equals(email)) {
+                        is_mail_unique = false;
+                    }
+                }
+
+                if (is_mail_unique) {
+                    usuario.setEmail(email);
+                    usuario.setNick(nome);
+                    usuario.setPassword(senha);
+                    usuario.setRole(0);
+                    daoUser.inserir(usuario);
+                    session.setAttribute("logado", "True");
+                    response.sendRedirect("homeLogado.jsp");
+                } else {
+                    response.sendRedirect("index.html#registrar");
+                }
+
             } catch (Exception e) {
                 out.write(e.getMessage());
             }
