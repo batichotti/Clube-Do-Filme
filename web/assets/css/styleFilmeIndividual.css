@@ -1,0 +1,73 @@
+/* FONTES IMPORTADAS, BAIXAR DPS */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata&family=Karla&family=Oswald&display=swap");
+
+:root {
+  --colorBackground: #050004;
+  --colorBackGroundTransparent: rgba(5, 0, 4, 0);
+  --colorPrimary: #03fc20;
+  --colorSecondary: #012316;
+  --colorAccent: #e8a1e0;
+  --colorText: #ffffff;
+
+  --fontPrimary: "Bebas neue", sans-serif;
+  --fonteSecondary: "Oswald";
+}
+
+body {
+  background-color: var(--colorBackground);
+}
+
+.debug {
+  border: 3px solid red;
+}
+.debug:nth-child(2) {
+  border: 3px solid blue;
+}
+.debug:nth-child(3) {
+  border: 3px solid green;
+}
+.debug:nth-child(4) {
+  border: 3px solid purple;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.infoFilme {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5vh;
+  width: 50vh;
+  margin: 3vh;
+  aspect-ratio: 1;
+}
+
+.infoFilme > img {
+  width: 40vh;
+  aspect-ratio: 1;
+}
+
+.interacoes,
+.areaUser {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10vh;
+}
+
+.areaUser {
+  width: 30vh;
+}
+
+.sinopse {
+  font-family: var(--fonteSecondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vh;
+  margin: 10vh;
+}
