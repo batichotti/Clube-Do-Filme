@@ -32,7 +32,7 @@ public class redirect extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            session.setAttribute("email", "matebatichotti@gmail.com");
+            session.setAttribute("email", "aaa@gmail.com");
             response.sendRedirect("index.jsp");
         }
     }
