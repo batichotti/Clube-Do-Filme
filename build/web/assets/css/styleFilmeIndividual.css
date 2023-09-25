@@ -1,0 +1,107 @@
+/* FONTES IMPORTADAS, BAIXAR DPS */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata&family=Karla&family=Oswald&display=swap");
+
+:root {
+  --colorBackground: #050004;
+  --colorBackGroundTransparent: rgba(5, 0, 4, 0);
+  --colorPrimary: #03fc20;
+  --colorSecondary: #012316;
+  --colorAccent: #e8a1e0;
+  --colorText: #ffffff;
+
+  --fontPrimary: "Bebas neue", sans-serif;
+  --fonteSecondary: "Oswald";
+}
+
+body {
+  background-color: var(--colorBackground);
+}
+
+/* .debug {
+  border: 3px solid red;
+}
+.debug:nth-child(2) {
+  border: 3px solid blue;
+}
+.debug:nth-child(3) {
+  border: 3px solid green;
+}
+.debug:nth-child(4) {
+  border: 3px solid purple;
+} */
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.infoFilme {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 5vh;
+  width: 50vh;
+  aspect-ratio: 1;
+  height: 88vh;
+
+  border-top: 1px solid var(--colorAccent);
+  border-right: 1px solid var(--colorAccent);
+  border-top-right-radius: 35px;
+}
+
+.infoFilme > img {
+  position: absolute;
+  /* z-index: ; */
+  top: 50vh;
+  width: 40vh;
+  transition: 0.5s;
+  filter: blur(13px);
+
+  aspect-ratio: 1;
+}
+.infoFilme > img:hover {
+  transition: 0.5s;
+  filter: blur(0px);
+}
+
+.inputComentario {
+  background-color: transparent;
+  outline: none;
+  border: 1px solid var(--colorAccent);
+  border-radius: 5px;
+}
+.interacoes,
+.areaUser {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10vh;
+}
+
+.areaUser {
+  width: 30vh;
+}
+
+.sinopse {
+  font-family: var(--fonteSecondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vh;
+  margin: 10vh;
+  font-size: 20px;
+}
+
+@keyframes crescimentoComentario {
+  from {
+    width: 100%;
+    transition: 0.5s;
+  }
+  to {
+    width: 100%;
+    height: 300px;
+  }
+}

@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -33,6 +34,15 @@ import javax.persistence.Table;
     @NamedQuery(name = "Movie.findByOverview", query = "SELECT m FROM Movie m WHERE m.overview = :overview"),
     @NamedQuery(name = "Movie.findByRuntime", query = "SELECT m FROM Movie m WHERE m.runtime = :runtime")})
 public class Movie implements Serializable {
+
+    @ManyToMany(mappedBy = "movieList")
+    private List<Keyword> keywordList;
+    @ManyToMany(mappedBy = "movieList")
+    private List<Country> countryList;
+    @ManyToMany(mappedBy = "movieList")
+    private List<Genre> genreList;
+    @ManyToMany(mappedBy = "movieList")
+    private List<ProductionCompany> productionCompanyList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -139,6 +149,38 @@ public class Movie implements Serializable {
     @Override
     public String toString() {
         return "Entidades.Movie[ movieId=" + movieId + " ]";
+    }
+
+    public List<Keyword> getKeywordList() {
+        return keywordList;
+    }
+
+    public void setKeywordList(List<Keyword> keywordList) {
+        this.keywordList = keywordList;
+    }
+
+    public List<Country> getCountryList() {
+        return countryList;
+    }
+
+    public void setCountryList(List<Country> countryList) {
+        this.countryList = countryList;
+    }
+
+    public List<Genre> getGenreList() {
+        return genreList;
+    }
+
+    public void setGenreList(List<Genre> genreList) {
+        this.genreList = genreList;
+    }
+
+    public List<ProductionCompany> getProductionCompanyList() {
+        return productionCompanyList;
+    }
+
+    public void setProductionCompanyList(List<ProductionCompany> productionCompanyList) {
+        this.productionCompanyList = productionCompanyList;
     }
     
 }

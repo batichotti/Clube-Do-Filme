@@ -47,7 +47,7 @@ header > nav > div > a {
   position: relative;
 }
 
-body {
+.bodyLanding {
   background-image: url("../images/bgClubeDoFilme.jpeg");
   background-repeat: no-repeat;
   background-color: var(--colorBackground);

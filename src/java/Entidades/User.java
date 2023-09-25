@@ -113,7 +113,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.User[ email=" + email + " ]";
+        return email + ";" + nick + ";" + password;
     }
     
 }
