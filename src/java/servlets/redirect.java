@@ -4,8 +4,6 @@
  */
 package servlets;
 
-import DAOs.DAOUser;
-import Entidades.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,13 +11,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  *
  * @author Mateus Cohuzer
  */
-public class login extends HttpServlet {
+public class redirect extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,32 +31,9 @@ public class login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            try {
-                HttpSession session = request.getSession();
-                String email = String.valueOf(request.getParameter("email"));
-                String senha = String.valueOf(request.getParameter("senha"));
-
-                DAOUser daoUser = new DAOUser();
-                User usuario = new User();
-
-                List<User> listinha = daoUser.listInOrderId();
-                boolean isMailUnique = listinha.stream().noneMatch(item -> item.getEmail().equals(email));
-
-                if (isMailUnique) {
-                    usuario.setEmail(email);
-                    usuario.setNick(daoUser.obter(email).getEmail());
-                    usuario.setPassword(senha);
-                    usuario.setRole(0);
-                    daoUser.inserir(usuario);
-                    session.setAttribute("logado", "True");
-                    response.sendRedirect("homeLogado.jsp");
-                } else {
-                    response.sendRedirect("index.jsp");
-                }
-
-            } catch (Exception e) {
-                out.write(e.getMessage());
-            }
+            HttpSession session = request.getSession();
+            session.setAttribute("email", "matebatichotti@gmail.com");
+            response.sendRedirect("index.jsp");
         }
     }
 
