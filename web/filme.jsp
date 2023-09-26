@@ -43,7 +43,7 @@
                             User usuario = new User();
                             DAOUser daoUsuarios = new DAOUser();
                             try {
-                                out.println(daoUsuarios.obter(session.getAtribute("nick")).getNick());
+                                out.println(daoUsuarios.obter(session.getAttribute("nick")).getNick());
                             } catch (Exception e) {
                                 out.println("Login");
                             }
