@@ -116,7 +116,7 @@
                 <form
                     id="formRegistro"
                     method="post"
-                    action="registro"
+                    action="index.jsp"
                     class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
                     >
                     <div class="inputRegistro d-flex align-items-center column-gap-2">
@@ -150,6 +150,35 @@
                             />
                     </div>
                     <button type="submit" class="botaoRegistro btn">Registrar</button>
+                    <%
+                        session = request.getSession();
+                        String nome = String.valueOf(request.getParameter("nome"));
+                        String email = String.valueOf(request.getParameter("email"));
+                        String senha = String.valueOf(request.getParameter("senha"));
+
+                        DAOUser daoUser = new DAOUser();
+                        User usuario = new User();
+
+                        List<User> listinha = daoUser.listInOrderId();
+                        boolean is_mail_unique = true;
+                        for (int i = 0; i < listinha.size(); i++) {
+                            if (listinha.get(i).getEmail().equals(email)) {
+                                is_mail_unique = false;
+                            }
+                        }
+
+                        if (is_mail_unique) {
+                            usuario.setEmail(email);
+                            usuario.setNick(nome);
+                            usuario.setPassword(senha);
+                            usuario.setRole(0);
+                            daoUser.inserir(usuario);
+                            session.setAttribute("logado", "True");
+                            session.setAttribute("nick", nome);
+                        } else {
+                            out.println(String.valueOf(session.getAttribute("nick")));
+                        }
+                    %>
                 </form>
             </article>
 
@@ -198,17 +227,16 @@
                     <button type="submit" class="botaoLogin btn">Entrar</button>
                     <%
                       session = request.getSession();
-                      String email = String.valueOf(request.getParameter("email"));
-                      String senha = String.valueOf(request.getParameter("senha"));
+                      email = String.valueOf(request.getParameter("email"));
+                      senha = String.valueOf(request.getParameter("senha"));
 
-                      DAOUser daoUser = new DAOUser();
-                      User usuario = new User();
+                      daoUser = new DAOUser();
+                      usuario = new User();
 
                       try {
                         if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
                           session.setAttribute("logado", "True");
                           session.setAttribute("nick", String.valueOf(daoUser.obter(email).getNick()));
-                          response.sendRedirect("index.jsp");
                       } else {
                           out.println("<p>Erro no login</p>");
                       }
