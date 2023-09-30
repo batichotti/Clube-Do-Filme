@@ -60,7 +60,24 @@
                     <div class="d-flex gap column-gap-5">
                         <a href="filme.html">Filmes</a>
                         <a href="filme.jsp">Filmes (jsp)</a>
-                        <a href="#">Categorias</a>
+                        <a href="#">
+                            <%
+                                DAOUser daoUser = new DAOUser();
+                                User usuario = new User();
+                                String nick_user = "Erro";
+                                
+                                try{
+                                    nick_user = String.valueOf(session.getAttribute("nick"));
+                                    if(!nick_user.equals("Erro") && !nick_user.equals("null")){
+                                        out.println(nick_user);
+                                    } else {
+                                        out.println("Categorias");
+                                    }
+                                }catch(Exception e){
+                                    out.println("Categorias");
+                                }
+                            %>
+                        </a>
                     </div>
                     <input
                         type="text"
@@ -156,8 +173,8 @@
                         String email = String.valueOf(request.getParameter("email"));
                         String senha = String.valueOf(request.getParameter("senha"));
 
-                        DAOUser daoUser = new DAOUser();
-                        User usuario = new User();
+                        daoUser = new DAOUser();
+                        usuario = new User();
 
                         List<User> listinha = daoUser.listInOrderId();
                         boolean is_mail_unique = true;
