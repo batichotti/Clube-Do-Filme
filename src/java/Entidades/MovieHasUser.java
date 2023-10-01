@@ -22,12 +22,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "movie_has_user")
 @NamedQueries({
-    @NamedQuery(name = "MovieHasUser.findAll", query = "SELECT m FROM MovieHasUser m"),
-    @NamedQuery(name = "MovieHasUser.findByMovieMovieId", query = "SELECT m FROM MovieHasUser m WHERE m.movieHasUserPK.movieMovieId = :movieMovieId"),
-    @NamedQuery(name = "MovieHasUser.findByUserEmail", query = "SELECT m FROM MovieHasUser m WHERE m.movieHasUserPK.userEmail = :userEmail"),
-    @NamedQuery(name = "MovieHasUser.findByComment", query = "SELECT m FROM MovieHasUser m WHERE m.comment = :comment"),
-    @NamedQuery(name = "MovieHasUser.findByRating", query = "SELECT m FROM MovieHasUser m WHERE m.rating = :rating"),
-    @NamedQuery(name = "MovieHasUser.findByFavorited", query = "SELECT m FROM MovieHasUser m WHERE m.favorited = :favorited")})
+    @NamedQuery(name = "MovieHasUser.findAll", query = "SELECT m FROM MovieHasUser m")})
 public class MovieHasUser implements Serializable {
 
     private static final long serialVersionUID = 1L;

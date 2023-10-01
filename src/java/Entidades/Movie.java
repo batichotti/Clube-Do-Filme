@@ -26,23 +26,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "movie")
 @NamedQueries({
-    @NamedQuery(name = "Movie.findAll", query = "SELECT m FROM Movie m"),
-    @NamedQuery(name = "Movie.findByMovieId", query = "SELECT m FROM Movie m WHERE m.movieId = :movieId"),
-    @NamedQuery(name = "Movie.findByTitle", query = "SELECT m FROM Movie m WHERE m.title = :title"),
-    @NamedQuery(name = "Movie.findByBudget", query = "SELECT m FROM Movie m WHERE m.budget = :budget"),
-    @NamedQuery(name = "Movie.findByHomepage", query = "SELECT m FROM Movie m WHERE m.homepage = :homepage"),
-    @NamedQuery(name = "Movie.findByOverview", query = "SELECT m FROM Movie m WHERE m.overview = :overview"),
-    @NamedQuery(name = "Movie.findByRuntime", query = "SELECT m FROM Movie m WHERE m.runtime = :runtime")})
+    @NamedQuery(name = "Movie.findAll", query = "SELECT m FROM Movie m")})
 public class Movie implements Serializable {
-
-    @ManyToMany(mappedBy = "movieList")
-    private List<Keyword> keywordList;
-    @ManyToMany(mappedBy = "movieList")
-    private List<Country> countryList;
-    @ManyToMany(mappedBy = "movieList")
-    private List<Genre> genreList;
-    @ManyToMany(mappedBy = "movieList")
-    private List<ProductionCompany> productionCompanyList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,6 +45,14 @@ public class Movie implements Serializable {
     private String overview;
     @Column(name = "runtime")
     private Integer runtime;
+    @ManyToMany(mappedBy = "movieList")
+    private List<Keyword> keywordList;
+    @ManyToMany(mappedBy = "movieList")
+    private List<Country> countryList;
+    @ManyToMany(mappedBy = "movieList")
+    private List<Genre> genreList;
+    @ManyToMany(mappedBy = "movieList")
+    private List<ProductionCompany> productionCompanyList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieHasUser> movieHasUserList;
 
@@ -118,6 +111,38 @@ public class Movie implements Serializable {
         this.runtime = runtime;
     }
 
+    public List<Keyword> getKeywordList() {
+        return keywordList;
+    }
+
+    public void setKeywordList(List<Keyword> keywordList) {
+        this.keywordList = keywordList;
+    }
+
+    public List<Country> getCountryList() {
+        return countryList;
+    }
+
+    public void setCountryList(List<Country> countryList) {
+        this.countryList = countryList;
+    }
+
+    public List<Genre> getGenreList() {
+        return genreList;
+    }
+
+    public void setGenreList(List<Genre> genreList) {
+        this.genreList = genreList;
+    }
+
+    public List<ProductionCompany> getProductionCompanyList() {
+        return productionCompanyList;
+    }
+
+    public void setProductionCompanyList(List<ProductionCompany> productionCompanyList) {
+        this.productionCompanyList = productionCompanyList;
+    }
+
     public List<MovieHasUser> getMovieHasUserList() {
         return movieHasUserList;
     }
@@ -149,38 +174,6 @@ public class Movie implements Serializable {
     @Override
     public String toString() {
         return "Entidades.Movie[ movieId=" + movieId + " ]";
-    }
-
-    public List<Keyword> getKeywordList() {
-        return keywordList;
-    }
-
-    public void setKeywordList(List<Keyword> keywordList) {
-        this.keywordList = keywordList;
-    }
-
-    public List<Country> getCountryList() {
-        return countryList;
-    }
-
-    public void setCountryList(List<Country> countryList) {
-        this.countryList = countryList;
-    }
-
-    public List<Genre> getGenreList() {
-        return genreList;
-    }
-
-    public void setGenreList(List<Genre> genreList) {
-        this.genreList = genreList;
-    }
-
-    public List<ProductionCompany> getProductionCompanyList() {
-        return productionCompanyList;
-    }
-
-    public void setProductionCompanyList(List<ProductionCompany> productionCompanyList) {
-        this.productionCompanyList = productionCompanyList;
     }
     
 }
