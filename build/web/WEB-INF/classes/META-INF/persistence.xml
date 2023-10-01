@@ -8,6 +8,9 @@
     <class>Entidades.Gender</class>
     <class>Entidades.Person</class>
     <class>Entidades.Country</class>
+    <class>Entidades.MovieHasUser</class>
+    <class>Entidades.User</class>
+    <class>Entidades.Movie</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/movies?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

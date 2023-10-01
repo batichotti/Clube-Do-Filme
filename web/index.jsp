@@ -254,12 +254,14 @@
                         if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
                           session.setAttribute("logado", "True");
                           session.setAttribute("nick", String.valueOf(daoUser.obter(email).getNick()));
+                          out.println("<p>"+String.valueOf(session.getAttribute("nick"))+"</p>");
                       } else {
                           out.println("<p>Erro no login</p>");
                       }
                 } catch (Exception e) {
-                    out.println(String.valueOf(session.getAttribute("logado")));
-                    out.println(String.valueOf(session.getAttribute("nick")));
+                    out.println("<p>"+String.valueOf(session.getAttribute("logado"))+"</p>");
+                    out.println(String.valueOf("<p>"+session.getAttribute("nick"))+"</p>");
+                    out.println("<p>"+e.getMessage()+"</p>");
                 }
                       
                     %>
