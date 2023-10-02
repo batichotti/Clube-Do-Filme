@@ -12,6 +12,10 @@
         <servlet-name>redirect</servlet-name>
         <servlet-class>servlets.redirect</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deslogin</servlet-name>
+        <servlet-class>servlets.deslogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registro</servlet-name>
         <url-pattern>/registro</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>redirect</servlet-name>
         <url-pattern>/redirect</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deslogin</servlet-name>
+        <url-pattern>/deslogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
