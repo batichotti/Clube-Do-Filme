@@ -43,6 +43,12 @@ a {
   font-family: var(--fonteSecondary);
 }
 
+.linkTeste {
+  text-decoration: none;
+  color: var(--colorText);
+  font-family: var(--fonteSecondary);
+}
+
 header > nav > div > a {
   position: relative;
 }
@@ -57,6 +63,12 @@ header > nav > div > a {
   background-position-x: 100px;
   background-position-y: 150px;
 
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.bodyAdm {
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
 }
