@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./assets/css/styleEfeitos.css" />
     <link rel="stylesheet" href="./assets/css/styleLandingPage.css" />
     <link rel="stylesheet" href="./assets/css/styleFilmeIndividual.css" />
+    <link rel="stylesheet" href="./assets/css/styleAdm.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -25,18 +26,44 @@
       </div>
       <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
         <div class="d-flex gap column-gap-4">
-          <a class="linkTeste" href="">Filme</a>
-          <a class="linkTeste" href="">Elenco</a>
-          <a class="linkTeste" href="">Palavras-chave</a>
-          <a class="linkTeste" href="">Gêneros</a>
-          <a class="linkTeste" href="">Produtora</a>
+          <input class="linkTeste" href="" type="checkbox">Filme</input>
+          <input class="linkTeste" href="" type="checkbox">Elenco</input>
+          <input class="linkTeste" href="" type="checkbox">Palavras-chave</input>
+          <input class="linkTeste" href="" type="checkbox">Gêneros</input>
+          <input class="linkTeste" href="" type="checkbox">Produtora</input>
         </div>
-        <input
-          type="text"
-          class="inputBuscar rounded-pill"
-          placeholder="Buscar"
-        />
       </nav>
     </header>
+
+    <main class="mainAdm pt-5 pb-5">
+      <aside class="filmes" hidden>
+        <h1 class="fs-1">FILME</h1>
+        <div class="d-flex column-gap-2 cadastros">
+          <label class="fs-4" for="idFilme">ID do filme: </label>
+          <input id="idFilme" name="idFilme" type="text" />
+        </div>
+        <div class="d-flex column-gap-2 cadastros">
+          <label class="fs-4" for="idOrcamento">Orçamento: </label>
+          <input id="idOrcamento" name="idOrcamento" type="number" />
+        </div>
+        <div class="d-flex column-gap-2 cadastros">
+          <label class="fs-4" for="idTitulo">Título: </label>
+          <input id="idTitulo" name="idTitulo" type="text" />
+        </div>
+        <div class="d-flex column-gap-2 cadastros">
+          <label class="fs-4" for="idDuracao">Duração: </label>
+          <input id="idDuracao" name="idDuracao" type="number" />
+        </div>
+        <div class="d-flex column-gap-2 cadastros">
+          <label class="fs-4" for="idImpressoes">Impressões: </label>
+          <input id="idImpressoes" name="idImpressoes" type="text" />
+        </div>
+        <div class="d-flex column-gap-2 cadastros">
+          <label class="fs-4" for="idHomepage">Homepage: </label>
+          <input id="idHomepage" name="idHomepage" type="text" />
+        </div>
+      </aside>
+    </main>
+    <script src="./assets/js/cadastroAdm.js"></script>
   </body>
 </html>

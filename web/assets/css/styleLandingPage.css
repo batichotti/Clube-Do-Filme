@@ -67,11 +67,7 @@ header > nav > div > a {
   overflow-y: scroll;
 }
 
-.bodyAdm {
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
+
 
 header {
   background-color: var(--colorBackground);
