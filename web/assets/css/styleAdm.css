@@ -39,7 +39,7 @@
   width: 50%;
 }
 
-.filmes {
+.telaCadastro {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
