@@ -1,0 +1,47 @@
+:root {
+  --colorBackground: #050004;
+  --colorBackGroundTransparent: rgba(5, 0, 4, 0);
+  --colorPrimary: #03fc20;
+  --colorSecondary: #012316;
+  --colorAccent: #e8a1e0;
+  --colorText: #ffffff;
+
+  --fontPrimary: "Bebas neue", sans-serif;
+  --fonteSecondary: "Oswald";
+}
+.bodyAdm {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: var(--colorBackground);
+}
+
+.mainAdm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 92px;
+  height: 70vh;
+}
+
+.cadastros > input {
+  background-color: transparent;
+  width: 40%;
+  transition: 0.3s;
+  outline: none;
+  border: 2px solid var(--colorText);
+  border-top-right-radius: 10px;
+  color: var(--colorAccent);
+}
+.cadastros > input:focus {
+  transition: 0.3s;
+  border-color: var(--colorSecondary);
+  width: 50%;
+}
+
+.telaCadastro {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  border: 1px solid var(--colorAccent);
+}
