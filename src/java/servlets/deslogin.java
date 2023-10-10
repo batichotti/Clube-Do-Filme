@@ -34,6 +34,8 @@ public class deslogin extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("logado", "False");
             session.setAttribute("nick", "null");
+            session.setAttribute("email", "null");
+            session.setAttribute("role", "0");
             response.sendRedirect("index.jsp");
         }
     }

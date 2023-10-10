@@ -5,7 +5,6 @@
 package servlets;
 
 import DAOs.DAOUser;
-import Entidades.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,7 +12,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  *
@@ -35,28 +33,30 @@ public class login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             try {
-                HttpSession session = request.getSession();
                 String email = String.valueOf(request.getParameter("email"));
                 String senha = String.valueOf(request.getParameter("senha"));
-
+                HttpSession session = request.getSession();
+                
                 DAOUser daoUser = new DAOUser();
-                User usuario = new User();
 
-                List<User> listinha = daoUser.listInOrderId();
-                boolean isMailUnique = listinha.stream().noneMatch(item -> item.getEmail().equals(email));
-
-                if (isMailUnique) {
-                    usuario.setEmail(email);
-                    usuario.setNick(daoUser.obter(email).getEmail());
-                    usuario.setPassword(senha);
-                    usuario.setRole(0);
-                    daoUser.inserir(usuario);
-                    session.setAttribute("logado", "True");
-                    response.sendRedirect("homeLogado.jsp");
-                } else {
-                    response.sendRedirect("index.jsp");
+                try {
+                    if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
+                        session.setAttribute("logado", "True");
+                        session.setAttribute("nick", String.valueOf(daoUser.obter(email).getNick()));
+                        session.setAttribute("email", email);
+                        session.setAttribute("role", String.valueOf(daoUser.obter(email).getRole()));
+                        //out.println("<p>" + String.valueOf(session.getAttribute("nick")) + " -> " + String.valueOf(daoUser.obter(email).getRole()) + "</p>");
+                    } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
+                        out.println("👌 Efetue seu login");
+                    } else {
+                        out.println("<p style='color:red;'>Login inválido</p>");
+                    }
+                } catch (Exception e) {
+                    out.println("<p>" + String.valueOf(session.getAttribute("logado")) + "</p>");
+                    out.println(String.valueOf("<p>" + session.getAttribute("nick")) + "</p>");
+                    out.println("<p>" + e.getMessage() + "</p>");
                 }
-
+                response.sendRedirect("index.jsp");
             } catch (Exception e) {
                 out.write(e.getMessage());
             }

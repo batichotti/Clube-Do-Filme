@@ -29,7 +29,13 @@
     >
       <div class="d-flex gap column-gap-2 ps-5">
         <!-- <img src="" alt="Logo" class=".img-fluid"> -->
-        <h1>Cadastro</h1>
+        <h1>Cadastro -
+        
+            <%
+            out.println(session.getAttribute("nick"));
+            %>
+            
+        </h1>
       </div>
       <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
         <div class="d-flex gap column-gap-4">

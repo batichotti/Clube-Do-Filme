@@ -68,15 +68,16 @@
                             try{
                                 is_logged = String.valueOf(session.getAttribute("logado"));
                                 if(is_logged.equals("True")){
-                                    out.println("<a href='deslogin'> Deslogar  "+session.getAttribute("email")+" " + session.getAttribute("role")+"</a>");
-                                    if(session.getAttribute("role").equals("1")){
-                                        out.println("<a href='telaAdm.jsp'>Adm</a>");
-                                    }
+                                    out.println("<a href='deslogin'>Deslogar</a>");
                                 } else {
                                     out.println("<a>Login</a>");
                                 }
                             }catch(Exception e){
                                 out.println("<a>Login (Err): "+e+"</a>");
+                            }
+                            
+                            if(String.valueOf(session.getAttribute("role")).equals("1") && String.valueOf(session.getAttribute("logado")).equals("True")){
+                                out.println("<a href='telaAdm.jsp'> ADM </a>");
                             }
                         %>
                     </div>
@@ -89,7 +90,6 @@
             </header>
 
             <span class="camadaTransparente w-100"></span>
-            <!-- SE o usuario nao for logado -->
             <aside class="linkRegistro w-100 h-75 d-flex justify-content-end" hidden>
                 <div
                     class="d-flex flex-column align-items-center justify-content-center w-50"
@@ -215,6 +215,7 @@
                 <form
                     id="formLogin"
                     method="post"
+                    action="login"
                     class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
                     >
                     <div
@@ -247,19 +248,14 @@
                       senha = String.valueOf(request.getParameter("senha"));
 
                       daoUser = new DAOUser();
-                      usuario = new User();
 
                       try {
                         if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
-                          session.setAttribute("logado", "True");
-                          session.setAttribute("nick", String.valueOf(daoUser.obter(email).getNick()));
-                          session.setAttribute("email", email);
-                          session.setAttribute("role", String.valueOf(daoUser.obter(email).getRole()));
                           out.println("<p>"+String.valueOf(session.getAttribute("nick"))+" -> "+String.valueOf(daoUser.obter(email).getRole())+"</p>");
                       } else if(String.valueOf(session.getAttribute("nick")).equals("null")){
                         out.println("👌 Efetue seu login");
                       } else {
-                          out.println("<p>Erro no login</p>");
+                          out.println("<p style='color:red;'>Login inválido</p>");
                       }
                 } catch (Exception e) {
                     out.println("<p>"+String.valueOf(session.getAttribute("logado"))+"</p>");
