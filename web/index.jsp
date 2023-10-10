@@ -200,7 +200,14 @@
                 </form>
             </article>
 
-            <article id="telaLogin" hidden>
+            <%
+                if(String.valueOf(session.getAttribute("logado")).equals("True")){
+                    out.println("<article id='telaLogin' hidden>");
+                } else {
+                    out.println("<article id='telaLogin' hidden>");
+                }
+            %>
+            
                 <div
                     class="cabecalhoRegistro w-100 d-flex justify-content-between align-items-center p-2 pe-4 ps-4"
                     >
