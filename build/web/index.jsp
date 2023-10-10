@@ -64,15 +64,11 @@
                             DAOUser daoUser = new DAOUser();
                             User usuario = new User();
                             String is_logged = "False";
-                            session = request.getSession();
-                            if(String.valueOf(session.getAttribute("email")).equals("null")){
-                                session.setAttribute("email", "deslogado");
-                            }
-                                
+
                             try{
                                 is_logged = String.valueOf(session.getAttribute("logado"));
                                 if(is_logged.equals("True")){
-                                    out.println("<a href='deslogin'> Deslogar  "+daoUser.obter(String.valueOf(session.getAttribute("email"))).getRole()+"</a>");
+                                    out.println("<a href='deslogin'> Deslogar  "+session.getAttribute("email")+" " + session.getAttribute("role")+"</a>");
                                     if(session.getAttribute("role").equals("1")){
                                         out.println("<a href='telaAdm.jsp'>Adm</a>");
                                     }
@@ -138,7 +134,6 @@
                 <form
                     id="formRegistro"
                     method="post"
-                    action="index.jsp"
                     class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
                     >
                     <div class="inputRegistro d-flex align-items-center column-gap-2">
@@ -173,7 +168,6 @@
                     </div>
                     <button type="submit" class="botaoRegistro btn">Registrar</button>
                     <%
-                        session = request.getSession();
                         String nome = String.valueOf(request.getParameter("nome"));
                         String email = String.valueOf(request.getParameter("email"));
                         String senha = String.valueOf(request.getParameter("senha"));
@@ -221,7 +215,6 @@
                 <form
                     id="formLogin"
                     method="post"
-                    action="index.jsp"
                     class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
                     >
                     <div
@@ -250,7 +243,6 @@
                     </div>
                     <button type="submit" class="botaoLogin btn">Entrar</button>
                     <%
-                      session = request.getSession();
                       email = String.valueOf(request.getParameter("email"));
                       senha = String.valueOf(request.getParameter("senha"));
 
