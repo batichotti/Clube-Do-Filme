@@ -72,16 +72,15 @@
                             try{
                                 is_logged = String.valueOf(session.getAttribute("logado"));
                                 if(is_logged.equals("True")){
-                                    out.println("<a href='deslogin'> Deslogar </a>");
-                                    response.sendRedirect(session.getAttribute("email").getRole());
-                                    if(String.valueOf(daoUser.obter(String.valueOf(session.getAttribute("email"))).getRole()).equals("1")){
+                                    out.println("<a href='deslogin'> Deslogar  "+daoUser.obter(String.valueOf(session.getAttribute("email"))).getRole()+"</a>");
+                                    if(session.getAttribute("role").equals("1")){
                                         out.println("<a href='telaAdm.jsp'>Adm</a>");
                                     }
                                 } else {
                                     out.println("<a>Login</a>");
                                 }
                             }catch(Exception e){
-                                out.println("<a>Login (Err) "+e+"</a>");
+                                out.println("<a>Login (Err): "+e+"</a>");
                             }
                         %>
                     </div>
@@ -199,6 +198,7 @@
                             session.setAttribute("logado", "True");
                             session.setAttribute("nick", nome);
                             session.setAttribute("email", email);
+                            session.setAttribute("role", String.valueOf(daoUser.obter(email).getRole()));
                         } else {
                             out.println(String.valueOf(session.getAttribute("nick")));
                         }
@@ -262,7 +262,8 @@
                           session.setAttribute("logado", "True");
                           session.setAttribute("nick", String.valueOf(daoUser.obter(email).getNick()));
                           session.setAttribute("email", email);
-                          out.println("<p>"+String.valueOf(session.getAttribute("nick"))+"</p>");
+                          session.setAttribute("role", String.valueOf(daoUser.obter(email).getRole()));
+                          out.println("<p>"+String.valueOf(session.getAttribute("nick"))+" -> "+String.valueOf(daoUser.obter(email).getRole())+"</p>");
                       } else if(String.valueOf(session.getAttribute("nick")).equals("null")){
                         out.println("👌 Efetue seu login");
                       } else {
