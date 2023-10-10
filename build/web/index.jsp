@@ -60,25 +60,30 @@
                     <div class="d-flex gap column-gap-5">
                         <a href="filme.html">Filmes</a>
                         <a href="filme.jsp">Filmes (jsp)</a>
-                            <%
-                                DAOUser daoUser = new DAOUser();
-                                User usuario = new User();
-                                String is_logged = "False";
+                        <%
+                            DAOUser daoUser = new DAOUser();
+                            User usuario = new User();
+                            String is_logged = "False";
+                            session = request.getSession();
+                            if(String.valueOf(session.getAttribute("email")).equals("null")){
+                                session.setAttribute("email", "deslogado");
+                            }
                                 
-                                try{
-                                    is_logged = String.valueOf(session.getAttribute("logado"));
-                                    if(is_logged.equals("True") && !String.valueOf(session.getAttribute("nick")).equals("null")){
-                                        out.println("<a href='deslogin'> Deslogar </a>");
-                                        if(String.valueOf(daoUser.obter(String.valueOf(session.getAttribute("email"))).getRole()).equals("1")){
-                                            out.println("<a href='telaAdm.jsp'>Adm</a>");
-                                            }
-                                    } else {
-                                        out.println("<a>Login</a>");
+                            try{
+                                is_logged = String.valueOf(session.getAttribute("logado"));
+                                if(is_logged.equals("True")){
+                                    out.println("<a href='deslogin'> Deslogar </a>");
+                                    response.sendRedirect(session.getAttribute("email").getRole());
+                                    if(String.valueOf(daoUser.obter(String.valueOf(session.getAttribute("email"))).getRole()).equals("1")){
+                                        out.println("<a href='telaAdm.jsp'>Adm</a>");
                                     }
-                                }catch(Exception e){
-                                    out.println("<a>Login (Err)</a>");
+                                } else {
+                                    out.println("<a>Login</a>");
                                 }
-                            %>
+                            }catch(Exception e){
+                                out.println("<a>Login (Err) "+e+"</a>");
+                            }
+                        %>
                     </div>
                     <input
                         type="text"
@@ -193,6 +198,7 @@
                             daoUser.inserir(usuario);
                             session.setAttribute("logado", "True");
                             session.setAttribute("nick", nome);
+                            session.setAttribute("email", email);
                         } else {
                             out.println(String.valueOf(session.getAttribute("nick")));
                         }
@@ -252,9 +258,10 @@
                       usuario = new User();
 
                       try {
-                        if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword()) && !String.valueOf(session.getAttribute("nick")).equals("null")) {
+                        if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
                           session.setAttribute("logado", "True");
                           session.setAttribute("nick", String.valueOf(daoUser.obter(email).getNick()));
+                          session.setAttribute("email", email);
                           out.println("<p>"+String.valueOf(session.getAttribute("nick"))+"</p>");
                       } else if(String.valueOf(session.getAttribute("nick")).equals("null")){
                         out.println("👌 Efetue seu login");
