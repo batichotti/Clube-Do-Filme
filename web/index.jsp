@@ -69,6 +69,9 @@
                                     is_logged = String.valueOf(session.getAttribute("logado"));
                                     if(is_logged.equals("True") && !String.valueOf(session.getAttribute("nick")).equals("null")){
                                         out.println("<a href='deslogin'> Deslogar </a>");
+                                        if(String.valueOf(daoUser.obter(String.valueOf(session.getAttribute("email"))).getRole()).equals("1")){
+                                            out.println("<a href='telaAdm.jsp'>Adm</a>");
+                                            }
                                     } else {
                                         out.println("<a>Login</a>");
                                     }
