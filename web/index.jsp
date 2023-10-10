@@ -263,7 +263,6 @@
                     out.println(String.valueOf("<p>"+session.getAttribute("nick"))+"</p>");
                     out.println("<p>"+e.getMessage()+"</p>");
                 }
-                      
                     %>
                 </form>
             </article>
