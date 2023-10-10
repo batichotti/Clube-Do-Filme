@@ -67,7 +67,7 @@
                                 
                                 try{
                                     is_logged = String.valueOf(session.getAttribute("logado"));
-                                    if(is_logged.equals("True")){
+                                    if(is_logged.equals("True") && !String.valueOf(session.getAttribute("nick")).equals("null")){
                                         out.println("<a href='deslogin'> Deslogar </a>");
                                     } else {
                                         out.println("<a>Login</a>");
@@ -249,10 +249,12 @@
                       usuario = new User();
 
                       try {
-                        if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
+                        if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword()) && !String.valueOf(session.getAttribute("nick")).equals("null")) {
                           session.setAttribute("logado", "True");
                           session.setAttribute("nick", String.valueOf(daoUser.obter(email).getNick()));
                           out.println("<p>"+String.valueOf(session.getAttribute("nick"))+"</p>");
+                      } else if(String.valueOf(session.getAttribute("nick")).equals("null")){
+                        out.println("👌 Efetue seu login");
                       } else {
                           out.println("<p>Erro no login</p>");
                       }
