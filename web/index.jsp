@@ -266,55 +266,35 @@
                 <div class="gallery-wrapper">
                     <div class="gallery">
                         <img
-                            src="./assets/images/4.png"
+                            src="./assets/images/placeholder.png"
                             class="item current-item"
                             alt=""
                             />
                         <img
-                            src="./assets/images/3.png"
+                            src="./assets/images/placeholder.png"
                             class="item current-item"
                             alt=""
                             />
                         <img
-                            src="./assets/images/5.png"
+                            src="./assets/images/placeholder.png"
                             class="item current-item"
                             alt=""
                             />
                         <img
-                            src="./assets/images/2.png"
+                            src="./assets/images/placeholder.png"
                             class="item current-item"
                             alt=""
                             />
                         <img
-                            src="./assets/images/6.png"
+                            src="./assets/images/placeholder.png"
                             class="item current-item"
                             alt=""
                             />
                         <img
-                            src="./assets/images/1.png"
+                            src="./assets/images/placeholder.png"
                             class="item current-item"
                             alt=""
                             />
-                        <img
-                            src="./assets/images/7.png"
-                            class="item current-item"
-                            alt=""
-                            />
-                        <img
-                            src="./assets/images/8.png"
-                            class="item current-item"
-                            alt=""
-                            />
-                        <img
-                            src="./assets/images/9.png"
-                            class="item current-item"
-                            alt=""
-                            />
-                        <img
-                            src="./assets/images/10.png"
-                            class="item current-item"
-                            alt=""
-                            />  
                     </div>
                 </div>
             </aside>
