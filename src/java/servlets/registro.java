@@ -58,10 +58,15 @@ public class registro extends HttpServlet {
                     usuario.setRole(0);
                     daoUser.inserir(usuario);
                     session.setAttribute("logado", "True");
-                    response.sendRedirect("homeLogado.jsp");
+                    session.setAttribute("email", email);
+                    session.setAttribute("nick", nome);
+                    session.setAttribute("senha", senha);
+                    session.setAttribute("role", 0);
                 } else {
-                    response.sendRedirect("index.html");
+                    out.println("<p>Email já cadastrado</p>");
                 }
+
+                response.sendRedirect("index.jsp");
 
             } catch (Exception e) {
                 out.write(e.getMessage());

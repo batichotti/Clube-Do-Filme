@@ -133,6 +133,7 @@
                 </div>
                 <form
                     id="formRegistro"
+                    action="registro"
                     method="post"
                     class="corpoRegistro d-flex flex-column w-100 h-100 p-4 row-gap-3"
                     >
@@ -168,33 +169,8 @@
                     </div>
                     <button type="submit" class="botaoRegistro btn">Registrar</button>
                     <%
-                        String nome = String.valueOf(request.getParameter("nome"));
-                        String email = String.valueOf(request.getParameter("email"));
-                        String senha = String.valueOf(request.getParameter("senha"));
-
-                        daoUser = new DAOUser();
-                        usuario = new User();
-
-                        List<User> listinha = daoUser.listInOrderId();
-                        boolean is_mail_unique = true;
-                        for (int i = 0; i < listinha.size(); i++) {
-                            if (listinha.get(i).getEmail().equals(email)) {
-                                is_mail_unique = false;
-                            }
-                        }
-
-                        if (is_mail_unique) {
-                            usuario.setEmail(email);
-                            usuario.setNick(nome);
-                            usuario.setPassword(senha);
-                            usuario.setRole(0);
-                            daoUser.inserir(usuario);
-                            session.setAttribute("logado", "True");
-                            session.setAttribute("nick", nome);
-                            session.setAttribute("email", email);
-                            session.setAttribute("role", String.valueOf(daoUser.obter(email).getRole()));
-                        } else {
-                            out.println(String.valueOf(session.getAttribute("nick")));
+                        if(String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("1")){
+                            out.println("<a href='deslogin' style='color:cyan;'>Deslogar</a>");
                         }
                     %>
                 </form>
@@ -204,7 +180,7 @@
                 if(String.valueOf(session.getAttribute("logado")).equals("True")){
                     out.println("<article id='telaLogin' hidden>");
                 } else {
-                    out.println("<article id='telaLogin' hidden>");
+                    out.println("<article id='telaLogin'>");
                 }
             %>
             
@@ -251,26 +227,26 @@
                     </div>
                     <button type="submit" class="botaoLogin btn">Entrar</button>
                     <%
-                      email = String.valueOf(session.getAttribute("email"));
-                      senha = String.valueOf(session.getAttribute("senha"));
+                      String email = String.valueOf(session.getAttribute("email"));
+                      String senha = String.valueOf(session.getAttribute("senha"));
 
                       daoUser = new DAOUser();
 
                       try {
-                    if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
-                        if (email.equals("null")) {
-                            out.println("<p style='color:red;'>Efetue seu login</p>");
+                        if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
+                            if (email.equals("null")) {
+                                out.println("<p style='color:red;'>Efetue seu login</p>");
+                            } else {
+                                out.println("<a href='deslogin' style='color:cyan;'>Deslogar</a>");
+                            }
+                        } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
+                            out.println("👌 Efetue seu login");
                         } else {
-                            out.println("<a href='deslogin' style='color:cyan;'>Deslogar</a>");
+                            out.println("<p style='color:red;'>Login inválido</p>");
                         }
-                    } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
-                        out.println("👌 Efetue seu login");
-                    } else {
-                        out.println("<p style='color:red;'>Login inválido</p>");
+                    } catch (Exception e) {
+                        out.println("<p> Erro:" + e.getMessage() + "</p>");
                     }
-                } catch (Exception e) {
-                    out.println("<p> Erro:" + e.getMessage() + "</p>");
-                }
                     %>
                 </form>
             </article>
