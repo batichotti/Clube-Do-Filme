@@ -99,12 +99,21 @@
                     </h5>
                     <h5>2ª regra do clube do filme: <mark>Avalie</mark> novos filmes.</h5>
                     <h5>3ª regra do clube do filme: <mark>Salve</mark> novos filmes.</h5>
-                    <h2>Ainda não está cadastrado? Registre-se!</h2>
+                    <%
+                        if(String.valueOf(session.getAttribute("logado")).equals("False")){
+                            out.println("<h2>Ainda não está cadastrado? Registre-se!</h2>");
+                        }
+                    %>
                     <nav>
                         <button
                             type="button"
                             class="botaoRegistro btn"
                             onclick="animacaoCard()"
+                            <%
+                            if(String.valueOf(session.getAttribute("logado")).equals("True")){
+                                out.println("hidden");
+                            }
+                            %>
                             >
                             Registrar
                         </button>
@@ -112,6 +121,11 @@
                             type="button"
                             class="botaoLogin btn btn-outline-secondary"
                             onclick="animacaoCardLogin()"
+                            <%
+                            if(String.valueOf(session.getAttribute("logado")).equals("True")){
+                                out.println("hidden");
+                            }
+                            %>
                             >
                             Já tenho uma conta
                         </button>
@@ -168,22 +182,10 @@
                             />
                     </div>
                     <button type="submit" class="botaoRegistro btn">Registrar</button>
-                    <%
-                        if(String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("1")){
-                            out.println("<a href='deslogin' style='color:cyan;'>Deslogar</a>");
-                        }
-                    %>
                 </form>
             </article>
 
-            <%
-                if(String.valueOf(session.getAttribute("logado")).equals("True")){
-                    out.println("<article id='telaLogin' hidden>");
-                } else {
-                    out.println("<article id='telaLogin'>");
-                }
-            %>
-            
+            <article id='telaLogin' hidden>
                 <div
                     class="cabecalhoRegistro w-100 d-flex justify-content-between align-items-center p-2 pe-4 ps-4"
                     >
@@ -236,8 +238,6 @@
                         if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
                             if (email.equals("null")) {
                                 out.println("<p style='color:red;'>Efetue seu login</p>");
-                            } else {
-                                out.println("<a href='deslogin' style='color:cyan;'>Deslogar</a>");
                             }
                         } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
                             out.println("👌 Efetue seu login");
@@ -252,7 +252,6 @@
             </article>
         </main>
 
-        <!-- Parte dos filmes -->
         <aside
             id="cardFilmes"
             class="cardFilmes d-flex flex-column align-items-center justify-content-center w-100 h-75"

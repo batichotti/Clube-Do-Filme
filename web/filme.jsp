@@ -38,17 +38,26 @@
                 <div class="d-flex gap column-gap-5">
                     <a href="filme.html">Filmes</a>
                     <a href="filme.jsp">Filmes (jsp)</a>
-                    <a href="#">
-                        <%
-                            User usuario = new User();
-                            DAOUser daoUsuarios = new DAOUser();
-                            try {
-                                out.println(daoUsuarios.obter(String.valueOf(session.getAttribute("nick"))).getNick());
-                            } catch (Exception e) {
-                                out.println("Login");
+                    <%
+                        DAOUser daoUser = new DAOUser();
+                        User usuario = new User();
+                        String is_logged = "False";
+
+                        try{
+                            is_logged = String.valueOf(session.getAttribute("logado"));
+                            if(is_logged.equals("True")){
+                                out.println("<a href='deslogin'>Deslogar</a>");
+                            } else {
+                                out.println("<a>Login</a>");
                             }
-                        %>
-                    </a>
+                        }catch(Exception e){
+                            out.println("<a>Login (Err): "+e+"</a>");
+                        }
+
+                        if(String.valueOf(session.getAttribute("role")).equals("1") && String.valueOf(session.getAttribute("logado")).equals("True")){
+                            out.println("<a href='telaAdm.jsp'> ADM </a>");
+                        }
+                    %>
                 </div>
                 <input
                     type="text"
