@@ -65,6 +65,9 @@ public class DAOGenerico<T> {
     }
 
     public List<T> list() {
-        return em.createQuery("SELECT e FROM " + (clazz.getSimpleName()) + " e").getResultList();
-    }
+    String entityName = clazz.getSimpleName();
+    String queryString = "SELECT e FROM " + entityName + " e";
+    return em.createQuery(queryString).getResultList();
+}
+
 }

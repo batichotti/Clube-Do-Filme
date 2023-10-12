@@ -6,7 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Entidades.User"%>
+<%@page import="Entidades.Movie"%>
 <%@page import="DAOs.DAOUser"%>
+<%@page import="DAOs.DAOMovie"%>
 <%@page import="jakarta.servlet.http.HttpSession"%>
 <!DOCTYPE html>
 <html lang="pt-br">
