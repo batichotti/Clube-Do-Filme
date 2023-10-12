@@ -36,16 +36,21 @@ public class login extends HttpServlet {
                 String email = String.valueOf(request.getParameter("email"));
                 String senha = String.valueOf(request.getParameter("senha"));
                 HttpSession session = request.getSession();
-                
+
                 DAOUser daoUser = new DAOUser();
 
                 try {
                     if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
-                        session.setAttribute("logado", "True");
-                        session.setAttribute("nick", String.valueOf(daoUser.obter(email).getNick()));
-                        session.setAttribute("email", email);
-                        session.setAttribute("role", String.valueOf(daoUser.obter(email).getRole()));
-                        //out.println("<p>" + String.valueOf(session.getAttribute("nick")) + " -> " + String.valueOf(daoUser.obter(email).getRole()) + "</p>");
+                        if (email.equals("null")) {
+                            out.println("<p style='color:red;'>Login inválido</p>");
+                        } else {
+                            session.setAttribute("logado", "True");
+                            session.setAttribute("nick", String.valueOf(daoUser.obter(email).getNick()));
+                            session.setAttribute("email", email);
+                            session.setAttribute("senha", senha);
+                            session.setAttribute("role", String.valueOf(daoUser.obter(email).getRole()));
+                            //out.println("<p>" + String.valueOf(session.getAttribute("nick")) + " -> " + String.valueOf(daoUser.obter(email).getRole()) + "</p>");
+                        }
                     } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
                         out.println("👌 Efetue seu login");
                     } else {

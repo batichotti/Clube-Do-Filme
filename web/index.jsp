@@ -244,30 +244,35 @@
                         <input
                             id="senha"
                             name="senha"
-                            type="text"
+                            type="password"
                             class="inputEntrar input-group-text p-2"
                             placeholder="Digite sua senha..."
                             />
                     </div>
                     <button type="submit" class="botaoLogin btn">Entrar</button>
                     <%
-                      email = String.valueOf(request.getParameter("email"));
-                      senha = String.valueOf(request.getParameter("senha"));
+                      email = String.valueOf(session.getAttribute("email"));
+                      senha = String.valueOf(session.getAttribute("senha"));
 
                       daoUser = new DAOUser();
 
                       try {
-                        if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
-                          out.println("<p>"+String.valueOf(session.getAttribute("nick"))+" -> "+String.valueOf(daoUser.obter(email).getRole())+"</p>");
-                      } else if(String.valueOf(session.getAttribute("nick")).equals("null")){
+                    if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
+                        if (email.equals("null")) {
+                            out.println("<p style='color:red;'>Efetue seu login</p>");
+                        } else {
+                            out.println("<a href='deslogin' style='color:cyan;'>Deslogar</a>");
+                        }
+                    } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
                         out.println("👌 Efetue seu login");
-                      } else {
-                          out.println("<p style='color:red;'>Login inválido</p>");
-                      }
+                    } else {
+                        out.println("<p style='color:red;'>Login inválido</p>");
+                    }
+                    out.println(email + " " + senha);
                 } catch (Exception e) {
-                    out.println("<p>"+String.valueOf(session.getAttribute("logado"))+"</p>");
-                    out.println(String.valueOf("<p>"+session.getAttribute("nick"))+"</p>");
-                    out.println("<p>"+e.getMessage()+"</p>");
+                    out.println("<p>" + String.valueOf(session.getAttribute("logado")) + "</p>");
+                    out.println(String.valueOf("<p>" + session.getAttribute("nick")) + "</p>");
+                    out.println("<p>" + e.getMessage() + "</p>");
                 }
                     %>
                 </form>
