@@ -23,7 +23,9 @@ import java.util.List;
 @Entity
 @Table(name = "genre")
 @NamedQueries({
-    @NamedQuery(name = "Genre.findAll", query = "SELECT g FROM Genre g")})
+    @NamedQuery(name = "Genre.findAll", query = "SELECT g FROM Genre g"),
+    @NamedQuery(name = "Genre.findByGenreId", query = "SELECT g FROM Genre g WHERE g.genreId = :genreId"),
+    @NamedQuery(name = "Genre.findByGenreName", query = "SELECT g FROM Genre g WHERE g.genreName = :genreName")})
 public class Genre implements Serializable {
 
     private static final long serialVersionUID = 1L;

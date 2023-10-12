@@ -23,7 +23,9 @@ import java.util.List;
 @Entity
 @Table(name = "keyword")
 @NamedQueries({
-    @NamedQuery(name = "Keyword.findAll", query = "SELECT k FROM Keyword k")})
+    @NamedQuery(name = "Keyword.findAll", query = "SELECT k FROM Keyword k"),
+    @NamedQuery(name = "Keyword.findByKeywordId", query = "SELECT k FROM Keyword k WHERE k.keywordId = :keywordId"),
+    @NamedQuery(name = "Keyword.findByKeywordName", query = "SELECT k FROM Keyword k WHERE k.keywordName = :keywordName")})
 public class Keyword implements Serializable {
 
     private static final long serialVersionUID = 1L;

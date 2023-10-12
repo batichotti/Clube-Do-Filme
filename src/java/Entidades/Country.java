@@ -25,7 +25,10 @@ import java.util.List;
 @Entity
 @Table(name = "country")
 @NamedQueries({
-    @NamedQuery(name = "Country.findAll", query = "SELECT c FROM Country c")})
+    @NamedQuery(name = "Country.findAll", query = "SELECT c FROM Country c"),
+    @NamedQuery(name = "Country.findByCountryId", query = "SELECT c FROM Country c WHERE c.countryId = :countryId"),
+    @NamedQuery(name = "Country.findByCountryIsoCode", query = "SELECT c FROM Country c WHERE c.countryIsoCode = :countryIsoCode"),
+    @NamedQuery(name = "Country.findByCountryName", query = "SELECT c FROM Country c WHERE c.countryName = :countryName")})
 public class Country implements Serializable {
 
     private static final long serialVersionUID = 1L;

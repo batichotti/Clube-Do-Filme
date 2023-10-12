@@ -21,7 +21,10 @@ import java.io.Serializable;
 @Entity
 @Table(name = "movie_keywords")
 @NamedQueries({
-    @NamedQuery(name = "MovieKeywords.findAll", query = "SELECT m FROM MovieKeywords m")})
+    @NamedQuery(name = "MovieKeywords.findAll", query = "SELECT m FROM MovieKeywords m"),
+    @NamedQuery(name = "MovieKeywords.findByMovieId", query = "SELECT m FROM MovieKeywords m WHERE m.movieKeywordsPK.movieId = :movieId"),
+    @NamedQuery(name = "MovieKeywords.findByKeywordId", query = "SELECT m FROM MovieKeywords m WHERE m.movieKeywordsPK.keywordId = :keywordId"),
+    @NamedQuery(name = "MovieKeywords.findByMovieKeywordscol", query = "SELECT m FROM MovieKeywords m WHERE m.movieKeywordscol = :movieKeywordscol")})
 public class MovieKeywords implements Serializable {
 
     private static final long serialVersionUID = 1L;

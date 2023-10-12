@@ -21,7 +21,10 @@ import java.io.Serializable;
 @Entity
 @Table(name = "production_country")
 @NamedQueries({
-    @NamedQuery(name = "ProductionCountry.findAll", query = "SELECT p FROM ProductionCountry p")})
+    @NamedQuery(name = "ProductionCountry.findAll", query = "SELECT p FROM ProductionCountry p"),
+    @NamedQuery(name = "ProductionCountry.findByMovieId", query = "SELECT p FROM ProductionCountry p WHERE p.productionCountryPK.movieId = :movieId"),
+    @NamedQuery(name = "ProductionCountry.findByCountryId", query = "SELECT p FROM ProductionCountry p WHERE p.productionCountryPK.countryId = :countryId"),
+    @NamedQuery(name = "ProductionCountry.findByProductionCountrycol", query = "SELECT p FROM ProductionCountry p WHERE p.productionCountrycol = :productionCountrycol")})
 public class ProductionCountry implements Serializable {
 
     private static final long serialVersionUID = 1L;

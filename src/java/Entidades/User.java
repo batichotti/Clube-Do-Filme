@@ -37,8 +37,6 @@ public class User implements Serializable {
     private String password;
     @Column(name = "role")
     private Integer role;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<MovieHasUser> movieHasUserList;
 
     public User() {
     }
@@ -77,14 +75,6 @@ public class User implements Serializable {
 
     public void setRole(Integer role) {
         this.role = role;
-    }
-
-    public List<MovieHasUser> getMovieHasUserList() {
-        return movieHasUserList;
-    }
-
-    public void setMovieHasUserList(List<MovieHasUser> movieHasUserList) {
-        this.movieHasUserList = movieHasUserList;
     }
 
     @Override

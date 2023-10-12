@@ -23,7 +23,9 @@ import java.util.List;
 @Entity
 @Table(name = "production_company")
 @NamedQueries({
-    @NamedQuery(name = "ProductionCompany.findAll", query = "SELECT p FROM ProductionCompany p")})
+    @NamedQuery(name = "ProductionCompany.findAll", query = "SELECT p FROM ProductionCompany p"),
+    @NamedQuery(name = "ProductionCompany.findByCompanyId", query = "SELECT p FROM ProductionCompany p WHERE p.companyId = :companyId"),
+    @NamedQuery(name = "ProductionCompany.findByCompanyName", query = "SELECT p FROM ProductionCompany p WHERE p.companyName = :companyName")})
 public class ProductionCompany implements Serializable {
 
     private static final long serialVersionUID = 1L;
