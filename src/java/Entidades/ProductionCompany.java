@@ -4,22 +4,21 @@
  */
 package Entidades;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 
 /**
  *
- * @author Mateus Cohuzer
+ * @author Mateus
  */
 @Entity
 @Table(name = "production_company")
@@ -34,11 +33,8 @@ public class ProductionCompany implements Serializable {
     private Integer companyId;
     @Column(name = "company_name")
     private String companyName;
-    @JoinTable(name = "movie_company", joinColumns = {
-        @JoinColumn(name = "company_id", referencedColumnName = "company_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "movie_id", referencedColumnName = "movie_id")})
-    @ManyToMany
-    private List<Movie> movieList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productionCompany")
+    private List<MovieCompany> movieCompanyList;
 
     public ProductionCompany() {
     }
@@ -63,12 +59,12 @@ public class ProductionCompany implements Serializable {
         this.companyName = companyName;
     }
 
-    public List<Movie> getMovieList() {
-        return movieList;
+    public List<MovieCompany> getMovieCompanyList() {
+        return movieCompanyList;
     }
 
-    public void setMovieList(List<Movie> movieList) {
-        this.movieList = movieList;
+    public void setMovieCompanyList(List<MovieCompany> movieCompanyList) {
+        this.movieCompanyList = movieCompanyList;
     }
 
     @Override

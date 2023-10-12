@@ -4,22 +4,21 @@
  */
 package Entidades;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 
 /**
  *
- * @author Mateus Cohuzer
+ * @author Mateus
  */
 @Entity
 @Table(name = "genre")
@@ -34,11 +33,8 @@ public class Genre implements Serializable {
     private Integer genreId;
     @Column(name = "genre_name")
     private String genreName;
-    @JoinTable(name = "movie_genres", joinColumns = {
-        @JoinColumn(name = "genre_id", referencedColumnName = "genre_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "movie_id", referencedColumnName = "movie_id")})
-    @ManyToMany
-    private List<Movie> movieList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
+    private List<MovieGenres> movieGenresList;
 
     public Genre() {
     }
@@ -63,12 +59,12 @@ public class Genre implements Serializable {
         this.genreName = genreName;
     }
 
-    public List<Movie> getMovieList() {
-        return movieList;
+    public List<MovieGenres> getMovieGenresList() {
+        return movieGenresList;
     }
 
-    public void setMovieList(List<Movie> movieList) {
-        this.movieList = movieList;
+    public void setMovieGenresList(List<MovieGenres> movieGenresList) {
+        this.movieGenresList = movieGenresList;
     }
 
     @Override

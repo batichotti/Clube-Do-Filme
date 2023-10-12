@@ -4,20 +4,19 @@
  */
 package Entidades;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 
 /**
  *
- * @author Mateus Cohuzer
+ * @author Mateus
  */
 @Entity
 @Table(name = "movie_has_user")
@@ -30,11 +29,10 @@ public class MovieHasUser implements Serializable {
     protected MovieHasUserPK movieHasUserPK;
     @Column(name = "comment")
     private String comment;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "rating")
-    private BigDecimal rating;
+    private Integer rating;
     @Column(name = "favorited")
-    private Short favorited;
+    private Integer favorited;
     @JoinColumn(name = "movie_movie_id", referencedColumnName = "movie_id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Movie movie;
@@ -69,19 +67,19 @@ public class MovieHasUser implements Serializable {
         this.comment = comment;
     }
 
-    public BigDecimal getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(BigDecimal rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
-    public Short getFavorited() {
+    public Integer getFavorited() {
         return favorited;
     }
 
-    public void setFavorited(Short favorited) {
+    public void setFavorited(Integer favorited) {
         this.favorited = favorited;
     }
 

@@ -4,24 +4,23 @@
  */
 package Entidades;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  *
- * @author Mateus Cohuzer
+ * @author Mateus
  */
 @Entity
 @Table(name = "movie")
@@ -45,16 +44,16 @@ public class Movie implements Serializable {
     private String overview;
     @Column(name = "runtime")
     private Integer runtime;
-    @ManyToMany(mappedBy = "movieList")
-    private List<Keyword> keywordList;
-    @ManyToMany(mappedBy = "movieList")
-    private List<Country> countryList;
-    @ManyToMany(mappedBy = "movieList")
-    private List<Genre> genreList;
-    @ManyToMany(mappedBy = "movieList")
-    private List<ProductionCompany> productionCompanyList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
+    private List<MovieKeywords> movieKeywordsList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
+    private List<ProductionCountry> productionCountryList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
+    private List<MovieGenres> movieGenresList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieHasUser> movieHasUserList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
+    private List<MovieCompany> movieCompanyList;
 
     public Movie() {
     }
@@ -111,36 +110,28 @@ public class Movie implements Serializable {
         this.runtime = runtime;
     }
 
-    public List<Keyword> getKeywordList() {
-        return keywordList;
+    public List<MovieKeywords> getMovieKeywordsList() {
+        return movieKeywordsList;
     }
 
-    public void setKeywordList(List<Keyword> keywordList) {
-        this.keywordList = keywordList;
+    public void setMovieKeywordsList(List<MovieKeywords> movieKeywordsList) {
+        this.movieKeywordsList = movieKeywordsList;
     }
 
-    public List<Country> getCountryList() {
-        return countryList;
+    public List<ProductionCountry> getProductionCountryList() {
+        return productionCountryList;
     }
 
-    public void setCountryList(List<Country> countryList) {
-        this.countryList = countryList;
+    public void setProductionCountryList(List<ProductionCountry> productionCountryList) {
+        this.productionCountryList = productionCountryList;
     }
 
-    public List<Genre> getGenreList() {
-        return genreList;
+    public List<MovieGenres> getMovieGenresList() {
+        return movieGenresList;
     }
 
-    public void setGenreList(List<Genre> genreList) {
-        this.genreList = genreList;
-    }
-
-    public List<ProductionCompany> getProductionCompanyList() {
-        return productionCompanyList;
-    }
-
-    public void setProductionCompanyList(List<ProductionCompany> productionCompanyList) {
-        this.productionCompanyList = productionCompanyList;
+    public void setMovieGenresList(List<MovieGenres> movieGenresList) {
+        this.movieGenresList = movieGenresList;
     }
 
     public List<MovieHasUser> getMovieHasUserList() {
@@ -149,6 +140,14 @@ public class Movie implements Serializable {
 
     public void setMovieHasUserList(List<MovieHasUser> movieHasUserList) {
         this.movieHasUserList = movieHasUserList;
+    }
+
+    public List<MovieCompany> getMovieCompanyList() {
+        return movieCompanyList;
+    }
+
+    public void setMovieCompanyList(List<MovieCompany> movieCompanyList) {
+        this.movieCompanyList = movieCompanyList;
     }
 
     @Override
