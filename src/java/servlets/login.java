@@ -49,12 +49,7 @@ public class login extends HttpServlet {
                             session.setAttribute("email", email);
                             session.setAttribute("senha", senha);
                             session.setAttribute("role", String.valueOf(daoUser.obter(email).getRole()));
-                            //out.println("<p>" + String.valueOf(session.getAttribute("nick")) + " -> " + String.valueOf(daoUser.obter(email).getRole()) + "</p>");
                         }
-                    } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
-                        out.println("👌 Efetue seu login");
-                    } else {
-                        out.println("<p style='color:red;'>Login inválido</p>");
                     }
                 } catch (Exception e) {
                     out.println("<p>" + String.valueOf(session.getAttribute("logado")) + "</p>");

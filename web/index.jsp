@@ -268,11 +268,8 @@
                     } else {
                         out.println("<p style='color:red;'>Login inválido</p>");
                     }
-                    out.println(email + " " + senha);
                 } catch (Exception e) {
-                    out.println("<p>" + String.valueOf(session.getAttribute("logado")) + "</p>");
-                    out.println(String.valueOf("<p>" + session.getAttribute("nick")) + "</p>");
-                    out.println("<p>" + e.getMessage() + "</p>");
+                    out.println("<p> Erro:" + e.getMessage() + "</p>");
                 }
                     %>
                 </form>

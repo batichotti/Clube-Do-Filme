@@ -23,6 +23,11 @@
     />
   </head>
   <body class="bodyAdm">
+      <%
+          if(String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("null")){
+            response.sendRedirect("index.jsp");
+          }
+      %>
     <header
       id="headerTop"
       class="d-flex justify-content-between align-items-center pt-4 w-100"
