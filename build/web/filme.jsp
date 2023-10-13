@@ -98,7 +98,7 @@
                     <h5>
                         <%
                             if(!id.equals("null") && !id.equals("err")){
-                                out.println(String.valueOf(movie.getRuntime()) + "min");
+                                out.println(String.valueOf(movie.getRuntime()) + " min");
                             }
                         %>
                          | Drama</h5>
@@ -110,6 +110,10 @@
             <aside class="sinopse debug">
                 <%
                     if(!id.equals("null") && !id.equals("err")){
+                        if(!String.valueOf(movie.getHomepage()).equals("null")){
+                            out.println("<p>Disponível em <a href='"+String.valueOf(movie.getHomepage())+"' target='_blank'> "+String.valueOf(movie.getHomepage())+" </a></p>");
+                            out.println("<p></p>");
+                        }
                         out.println(String.valueOf(movie.getOverview()));
                     }
                 %>
