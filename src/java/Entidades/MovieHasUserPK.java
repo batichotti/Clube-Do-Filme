@@ -4,9 +4,9 @@
  */
 package Entidades;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 /**

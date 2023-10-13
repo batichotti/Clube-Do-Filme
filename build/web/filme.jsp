@@ -8,7 +8,7 @@
 <%@page import="Entidades.User"%>
 <%@page import="Entidades.Movie"%>
 <%@page import="DAOs.DAOUser"%>
-<%@page import="DAOs.DAOMovie"%>
+<%@page import="DAOs.DAOMovies"%>
 <%@page import="jakarta.servlet.http.HttpSession"%>
 <!DOCTYPE html>
 <html lang="pt-br">
