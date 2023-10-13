@@ -63,12 +63,16 @@
                         }
                         
                         String id = String.valueOf(request.getParameter("id"));
-                        if (!id.equals("null")) {
+                        if (!id.equals("null") && !id.equals("")) {
                             try{
                                 movie = daoMovies.obter(Integer.valueOf(id));
                             } catch(Exception bangcock){
                                 id = "err";
                             }
+                        } else if (id.equals("null")){
+                            id="null";
+                        } else {
+                            id="err";
                         }
                     %>
                 </div>
@@ -90,7 +94,13 @@
                             }else if (id.equals("err")){
                                 out.println("ID inválido");
                             } else {
-                                out.println(String.valueOf(movie.getTitle()));
+                                try{
+                                    out.println(String.valueOf(movie.getTitle()));
+                                }catch(Exception salzburg){
+                                    out.println("ID Inválido");
+                                    movie = new Movie();
+                                    id = "err";
+                                }
                             }
                         %>
                     </h1>
@@ -110,9 +120,9 @@
             <aside class="sinopse debug">
                 <%
                     if(!id.equals("null") && !id.equals("err")){
-                        if(!String.valueOf(movie.getHomepage()).equals("null")){
-                            out.println("<p>Disponível em <a href='"+String.valueOf(movie.getHomepage())+"' target='_blank'> "+String.valueOf(movie.getHomepage())+" </a></p>");
-                            out.println("<p></p>");
+                        if(!String.valueOf(movie.getHomepage()).equals("null") && !String.valueOf(movie.getHomepage()).equals("")){
+                            out.println("<p>WHERE TO WATCH: <a href='"+String.valueOf(movie.getHomepage())+"' target='_blank'> "+String.valueOf(movie.getHomepage())+" </a></p>");
+                            out.println("<br/>");
                         }
                         out.println(String.valueOf(movie.getOverview()));
                     }
@@ -132,7 +142,7 @@
                     <h6>Escreva um comentario!</h6>
                     <input type="text" name="comentario" class="inputComentario" id="comentario" />
                 </div>
-                <div class="debug">seu favorito</div>
+                <div class="debug">Seu favorito</div>
             </section>
         </main>
     </body>
