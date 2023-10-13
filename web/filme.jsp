@@ -44,7 +44,7 @@
                         DAOUser daoUser = new DAOUser();
                         User usuario = new User();
                         String is_logged = "False";
-
+                        
                         try{
                             is_logged = String.valueOf(session.getAttribute("logado"));
                             if(is_logged.equals("True")){
@@ -58,6 +58,12 @@
 
                         if(String.valueOf(session.getAttribute("role")).equals("1") && String.valueOf(session.getAttribute("logado")).equals("True")){
                             out.println("<a href='telaAdm.jsp'> ADM </a>");
+                        }
+                        
+                        try{
+                            String id = request.getParameter("id");
+                        } catch(Exception budapest){
+                            response.sendRedirect("filme.html");
                         }
                     %>
                 </div>
