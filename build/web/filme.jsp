@@ -67,10 +67,9 @@
                             try{
                                 movie = daoMovies.obter(Integer.valueOf(id));
                             } catch(Exception bangcock){
-                                out.println("<p style='color:red'>ID inválido</p>");
+                                id = "err";
                             }
                         }
-                        
                     %>
                 </div>
                 <input
@@ -87,23 +86,33 @@
                     <h1>
                         <%
                             if(id.equals("null")){
-                                out.println("Id do filme -> " + id);
+                                out.println("Insira um id");
+                            }else if (id.equals("err")){
+                                out.println("ID inválido");
                             } else {
-                                out.println("Nome do filme -> " + String.valueOf(movie.getTitle()));
+                                out.println(String.valueOf(movie.getTitle()));
                             }
                         %>
                     </h1>
                     <div class="rating debug">⭐⭐⭐⭐⭐</div>
-                    <h5>139 min | Drama</h5>
+                    <h5>
+                        <%
+                            if(!id.equals("null") && !id.equals("err")){
+                                out.println(String.valueOf(movie.getRuntime()) + "min");
+                            }
+                        %>
+                         | Drama</h5>
                     <h6>support group, dual identity, nihilism, rage and hate, insomnia, dystopia, violence</h6>
                 </div>
                 <img src="assets/images/bgClubeDoFilme.jpeg" alt="fotoFilme" />
             </section>
 
             <aside class="sinopse debug">
-                A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy.
-                Their concept catches on, with underground "fight clubs" forming in every town, until an eccentric gets in the way and ignites an
-                out-of-control spiral toward oblivion.
+                <%
+                    if(!id.equals("null") && !id.equals("err")){
+                        out.println(String.valueOf(movie.getOverview()));
+                    }
+                %>
             </aside>
 
             <section class="areaUser debug">
