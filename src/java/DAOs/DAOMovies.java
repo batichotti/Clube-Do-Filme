@@ -40,7 +40,7 @@ public class DAOMovies extends DAOGenerico<Movie> {
     }
 
     public List<Movie> listInOrderId() {
-        return em.createQuery("SELECT e FROM Movie e ORDER BY e.movie_id").getResultList();
+        return em.createQuery("SELECT e FROM Movie e ORDER BY e.id").getResultList();
     }
 
     public List<String> listInOrderNomeStrings(String qualOrdem) {
@@ -60,7 +60,7 @@ public class DAOMovies extends DAOGenerico<Movie> {
 
     public static void main(String[] args) {
         DAOMovies daoMovie = new DAOMovies();
-        List<Movie> listaMovie = daoMovie.list();
+        List<Movie> listaMovie = daoMovie.listInOrderId();
         for (Movie arma : listaMovie) {
             System.out.println(arma.getMovieId() + "-" + arma.getTitle());
         }

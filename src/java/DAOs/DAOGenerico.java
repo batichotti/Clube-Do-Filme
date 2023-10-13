@@ -1,11 +1,14 @@
-package DAOs;import java.util.List;
+package DAOs;
+
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import tools.StringTools;
 
 /**
  *
-* @author Mateus Batichotti Silva | 19/04/2023 - 15:55:43*/
+ * @author Mateus Batichotti Silva | 19/04/2023 - 15:55:43
+ */
 public class DAOGenerico<T> {
 
     public static EntityManager em = Persistence.createEntityManagerFactory("UP").createEntityManager();
@@ -65,9 +68,9 @@ public class DAOGenerico<T> {
     }
 
     public List<T> list() {
-    String entityName = clazz.getSimpleName();
-    String queryString = "SELECT e FROM " + entityName + " e";
-    return em.createQuery(queryString).getResultList();
-}
+        String entityName = clazz.getSimpleName();
+        String queryString = "SELECT e FROM " + entityName + " e";
+        return em.createQuery(queryString).getResultList();
+    }
 
 }

@@ -4,15 +4,15 @@
  */
 package Entidades;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.Table;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
@@ -22,13 +22,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "movie")
 @NamedQueries({
-    @NamedQuery(name = "Movie.findAll", query = "SELECT m FROM Movie m"),
-    @NamedQuery(name = "Movie.findByMovieId", query = "SELECT m FROM Movie m WHERE m.movieId = :movieId"),
-    @NamedQuery(name = "Movie.findByTitle", query = "SELECT m FROM Movie m WHERE m.title = :title"),
-    @NamedQuery(name = "Movie.findByBudget", query = "SELECT m FROM Movie m WHERE m.budget = :budget"),
-    @NamedQuery(name = "Movie.findByHomepage", query = "SELECT m FROM Movie m WHERE m.homepage = :homepage"),
-    @NamedQuery(name = "Movie.findByOverview", query = "SELECT m FROM Movie m WHERE m.overview = :overview"),
-    @NamedQuery(name = "Movie.findByRuntime", query = "SELECT m FROM Movie m WHERE m.runtime = :runtime")})
+    @NamedQuery(name = "Movie.findAll", query = "SELECT m FROM Movie m")})
 public class Movie implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,7 +41,7 @@ public class Movie implements Serializable {
     private String overview;
     @Column(name = "runtime")
     private Integer runtime;
-
+    
     public Movie() {
     }
 
@@ -102,7 +96,7 @@ public class Movie implements Serializable {
     public void setRuntime(Integer runtime) {
         this.runtime = runtime;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -125,7 +119,7 @@ public class Movie implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.Movie[ movieId=" + movieId + " ]";
+        return movieId + ";" + title + ";" + budget + ";" + homepage + ";" + overview + ";" + runtime;
     }
-    
+     
 }
