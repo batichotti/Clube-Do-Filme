@@ -41,7 +41,45 @@
 
 .telaCadastro {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   row-gap: 10px;
   border: 1px solid var(--colorAccent);
+}
+.principal {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.botaoAdm {
+  border: 2px solid var(--colorAccent);
+  background-color: transparent;
+  color: var(--colorAccent);
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+  width: 40vh;
+  height: 8vh;
+}
+
+.botaoAdm:hover {
+  transition: 0.3s;
+  background-color: var(--colorAccent);
+  color: var(--colorBackground);
+}
+
+.botaoPeriferico {
+  aspect-ratio: 1;
+  width: 3vh;
+}
+
+.botaoAdd {
+  background-color: transparent;
+  color: var(--colorPrimary);
+  border: 2px solid var(--colorPrimary);
+}
+.botaoAdd:hover {
+  transition: 0.3s;
+  background-color: var(--colorPrimary);
+  color: var(--colorBackground);
 }

@@ -1,10 +1,3 @@
-<%-- 
-    Document   : telaAdm
-    Created on : 10 de out. de 2023, 15:28:39
-    Author     : Mateus
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,13 +27,7 @@
     >
       <div class="d-flex gap column-gap-2 ps-5">
         <!-- <img src="" alt="Logo" class=".img-fluid"> -->
-        <h1>Cadastro -
-        
-            <%
-            out.println(session.getAttribute("nick"));
-            %>
-            
-        </h1>
+      <a href="index.jsp"><h1>Cadastro - <% out.println(String.valueOf(session.getAttribute("nick"))); %></h1></a>
       </div>
       <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
         <div class="d-flex gap column-gap-4">
@@ -53,15 +40,6 @@
             onclick="aparecerTela()"
           />
           <label for="escolhaFilme">Filme</label>
-          <input
-            class="escolha"
-            id="escolhaElenco"
-            name="escolha"
-            type="radio"
-            value="1"
-            onclick="aparecerTela()"
-          />
-          <label for="escolhaElenco">Elenco</label>
           <input
             class="escolha"
             id="escolhaPalavras-chave"
@@ -79,7 +57,7 @@
             value="3"
             onclick="aparecerTela()"
           />
-          <label for="escolhaGeneros">GÃªneros</label>
+          <label for="escolhaGeneros">Gêneros</label>
           <input
             class="escolha"
             id="escolhaProdutora"
@@ -95,98 +73,169 @@
 
     <main class="mainAdm pt-5 pb-5">
       <form id="filmes" class="telaCadastro p-5" hidden>
-        <h1 class="fs-1">FILME</h1>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idFilme">ID do filme: </label>
-          <input id="idFilme" name="idFilme" type="text" />
+        <div class="principal">
+          <table>
+            <tr>
+              <h1 class="fs-1">FILME</h1>
+              <div class="d-flex column-gap-2 cadastros">
+                <label class="fs-4" for="idFilme">ID do filme: </label>
+                <input id="idFilme" name="idFilme" type="text" />
+              </div>
+            </tr>
+            <tr>
+              <div class="d-flex column-gap-2 cadastros">
+                <label class="fs-4" for="orcamento">Orçamento: </label>
+                <input id="orcamento" name="orcamento" type="number" />
+              </div>
+            </tr>
+            <tr>
+              <div class="d-flex column-gap-2 cadastros">
+                <label class="fs-4" for="titulo">Título: </label>
+                <input id="titulo" name="titulo" type="text" />
+              </div>
+            </tr>
+            <tr>
+              <div class="d-flex column-gap-2 cadastros">
+                <label class="fs-4" for="duracao">Duração: </label>
+                <input id="duracao" name="duracao" type="number" />
+              </div>
+            </tr>
+            <tr>
+              <div class="d-flex column-gap-2 cadastros">
+                <label class="fs-4" for="impressoes">Impressões: </label>
+                <input id="impressoes" name="impressoes" type="text" />
+              </div>
+            </tr>
+            <tr>
+              <div class="d-flex column-gap-2 cadastros">
+                <label class="fs-4" for="homepage">Homepage: </label>
+                <input id="homepage" name="homepage" type="text" />
+              </div>
+            </tr>
+          </table>
         </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="orcamento">OrÃ§amento: </label>
-          <input id="orcamento" name="orcamento" type="number" />
-        </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="titulo">TÃ­tulo: </label>
-          <input id="titulo" name="titulo" type="text" />
-        </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="duracao">DuraÃ§Ã£o: </label>
-          <input id="duracao" name="duracao" type="number" />
-        </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="impressoes">ImpressÃµes: </label>
-          <input id="impressoes" name="impressoes" type="text" />
-        </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="homepage">Homepage: </label>
-          <input id="homepage" name="homepage" type="text" />
-        </div>
+        <button action="submit" class="botaoAdm">Cadastrar</button>
       </form>
-      <form id="elenco" class="telaCadastro p-5" hidden>
-        <h1 class="fs-1">ELENCO</h1>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idFilme">ID do filme: </label>
-          <input id="idFilme" name="idFilme" type="number" />
-        </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idPessoa">ID da pessoa: </label>
-          <input id="idPessoa" name="idPessoa" type="number" />
-        </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="nomePersonagem">Nome do personagem: </label>
-          <input id="nomePersonagem" name="nomePersonagem" type="number" />
-        </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idGenero">ID do GÃªnero: </label>
-          <input id="idGenero" name="idGenero" type="number" />
-        </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idCastOrder">Cast order: </label>
-          <input id="idCastOrder" name="idCastOrder" type="number" />
-        </div>
 
-        <!-- CHAMA O PESSOA E GENERO -->
-      </form>
       <form id="produtora" class="telaCadastro p-5" hidden>
-        <h1 class="fs-1">Produtora</h1>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idFilme">ID do filme: </label>
-          <input id="idFilme" name="idFilme" type="number" />
+        <div class="principal">
+          <h1 class="fs-1">Produtora</h1>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idFilme">ID do filme: </label>
+            <input id="idFilme" name="idFilme" type="number" />
+          </div>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idProdutora">ID da produtora: </label>
+            <input id="idProdutora" name="idProdutora" type="number" />
+          </div>
+          <div class="d-flex column-gap-2 align-items-center">
+            <input
+              id="periferico"
+              type="checkbox"
+              class="botaoPeriferico"
+              onclick="perifericos(produtoraAdd)"
+            />
+            <label for="periferico">Adicionar produtora</label>
+          </div>
         </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idProdutora">ID da produtora: </label>
-          <input id="idProdutora" name="idProdutora" type="number" />
-        </div>
+        <button action="submit" class="botaoAdm">Cadastrar</button>
 
         <!-- CHAMA O PRODUTORA -->
       </form>
       <form id="palavrasChave" class="telaCadastro p-5" hidden>
-        <h1 class="fs-1">Palavras Chave</h1>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idFilme">ID do filme: </label>
-          <input id="idFilme" name="idFilme" type="number" />
+        <div class="principal">
+          <h1 class="fs-1">Palavras Chave</h1>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idFilme">ID do filme: </label>
+            <input id="idFilme" name="idFilme" type="number" />
+          </div>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idPalavraChave">ID palavraChave: </label>
+            <input id="idPalavraChave" name="idPalavraChave" type="number" />
+          </div>
+          <div class="d-flex column-gap-2 align-items-center">
+            <input
+              id="periferico"
+              type="checkbox"
+              class="botaoPeriferico"
+              onclick="perifericos(palavraChave)"
+            />
+            <label for="periferico">Adicionar palavras</label>
+          </div>
         </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idPalavraChave">ID palavra: </label>
-          <input id="idPalavraChave" name="idPalavraChave" type="number" />
-        </div>
+        <button action="submit" class="botaoAdm">Cadastrar</button>
 
         <!-- CHAMA O PALAVRA -->
       </form>
       <form id="generos" class="telaCadastro p-5" hidden>
-        <h1 class="fs-1">GÃªneros</h1>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idFilme">ID do filme: </label>
-          <input id="idFilme" name="idFilme" type="number" />
+        <div class="principal">
+          <h1 class="fs-1">Gêneros</h1>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idFilme">ID do filme: </label>
+            <input id="idFilme" name="idFilme" type="number" />
+          </div>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idPalavraChave">ID gênero: </label>
+            <input id="idPalavraChave" name="idPalavraChave" type="number" />
+          </div>
+          <div class="d-flex column-gap-2 align-items-center">
+            <input
+              id="periferico"
+              type="checkbox"
+              class="botaoPeriferico"
+              onclick="perifericos(genero)"
+            />
+            <label for="periferico">Adicionar gêneros</label>
+          </div>
         </div>
-        <div class="d-flex column-gap-2 cadastros">
-          <label class="fs-4" for="idPalavraChave">ID gÃªnero: </label>
-          <input id="idPalavraChave" name="idPalavraChave" type="number" />
-        </div>
+        <button action="submit" class="botaoAdm">Cadastrar</button>
 
         <!-- CHAMA O GENERO -->
+      </form>
+
+      <form id="palavraChave" class="telaCadastro p-5" hidden>
+        <div class="principal">
+          <h1 class="fs-1">Palavra Chave</h1>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idFilme">ID da palavra: </label>
+            <input id="idFilme" name="idFilme" type="number" />
+          </div>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idPalavraChave">Nome: </label>
+            <input id="idPalavraChave" name="idPalavraChave" type="text" />
+          </div>
+        </div>
+        <button action="submit" class="botaoAdm botaoAdd">Adicionar</button>
+      </form>
+      <form id="genero" class="telaCadastro p-5" hidden>
+        <div class="principal">
+          <h1 class="fs-1">Gênero</h1>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idFilme">ID do gênero: </label>
+            <input id="idFilme" name="idFilme" type="number" />
+          </div>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idPalavraChave">Nome: </label>
+            <input id="idPalavraChave" name="idPalavraChave" type="text" />
+          </div>
+        </div>
+        <button action="submit" class="botaoAdm botaoAdd">Adicionar</button>
+      </form>
+      <form id="produtoraAdd" class="telaCadastro p-5" hidden>
+        <div class="principal">
+          <h1 class="fs-1">Produtora</h1>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idFilme">ID da produtora: </label>
+            <input id="idFilme" name="idFilme" type="number" />
+          </div>
+          <div class="d-flex column-gap-2 cadastros">
+            <label class="fs-4" for="idPalavraChave">Nome: </label>
+            <input id="idPalavraChave" name="idPalavraChave" type="text" />
+          </div>
+        </div>
+        <button action="submit" class="botaoAdm botaoAdd">Adicionar</button>
       </form>
     </main>
     <script src="./assets/js/cadastroAdm.js"></script>
   </body>
 </html>
-
