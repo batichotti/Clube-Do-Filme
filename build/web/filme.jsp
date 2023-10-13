@@ -42,7 +42,9 @@
                     <a href="filme.jsp">Filmes (jsp)</a>
                     <%
                         DAOUser daoUser = new DAOUser();
+                        DAOMovies daoMovies = new DAOMovies();
                         User usuario = new User();
+                        Movie movie = new Movie();
                         String is_logged = "False";
                         
                         try{
@@ -60,11 +62,15 @@
                             out.println("<a href='telaAdm.jsp'> ADM </a>");
                         }
                         
-                        try{
-                            String id = request.getParameter("id");
-                        } catch(Exception budapest){
-                            response.sendRedirect("filme.html");
+                        String id = String.valueOf(request.getParameter("id"));
+                        if (!id.equals("null")) {
+                            try{
+                                movie = daoMovies.obter(Integer.valueOf(id));
+                            } catch(Exception bangcock){
+                                out.println("<p style='color:red'>ID inválido</p>");
+                            }
                         }
+                        
                     %>
                 </div>
                 <input
@@ -80,7 +86,11 @@
                 <div class="info">
                     <h1>
                         <%
-                            out.println("Nome do filme");
+                            if(id.equals("null")){
+                                out.println("Id do filme -> " + id);
+                            } else {
+                                out.println("Nome do filme -> " + String.valueOf(movie.getTitle()));
+                            }
                         %>
                     </h1>
                     <div class="rating debug">⭐⭐⭐⭐⭐</div>
