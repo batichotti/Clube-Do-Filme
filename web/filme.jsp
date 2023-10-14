@@ -7,8 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Entidades.User"%>
 <%@page import="Entidades.Movie"%>
+<%@page import="Entidades.Genre"%>
 <%@page import="DAOs.DAOUser"%>
 <%@page import="DAOs.DAOMovies"%>
+<%@page import="DAOs.DAOMovieCompany"%>
+<%@page import="DAOs.DAOProductionCountry"%>
+<%@page import="DAOs.DAOMovieGenres"%>
+<%@page import="DAOs.DAOMovieKeywords"%>
 <%@page import="jakarta.servlet.http.HttpSession"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,6 +48,10 @@
                     <%
                         DAOUser daoUser = new DAOUser();
                         DAOMovies daoMovies = new DAOMovies();
+                        DAOMovieGenres daoMovieGenres = new DAOMovieGenres();
+                        DAOMovieKeywords daoMovieKeywords = new DAOMovieKeywords();
+                        DAOMovieCompany daoMovieCompany = new DAOMovieCompany();
+                        DAOProductionCountry daoProductionCountry = new DAOProductionCountry();
                         User usuario = new User();
                         Movie movie = new Movie();
                         String is_logged = "False";
@@ -104,6 +113,39 @@
                             }
                         %>
                     </h1>
+                    
+                    <h5>
+                        <%
+                            if(!id.equals("null") && !id.equals("err")){
+                                int x = 0;
+                                for(String i : daoMovieCompany.getCompanyByMovieTitle(String.valueOf(movie.getTitle()))){
+                                    x += 1;
+                                    if(!(daoMovieCompany.getCompanyByMovieTitle(String.valueOf(movie.getTitle())).size() == x)){
+                                        out.println(i + ", ");
+                                    } else {
+                                        out.println(i);
+                                    }
+                                }
+                            }
+                        %>
+                    </h5>
+                    
+                    <h6>
+                        <%
+                            if(!id.equals("null") && !id.equals("err")){
+                                int x = 0;
+                                for(String i : daoProductionCountry.getCountryByProductionTitle(String.valueOf(movie.getTitle()))){
+                                    x += 1;
+                                    if(!(daoProductionCountry.getCountryByProductionTitle(String.valueOf(movie.getTitle())).size() == x)){
+                                        out.println(i + ", ");
+                                    } else {
+                                        out.println(i);
+                                    }
+                                }
+                            }
+                        %>
+                    </h6>
+                    
                     <div class="rating debug">⭐⭐⭐⭐⭐</div>
                     <h5>
                         <%
@@ -111,8 +153,29 @@
                                 out.println(String.valueOf(movie.getRuntime()) + " min");
                             }
                         %>
-                         | Drama</h5>
-                    <h6>support group, dual identity, nihilism, rage and hate, insomnia, dystopia, violence</h6>
+                         | 
+                        <%
+                            if(!id.equals("null") && !id.equals("err")){
+                                for(String i : daoMovieGenres.getGenresByMovieTitle(String.valueOf(movie.getTitle()))){
+                                    out.println(i + " ");
+                                }
+                            }
+                        %></h5>
+                    <h6>
+                        <%
+                            if(!id.equals("null") && !id.equals("err")){
+                                int x = 0;
+                                for(String i : daoMovieKeywords.getKeywordsByMovieTitle(String.valueOf(movie.getTitle()))){
+                                    x += 1;
+                                    if(!(daoMovieKeywords.getKeywordsByMovieTitle(String.valueOf(movie.getTitle())).size() == x)){
+                                        out.println(i + ", ");
+                                    } else {
+                                        out.println(i);
+                                    }
+                                }
+                            }
+                        %>
+                    </h6>
                 </div>
                 <img src="assets/images/bgClubeDoFilme.jpeg" alt="fotoFilme" />
             </section>

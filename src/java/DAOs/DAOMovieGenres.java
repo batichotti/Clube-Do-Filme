@@ -38,11 +38,27 @@ public class DAOMovieGenres extends DAOGenerico<MovieGenres> {
         return ls;
     }
     
+    public List<String> getGenresByMovieTitle(String movieTitle) {
+        TypedQuery<MovieGenres> query = em.createQuery("SELECT e FROM MovieGenres e WHERE e.movie.title = :title", MovieGenres.class);
+        query.setParameter("title", movieTitle);
+        List<MovieGenres> resultList = query.getResultList();
+        List<String> genresList = new ArrayList<>();
+        
+        for (MovieGenres movieGenres : resultList) {
+            genresList.add(movieGenres.getGenre().getGenreName());
+        }
+        
+        return genresList;
+    }
+    
     public static void main(String[] args) {
         DAOMovieGenres daoMovie = new DAOMovieGenres();
         List<MovieGenres> listaMovie = daoMovie.list();
         for (MovieGenres arma : listaMovie) {
             System.out.println(arma.getMovie().getTitle() + " - " + arma.getGenre().getGenreName());
         }
+//        for ( String i : daoMovie.getGenresByMovieTitle("Fight Club")){
+//            System.out.println(i);
+//        }
     }
 }

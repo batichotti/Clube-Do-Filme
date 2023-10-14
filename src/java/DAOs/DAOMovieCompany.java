@@ -38,6 +38,19 @@ public class DAOMovieCompany extends DAOGenerico<MovieCompany> {
         return ls;
     }
     
+    public List<String> getCompanyByMovieTitle(String movieTitle) {
+        TypedQuery<MovieCompany> query = em.createQuery("SELECT e FROM MovieCompany e WHERE e.movie.title = :title", MovieCompany.class);
+        query.setParameter("title", movieTitle);
+        List<MovieCompany> resultList = query.getResultList();
+        List<String> genresList = new ArrayList<>();
+
+        for (MovieCompany movieCompany : resultList) {
+            genresList.add(movieCompany.getProductionCompany().getCompanyName());
+        }
+
+        return genresList;
+    }
+    
     public static void main(String[] args) {
         DAOMovieCompany daoMovie = new DAOMovieCompany();
         List<MovieCompany> listaMovie = daoMovie.list();

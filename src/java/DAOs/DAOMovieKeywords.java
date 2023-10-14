@@ -37,7 +37,20 @@ public class DAOMovieKeywords extends DAOGenerico<MovieKeywords> {
         }
         return ls;
     }
-    
+
+    public List<String> getKeywordsByMovieTitle(String movieTitle) {
+        TypedQuery<MovieKeywords> query = em.createQuery("SELECT e FROM MovieKeywords e WHERE e.movie.title = :title", MovieKeywords.class);
+        query.setParameter("title", movieTitle);
+        List<MovieKeywords> resultList = query.getResultList();
+        List<String> genresList = new ArrayList<>();
+
+        for (MovieKeywords movieKeywords : resultList) {
+            genresList.add(movieKeywords.getKeyword().getKeywordName());
+        }
+
+        return genresList;
+    }
+
     public static void main(String[] args) {
         DAOMovieKeywords daoMovie = new DAOMovieKeywords();
         List<MovieKeywords> listaMovie = daoMovie.list();

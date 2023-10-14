@@ -38,6 +38,19 @@ public class DAOProductionCountry extends DAOGenerico<ProductionCountry> {
         return ls;
     }
     
+    public List<String> getCountryByProductionTitle(String movieTitle) {
+        TypedQuery<ProductionCountry> query = em.createQuery("SELECT e FROM ProductionCountry e WHERE e.movie.title = :title", ProductionCountry.class);
+        query.setParameter("title", movieTitle);
+        List<ProductionCountry> resultList = query.getResultList();
+        List<String> genresList = new ArrayList<>();
+
+        for (ProductionCountry movieCountry : resultList) {
+            genresList.add(movieCountry.getCountry().getCountryName());
+        }
+
+        return genresList;
+    }
+
     public static void main(String[] args) {
         DAOProductionCountry daoProduction = new DAOProductionCountry();
         List<ProductionCountry> listaProduction = daoProduction.list();
