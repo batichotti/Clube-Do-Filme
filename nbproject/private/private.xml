@@ -4,7 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/documentos/GitHub/projetoDW/web/index.jsp</file>
+            <file>file:/D:/documentos/GitHub/projetoDW/src/java/DAOs/DAOMovieKeywords.java</file>
+            <file>file:/D:/documentos/GitHub/projetoDW/src/java/DAOs/DAOMovieGenres.java</file>
+            <file>file:/D:/documentos/GitHub/projetoDW/src/java/DAOs/DAOMovieCompany.java</file>
             <file>file:/D:/documentos/GitHub/projetoDW/web/telaAdm.jsp</file>
+            <file>file:/D:/documentos/GitHub/projetoDW/src/java/DAOs/DAOMovieHasUser.java</file>
+            <file>file:/D:/documentos/GitHub/projetoDW/src/java/DAOs/DAOProductionCountry.java</file>
             <file>file:/D:/documentos/GitHub/projetoDW/web/filme.jsp</file>
         </group>
     </open-files>

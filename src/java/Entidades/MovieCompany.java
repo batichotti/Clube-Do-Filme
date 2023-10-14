@@ -19,7 +19,7 @@ import java.io.Serializable;
  * @author Mateus
  */
 @Entity
-@Table(name = "moviecompany")
+@Table(name = "movie_company")
 @NamedQueries({
     @NamedQuery(name = "MovieCompany.findAll", query = "SELECT m FROM MovieCompany m")})
 public class MovieCompany implements Serializable {

@@ -4,6 +4,8 @@
  */
 package Entidades;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -24,6 +27,9 @@ import java.io.Serializable;
 @NamedQueries({
     @NamedQuery(name = "Movie.findAll", query = "SELECT m FROM Movie m")})
 public class Movie implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
+    private List<MovieCompany> movieCompanyList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -120,6 +126,14 @@ public class Movie implements Serializable {
     @Override
     public String toString() {
         return movieId + ";" + title + ";" + budget + ";" + homepage + ";" + overview + ";" + runtime;
+    }
+
+    public List<MovieCompany> getMovieCompanyList() {
+        return movieCompanyList;
+    }
+
+    public void setMovieCompanyList(List<MovieCompany> movieCompanyList) {
+        this.movieCompanyList = movieCompanyList;
     }
      
 }

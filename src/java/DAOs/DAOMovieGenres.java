@@ -1,7 +1,7 @@
 package DAOs;
 
-import Entidades.MovieHasUser;
-import Entidades.MovieHasUserPK;
+import Entidades.MovieGenres;
+import Entidades.MovieGenresPK;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.TypedQuery;
@@ -10,39 +10,39 @@ import javax.persistence.TypedQuery;
  *
  * @author Mateus Batichotti Silva | 19/04/2023 - 15:54:37
  */
-public class DAOMovieGenres extends DAOGenerico<MovieHasUser> {
+public class DAOMovieGenres extends DAOGenerico<MovieGenres> {
 
-    private List<MovieHasUser> lista = new ArrayList<>();
+    private List<MovieGenres> lista = new ArrayList<>();
 
     public DAOMovieGenres() {
-        super(MovieHasUser.class);
+        super(MovieGenres.class);
     }
 
     //busca com PK composta
-    public MovieHasUser obter(MovieHasUserPK phcpk) {
-        return em.find(MovieHasUser.class, phcpk);
+    public MovieGenres obter(MovieGenresPK phcpk) {
+        return em.find(MovieGenres.class, phcpk);
     }
 
-    public List<MovieHasUser> listInOrderNome() {
-        TypedQuery<MovieHasUser> query = em.createQuery("SELECT e FROM MovieHasUser e ORDER BY e.escopo", MovieHasUser.class);
-        List<MovieHasUser> resultList = query.getResultList();
+    public List<MovieGenres> listInOrderNome() {
+        TypedQuery<MovieGenres> query = em.createQuery("SELECT e FROM MovieGenres e ORDER BY e.escopo", MovieGenres.class);
+        List<MovieGenres> resultList = query.getResultList();
         return resultList;
     }
 
     public List<String> listInOrderNomeStrings() {
-        List<MovieHasUser> lf = listInOrderNome();
+        List<MovieGenres> lf = listInOrderNome();
         List<String> ls = new ArrayList<>();
         for (int i = 0; i < lf.size(); i++) {
-            ls.add(lf.get(i).getMovieHasUserPK().toString());
+            ls.add(lf.get(i).getMovieGenresPK().toString());
         }
         return ls;
     }
     
     public static void main(String[] args) {
         DAOMovieGenres daoMovie = new DAOMovieGenres();
-        List<MovieHasUser> listaMovie = daoMovie.list();
-        for (MovieHasUser arma : listaMovie) {
-            System.out.println(arma.getMovie().getTitle() + " - " + arma.getUser().getNick());
+        List<MovieGenres> listaMovie = daoMovie.list();
+        for (MovieGenres arma : listaMovie) {
+            System.out.println(arma.getMovie().getTitle() + " - " + arma.getGenre().getGenreName());
         }
     }
 }
