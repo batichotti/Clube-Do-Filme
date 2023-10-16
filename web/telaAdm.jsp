@@ -20,29 +20,9 @@
     </head>
     <body class="bodyAdm">
         <%
-            /*if (String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("null")) {
+            if (String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("null")) {
                 response.sendRedirect("index.jsp");
             }
-            try {
-                String[] caminho = request.getParameter("botao").split("_");
-                if (caminho[0].equals("buscar") && !caminho[0].equals(null)) {
-                    if (caminho[1].equals("genero")) {
-                        DAOMovieGenres daoFilmesGeneros = new DAOMovieGenres();
-                        MovieGenresPK chavesPrimarias = new MovieGenresPK();
-
-                        chavesPrimarias.setMovieId(Integer.valueOf(request.getParameter("idFilme")));
-                        chavesPrimarias.setGenreId(Integer.valueOf(request.getParameter("idGenero")));
-
-                        MovieGenres filmeBuscado = daoFilmesGeneros.obter(chavesPrimarias);
-                        if (filmeBuscado != null) {
-                            out.println("acohu");
-                        }
-                    }
-                }
-            } catch (Exception ex) {
-                out.println(ex);
-            }
-            */
         %>
         <header
             id="headerTop"

@@ -16,6 +16,14 @@
         <servlet-name>deslogin</servlet-name>
         <servlet-class>servlets.deslogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>buscar</servlet-name>
+        <servlet-class>servlets.buscar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>search</servlet-name>
+        <servlet-class>servlets.search</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registro</servlet-name>
         <url-pattern>/registro</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>deslogin</servlet-name>
         <url-pattern>/deslogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>buscar</servlet-name>
+        <url-pattern>/buscar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>search</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

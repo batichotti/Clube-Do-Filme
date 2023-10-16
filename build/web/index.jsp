@@ -79,11 +79,15 @@
 
                         %>
                     </div>
-                    <input
-                        type="text"
-                        class="inputBuscar rounded-pill"
-                        placeholder="Buscar"
-                        />
+                    <form action="search" method="get">
+                        <input
+                            type="text"
+                            class="inputBuscar rounded-pill"
+                            placeholder="Buscar"
+                            id="buscar"
+                            name="target"
+                            />
+                    </form>
                 </nav>
             </header>
 
