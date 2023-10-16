@@ -27,6 +27,9 @@ import java.io.Serializable;
     @NamedQuery(name = "MovieGenres.findByMovieGenrescol", query = "SELECT m FROM MovieGenres m WHERE m.movieGenrescol = :movieGenrescol")})
 public class MovieGenres implements Serializable {
 
+    @javax.persistence.Column(name = "movie_genrescol")
+    private String movieGenrescol;
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected MovieGenresPK movieGenresPK;
@@ -71,6 +74,14 @@ public class MovieGenres implements Serializable {
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
+    
+    public String getMovieGenrescol() {
+        return movieGenrescol;
+    }
+
+    public void setMovieGenrescol(String movieGenrescol) {
+        this.movieGenrescol = movieGenrescol;
+    }
 
     @Override
     public int hashCode() {
@@ -96,5 +107,6 @@ public class MovieGenres implements Serializable {
     public String toString() {
         return "Entidades.MovieGenres[ movieGenresPK=" + movieGenresPK + " ]";
     }
+
     
 }

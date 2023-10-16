@@ -29,6 +29,9 @@ import java.util.List;
 public class Movie implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
+    private List<MovieGenres> movieGenresList;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieCompany> movieCompanyList;
 
     private static final long serialVersionUID = 1L;
@@ -134,6 +137,14 @@ public class Movie implements Serializable {
 
     public void setMovieCompanyList(List<MovieCompany> movieCompanyList) {
         this.movieCompanyList = movieCompanyList;
+    }
+
+    public List<MovieGenres> getMovieGenresList() {
+        return movieGenresList;
+    }
+
+    public void setMovieGenresList(List<MovieGenres> movieGenresList) {
+        this.movieGenresList = movieGenresList;
     }
      
 }
