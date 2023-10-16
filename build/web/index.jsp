@@ -281,36 +281,36 @@
                             class="item current-item"
                             alt=""
                             />
-                        <img
+                        <a href="<%out.println("/projetoDW/filme.jsp?id=194662");%>"><img
                             src="./assets/images/2.png"
                             class="item current-item"
                             alt=""
-                            />
+                            /></a>
                         <img
                             src="./assets/images/6.png"
                             class="item current-item"
                             alt=""
                             />
-                        <img
+                        <a href="<%out.println("/projetoDW/filme.jsp?id=10315");%>"><img
                             src="./assets/images/1.png"
                             class="item current-item"
                             alt=""
-                            />
-                        <img
+                            /></a>
+                        <a href="<%out.println("/projetoDW/filme.jsp?id=274");%>"><img
                             src="./assets/images/7.png"
                             class="item current-item"
                             alt=""
-                            />
+                            /></a>
                         <img
                             src="./assets/images/8.png"
                             class="item current-item"
                             alt=""
                             />
-                        <img
+                        <a href="<%out.println("/projetoDW/filme.jsp?id=9552");%>"><img
                             src="./assets/images/9.png"
                             class="item current-item"
                             alt=""
-                            />
+                            /></a>
                         <img
                             src="./assets/images/10.png"
                             class="item current-item"

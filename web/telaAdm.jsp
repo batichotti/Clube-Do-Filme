@@ -25,7 +25,7 @@
                 response.sendRedirect("index.jsp");
             } else {
                 daoMovies = new DAOMovies();
-                session.setAttribute("acao", "buscar");
+                session.setAttribute("acao", "vazio");
             }
         %>
         <header
@@ -34,7 +34,7 @@
             >
             <div class="d-flex gap column-gap-2 ps-5">
                 <!-- <img src="" alt="Logo" class=".img-fluid"> -->
-                <a href="index.jsp"><h1>Cadastro - <% out.println(String.valueOf(session.getAttribute("nick")));%> - ACAO: <%out.println(String.valueOf(session.getAttribute("acao")));%> </h1></a>
+                <a href="index.jsp"><h1>Cadastro - <% out.println(String.valueOf(session.getAttribute("nick")));%></h1></a>
             </div>
             <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
                 <div class="d-flex gap column-gap-4">
@@ -55,7 +55,6 @@
                         type="radio"
                         value="2"
                         onclick="aparecerTela()"
-                        action="<%session.setAttribute("acao", "cliquei no filme");%>"
                         />
                     <label for="escolhaPalavras-chave">Palavras Chave</label>
                     <input
@@ -65,9 +64,7 @@
                         type="radio"
                         value="3"
                         onclick="aparecerTela()"
-                        action="<%session.setAttribute("acao", "cliquei nas keywords");%>"
                         />
-                    <%out.println("<h1>"+String.valueOf(session.getAttribute("acao"))+"</h1>");%>
                     <label for="escolhaGeneros">Gêneros</label>
                     <input
                         class="escolha"
@@ -126,9 +123,9 @@
                     </table>
                 </div>
                 <div class="botoesCRUD d-flex flex-column row-gap-2">
-                    <button action="" name ="botaoBuscar" class="botaoAdm buscar" value="buscarFilmes">Buscar</button>
-                    <button action="" name ="botaoAlterar" class="botaoAdm alterar" hidden>Alterar</button>
-                    <button action="" name ="botaoExluir" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button action="acao" name ="botaoBuscar" class="botaoAdm buscar" value="buscarFilmes">Buscar</button>
+                    <button action="acao" name ="botaoAlterar" class="botaoAdm alterar" hidden>Alterar</button>
+                    <button action="acao" name ="botaoExluir" class="botaoAdm excluir" hidden>Excluir</button>
                 </div>
             </form>
 
@@ -154,9 +151,9 @@
                     </div>
                 </div>
                 <div class="botoesCRUD d-flex flex-column row-gap-2">
-                    <button action="" name ="botaoBuscar" class="botaoAdm buscar">Buscar</button>
-                    <button action="" name ="botaoAlterar" class="botaoAdm alterar" hidden>Alterar</button>
-                    <button action="" name ="botaoExluir" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button action="acao" name ="botaoBuscar" class="botaoAdm buscar">Buscar</button>
+                    <button action="acao" name ="botaoAlterar" class="botaoAdm alterar" hidden>Alterar</button>
+                    <button action="acao" name ="botaoExluir" class="botaoAdm excluir" hidden>Excluir</button>
                 </div>
 
                 <!-- CHAMA O PRODUTORA -->
@@ -184,9 +181,9 @@
                     </div>
                 </div>
                 <div class="botoesCRUD d-flex flex-column row-gap-2">
-                    <button action="" name ="botaoBuscar" class="botaoAdm buscar">Buscar</button>
-                    <button action="" name ="botaoAlterar" class="botaoAdm alterar" hidden>Alterar</button>
-                    <button action="" name ="botaoExluir" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button action="acao" name ="botaoBuscar" class="botaoAdm buscar">Buscar</button>
+                    <button action="acao" name ="botaoAlterar" class="botaoAdm alterar" hidden>Alterar</button>
+                    <button action="acao" name ="botaoExluir" class="botaoAdm excluir" hidden>Excluir</button>
                 </div>
 
                 <!-- CHAMA O PALAVRA -->

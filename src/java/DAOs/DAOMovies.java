@@ -87,7 +87,8 @@ public class DAOMovies extends DAOGenerico<Movie> {
 
     public static void main(String[] args) {
         DAOMovies daoMovie = new DAOMovies();
-        List<Movie> listaMovie = daoMovie.list();
+        //List<Movie> listaMovie = daoMovie.list();
+        List<Movie> listaMovie = daoMovie.searchByTitle("fox");
         for (Movie arma : listaMovie) {
             System.out.println(arma.getMovieId() + "-" + arma.getTitle());
         }
