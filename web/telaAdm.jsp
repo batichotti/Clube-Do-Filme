@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<%@page import="Entidades.MovieGenresPK"%>
-<%@page import="Entidades.MovieGenres"%>
-<%@page import="DAOs.DAOMovieGenres"%>
+<%@page import="Entidades.Movie"%>
+<%@page import="DAOs.DAOMovies"%>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -20,8 +19,13 @@
     </head>
     <body class="bodyAdm">
         <%
+            DAOMovies daoMovies = null;
+            session.setAttribute("acao", "null");
             if (String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("null")) {
                 response.sendRedirect("index.jsp");
+            } else {
+                daoMovies = new DAOMovies();
+                session.setAttribute("acao", "buscar");
             }
         %>
         <header
@@ -30,7 +34,7 @@
             >
             <div class="d-flex gap column-gap-2 ps-5">
                 <!-- <img src="" alt="Logo" class=".img-fluid"> -->
-                <a href="index.jsp"><h1>Cadastro - <% out.println(String.valueOf(session.getAttribute("nick")));%></h1></a>
+                <a href="index.jsp"><h1>Cadastro - <% out.println(String.valueOf(session.getAttribute("nick")));%> - ACAO: <%out.println(String.valueOf(session.getAttribute("acao")));%> </h1></a>
             </div>
             <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
                 <div class="d-flex gap column-gap-4">
@@ -41,6 +45,7 @@
                         type="radio"
                         value="0"
                         onclick="aparecerTela()"
+                        action=""
                         />
                     <label for="escolhaFilme">Filme</label>
                     <input
@@ -50,6 +55,7 @@
                         type="radio"
                         value="2"
                         onclick="aparecerTela()"
+                        action="<%session.setAttribute("acao", "cliquei no filme");%>"
                         />
                     <label for="escolhaPalavras-chave">Palavras Chave</label>
                     <input
@@ -59,7 +65,9 @@
                         type="radio"
                         value="3"
                         onclick="aparecerTela()"
+                        action="<%session.setAttribute("acao", "cliquei nas keywords");%>"
                         />
+                    <%out.println("<h1>"+String.valueOf(session.getAttribute("acao"))+"</h1>");%>
                     <label for="escolhaGeneros">Gêneros</label>
                     <input
                         class="escolha"
@@ -82,7 +90,7 @@
                         <h1 class="fs-1">FILME</h1>
                         <div class="d-flex column-gap-2 cadastros">
                             <label class="fs-4" for="idFilme">ID do filme: </label>
-                            <input id="idFilme" name="idFilme" type="text" />
+                            <input id="idFilme" name="idFilme" type="text"/>
                         </div>
                         </tr>
                         <tr>
@@ -118,7 +126,7 @@
                     </table>
                 </div>
                 <div class="botoesCRUD d-flex flex-column row-gap-2">
-                    <button action="telaAdm.jsp" name ="botaoBuscar" class="botaoAdm buscar" value="buscarFilmes">Buscar</button>
+                    <button action="" name ="botaoBuscar" class="botaoAdm buscar" value="buscarFilmes">Buscar</button>
                     <button action="" name ="botaoAlterar" class="botaoAdm alterar" hidden>Alterar</button>
                     <button action="" name ="botaoExluir" class="botaoAdm excluir" hidden>Excluir</button>
                 </div>
