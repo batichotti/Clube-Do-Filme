@@ -20,12 +20,10 @@
     <body class="bodyAdm">
         <%
             DAOMovies daoMovies = null;
-            session.setAttribute("acao", "null");
             if (String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("null")) {
                 response.sendRedirect("index.jsp");
             } else {
                 daoMovies = new DAOMovies();
-                session.setAttribute("acao", "vazio");
             }
         %>
         <header
@@ -45,7 +43,6 @@
                         type="radio"
                         value="0"
                         onclick="aparecerTela()"
-                        action=""
                         />
                     <label for="escolhaFilme">Filme</label>
                     <input
@@ -80,7 +77,7 @@
         </header>
 
         <main class="mainAdm pt-5 pb-5">
-            <form id="filmes" class="telaCadastro p-5" hidden>
+            <form id="filmes" class="telaCadastro p-5" method="post" hidden>
                 <div class="principal">
                     <table>
                         <tr>
@@ -123,9 +120,11 @@
                     </table>
                 </div>
                 <div class="botoesCRUD d-flex flex-column row-gap-2">
-                    <button action="acao" name ="botaoBuscar" class="botaoAdm buscar" value="buscarFilmes">Buscar</button>
-                    <button action="acao" name ="botaoAlterar" class="botaoAdm alterar" hidden>Alterar</button>
-                    <button action="acao" name ="botaoExluir" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button onclick="perifericos(botaoAlterarF);perifericos(botaoExluirF);perifericos(botaoCancelarF);perifericos(botaoSalvarF);" name ="botaoBuscarF" class="botaoAdm buscar" >Buscar</button>
+                    <button action="" name ="botaoAlterarF" class="botaoAdm alterar" hidden>Alterar</button>
+                    <button action="" name ="botaoExluirF" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button action="" name ="botaoCancelarF" class="botaoAdm excluir" hidden>Cancelar</button>
+                    <button action="" name ="botaoSalvarF" class="botaoAdm excluir" hidden>Salvar</button>
                 </div>
             </form>
 
@@ -151,9 +150,11 @@
                     </div>
                 </div>
                 <div class="botoesCRUD d-flex flex-column row-gap-2">
-                    <button action="acao" name ="botaoBuscar" class="botaoAdm buscar">Buscar</button>
-                    <button action="acao" name ="botaoAlterar" class="botaoAdm alterar" hidden>Alterar</button>
-                    <button action="acao" name ="botaoExluir" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button action="" name ="botaoBuscarP" class="botaoAdm buscar" >Buscar</button>
+                    <button action="" name ="botaoAlterarP" class="botaoAdm alterar" hidden>Alterar</button>
+                    <button action="" name ="botaoExluirP" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button action="" name ="botaoCancelarP" class="botaoAdm excluir" hidden>Cancelar</button>
+                    <button action="" name ="botaoSalvarP" class="botaoAdm excluir" hidden>Salvar</button>
                 </div>
 
                 <!-- CHAMA O PRODUTORA -->
@@ -181,9 +182,11 @@
                     </div>
                 </div>
                 <div class="botoesCRUD d-flex flex-column row-gap-2">
-                    <button action="acao" name ="botaoBuscar" class="botaoAdm buscar">Buscar</button>
-                    <button action="acao" name ="botaoAlterar" class="botaoAdm alterar" hidden>Alterar</button>
-                    <button action="acao" name ="botaoExluir" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button action="" name ="botaoBuscarK" class="botaoAdm buscar" >Buscar</button>
+                    <button action="" name ="botaoAlterarK" class="botaoAdm alterar" hidden>Alterar</button>
+                    <button action="" name ="botaoExluirk" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button action="" name ="botaoCancelarK" class="botaoAdm excluir" hidden>Cancelar</button>
+                    <button action="" name ="botaoSalvarK" class="botaoAdm excluir" hidden>Salvar</button>
                 </div>
 
                 <!-- CHAMA O PALAVRA -->
@@ -212,9 +215,11 @@
                 </div>
 
                 <div class="botoesCRUD d-flex flex-column row-gap-2">
-                    <button action="submit" name ="botao" class="botaoAdm buscar" value="buscar_genero">Buscar</button>
-                    <button action="" name ="botao" class="botaoAdm alterar" hidden>Alterar</button>
-                    <button action="" name ="botao" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button action="" name ="botaoBuscarG" class="botaoAdm buscar" value="buscarFilmes">Buscar</button>
+                    <button action="" name ="botaoAlterarG" class="botaoAdm alterar" hidden>Alterar</button>
+                    <button action="" name ="botaoExluirG" class="botaoAdm excluir" hidden>Excluir</button>
+                    <button action="" name ="botaoCancelarG" class="botaoAdm excluir" hidden>Cancelar</button>
+                    <button action="" name ="botaoSalvarG" class="botaoAdm excluir" hidden>Salvar</button>
                 </div>
                 <!-- CHAMA O GENERO -->
             </form>
