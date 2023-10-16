@@ -61,24 +61,22 @@
                         <a href="filme.html">Filmes</a>
                         <a href="filme.jsp">Filmes (jsp)</a>
                         <%
-                            DAOUser daoUser = new DAOUser();
-                            User usuario = new User();
-                            String is_logged = "False";
-
-                            try{
+                            try {
+                                String is_logged = "False";
                                 is_logged = String.valueOf(session.getAttribute("logado"));
-                                if(is_logged.equals("True")){
+                                if (is_logged.equals("True")) {
                                     out.println("<a href='deslogin'>Deslogar</a>");
                                 } else {
                                     out.println("<a>Login</a>");
                                 }
-                            }catch(Exception e){
-                                out.println("<a>Login (Err): "+e+"</a>");
+                            } catch (Exception e) {
+                                out.println("<a>Login (Err): " + e + "</a>");
                             }
-                            
-                            if(String.valueOf(session.getAttribute("role")).equals("1") && String.valueOf(session.getAttribute("logado")).equals("True")){
+
+                            if (String.valueOf(session.getAttribute("role")).equals("1") && String.valueOf(session.getAttribute("logado")).equals("True")) {
                                 out.println("<a href='telaAdm.jsp'> ADM </a>");
                             }
+
                         %>
                     </div>
                     <input
@@ -99,20 +97,19 @@
                     </h5>
                     <h5>2ª regra do clube do filme: <mark>Avalie</mark> novos filmes.</h5>
                     <h5>3ª regra do clube do filme: <mark>Salve</mark> novos filmes.</h5>
-                    <%
-                        if(String.valueOf(session.getAttribute("logado")).equals("False")){
-                            out.println("<h2>Ainda não está cadastrado? Registre-se!</h2>");
-                        }
-                    %>
+                            <%                                if (String.valueOf(session.getAttribute("logado")).equals("False")) {
+                                    out.println("<h2>Ainda não está cadastrado? Registre-se!</h2>");
+                                }
+                            %>
                     <nav>
                         <button
                             type="button"
                             class="botaoRegistro btn"
                             onclick="animacaoCard()"
                             <%
-                            if(String.valueOf(session.getAttribute("logado")).equals("True")){
-                                out.println("hidden");
-                            }
+                                if (String.valueOf(session.getAttribute("logado")).equals("True")) {
+                                    out.println("hidden");
+                                }
                             %>
                             >
                             Registrar
@@ -122,9 +119,9 @@
                             class="botaoLogin btn btn-outline-secondary"
                             onclick="animacaoCardLogin()"
                             <%
-                            if(String.valueOf(session.getAttribute("logado")).equals("True")){
-                                out.println("hidden");
-                            }
+                                if (String.valueOf(session.getAttribute("logado")).equals("True")) {
+                                    out.println("hidden");
+                                }
                             %>
                             >
                             Já tenho uma conta
@@ -229,24 +226,24 @@
                     </div>
                     <button type="submit" class="botaoLogin btn">Entrar</button>
                     <%
-                      String email = String.valueOf(session.getAttribute("email"));
-                      String senha = String.valueOf(session.getAttribute("senha"));
+                        String email = String.valueOf(session.getAttribute("email"));
+                        String senha = String.valueOf(session.getAttribute("senha"));
 
-                      daoUser = new DAOUser();
+                        DAOUser daoUser = new DAOUser();
 
-                      try {
-                        if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
-                            if (email.equals("null")) {
-                                out.println("<p style='color:red;'>Efetue seu login</p>");
+                        try {
+                            if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
+                                if (email.equals("null")) {
+                                    out.println("<p style='color:red;'>Efetue seu login</p>");
+                                }
+                            } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
+                                out.println("👌 Efetue seu login");
+                            } else {
+                                out.println("<p style='color:red;'>Login inválido</p>");
                             }
-                        } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
-                            out.println("👌 Efetue seu login");
-                        } else {
-                            out.println("<p style='color:red;'>Login inválido</p>");
+                        } catch (Exception e) {
+                            out.println("<p> Erro:" + e.getMessage() + "</p>");
                         }
-                    } catch (Exception e) {
-                        out.println("<p> Erro:" + e.getMessage() + "</p>");
-                    }
                     %>
                 </form>
             </article>

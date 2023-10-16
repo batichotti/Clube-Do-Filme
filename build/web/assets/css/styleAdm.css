@@ -1,85 +1,109 @@
 :root {
-  --colorBackground: #050004;
-  --colorBackGroundTransparent: rgba(5, 0, 4, 0);
-  --colorPrimary: #03fc20;
-  --colorSecondary: #012316;
-  --colorAccent: #e8a1e0;
-  --colorText: #ffffff;
+    --colorBackground: #050004;
+    --colorBackGroundTransparent: rgba(5, 0, 4, 0);
+    --colorPrimary: #03fc20;
+    --colorSecondary: #012316;
+    --colorAccent: #e8a1e0;
+    --colorText: #ffffff;
 
-  --fontPrimary: "Bebas neue", sans-serif;
-  --fonteSecondary: "Oswald";
+    --fontPrimary: "Bebas neue", sans-serif;
+    --fonteSecondary: "Oswald";
 }
 .bodyAdm {
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  background-color: var(--colorBackground);
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: var(--colorBackground);
 }
-
+a{
+    text-decoration: none;
+    color: var(--colorText);
+}
 .mainAdm {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 92px;
-  height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 92px;
+    height: 70vh;
 }
 
 .cadastros > input {
-  background-color: transparent;
-  width: 40%;
-  transition: 0.3s;
-  outline: none;
-  border: 2px solid var(--colorText);
-  border-top-right-radius: 10px;
-  color: var(--colorAccent);
+    background-color: transparent;
+    width: 40%;
+    transition: 0.3s;
+    outline: none;
+    border: 2px solid var(--colorText);
+    border-top-right-radius: 10px;
+    color: var(--colorAccent);
 }
 .cadastros > input:focus {
-  transition: 0.3s;
-  border-color: var(--colorSecondary);
-  width: 50%;
+    transition: 0.3s;
+    border-color: var(--colorSecondary);
+    width: 50%;
 }
 
 .telaCadastro {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  row-gap: 10px;
-  border: 1px solid var(--colorAccent);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid var(--colorAccent);
 }
 .principal {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }
 .botaoAdm {
-  border: 2px solid var(--colorAccent);
-  background-color: transparent;
-  color: var(--colorAccent);
-  border-top-left-radius: 25px;
-  border-bottom-right-radius: 25px;
+    transition: 0.3s;
+    border: 2px solid var(--colorAccent);
+    background-color: transparent;
+    color: var(--colorAccent);
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 
-  width: 40vh;
-  height: 8vh;
+    width: 40vh;
+    height: 8vh;
 }
 
 .botaoAdm:hover {
-  transition: 0.3s;
-  background-color: var(--colorAccent);
-  color: var(--colorBackground);
+    transition: 0.3s;
+    background-color: var(--colorAccent);
+    color: var(--colorBackground);
 }
 
 .botaoPeriferico {
-  aspect-ratio: 1;
-  width: 3vh;
+    aspect-ratio: 1;
+    width: 3vh;
 }
 
 .botaoAdd {
-  background-color: transparent;
-  color: var(--colorPrimary);
-  border: 2px solid var(--colorPrimary);
+    transition: 0.3s;
+    background-color: transparent;
+    color: var(--colorPrimary);
+    border: 2px solid var(--colorPrimary);
 }
-.botaoAdd:hover {
-  transition: 0.3s;
-  background-color: var(--colorPrimary);
-  color: var(--colorBackground);
+
+.buscar:hover {
+    transition: 0.3s;
+    border-color: var(--colorText);
+    background-color: var(--colorText);
+    color: var(--colorBackground);
+}
+
+.alterar{
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.excluir{
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.excluir:hover {
+    transition: 0.3s;
+    border-color: var(--colorPrimary);
+    background-color: var(--colorPrimary);
+    color: var(--colorBackground);
 }

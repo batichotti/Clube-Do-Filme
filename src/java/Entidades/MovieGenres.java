@@ -30,8 +30,6 @@ public class MovieGenres implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected MovieGenresPK movieGenresPK;
-    @Column(name = "movie_genrescol")
-    private String movieGenrescol;
     @JoinColumn(name = "genre_id", referencedColumnName = "genre_id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Genre genre;
@@ -56,14 +54,6 @@ public class MovieGenres implements Serializable {
 
     public void setMovieGenresPK(MovieGenresPK movieGenresPK) {
         this.movieGenresPK = movieGenresPK;
-    }
-
-    public String getMovieGenrescol() {
-        return movieGenrescol;
-    }
-
-    public void setMovieGenrescol(String movieGenrescol) {
-        this.movieGenrescol = movieGenrescol;
     }
 
     public Genre getGenre() {
