@@ -64,13 +64,21 @@ public class acao extends HttpServlet {
                                 movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
                                 movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
                                 
-                                daoMovies.atualizar(movie);
+                                try {
+                                    daoMovies.atualizar(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 nextJSP = "/projetoDW/cadastroFilmes.jsp";
                                 break;
                             case "excluir":
                                 movie = daoMovies.obter(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
 
-                                daoMovies.remover(movie);
+                                try {
+                                    daoMovies.remover(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 nextJSP = "/projetoDW/cadastroFilmes.jsp";
                                 break;
                             case "salvar":
