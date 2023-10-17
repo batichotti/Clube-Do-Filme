@@ -30,8 +30,7 @@
         <!-- <img src="" alt="Logo" class=".img-fluid"> -->
         <a href="index.jsp"
           ><h1>
-            Cadastro - <%
-            out.println(String.valueOf(session.getAttribute("nick")));%>
+            Cadastro - <%out.println(String.valueOf(session.getAttribute("nick")));%>
           </h1></a
         >
       </div>
@@ -76,7 +75,7 @@
                 </div>
             </nav> -->
           <a href="./cadastroFilmes.jsp">Cadastro Filmes</a>
-          <a href="./cadastroGeneros.jsp">Cadastro Gêneros</a>
+          <a href="./cadastroGeneros.jsp">Cadastro Generos</a>
           <a href="./cadastroPalavrasChaves.jsp">Cadastro Palavras-chaves</a>
           <a href="./cadastroProdutoras.jsp">Cadastro Produtoras</a>
         </div>
@@ -92,13 +91,13 @@
         
       >
         <div class="principal row-gap-2">
-          <h1 class="fs-1">G�neros</h1>
+          <h1 class="fs-1">Generos</h1>
           <div class="d-flex column-gap-2 cadastros">
             <label class="fs-4" for="idFilme">ID do filme: </label>
             <input id="idFilme" name="idFilme" type="number" />
           </div>
           <div class="d-flex column-gap-2 cadastros">
-            <label class="fs-4" for="idPalavraChave">ID g�nero: </label>
+            <label class="fs-4" for="idPalavraChave">ID genero: </label>
             <input id="idPalavraChave" name="idGenero" type="number" />
           </div>
           <div class="d-flex column-gap-2 align-items-center">
@@ -108,7 +107,7 @@
               class="botaoPeriferico"
               onclick="perifericos(genero)"
             />
-            <label for="periferico">Adicionar g�neros</label>
+            <label for="periferico">Adicionar generos</label>
           </div>
         </div>
 
@@ -149,9 +148,9 @@
 
       <form id="genero" class="telaCadastro p-5" hidden>
         <div class="principal">
-          <h1 class="fs-1">G�nero</h1>
+          <h1 class="fs-1">Genero</h1>
           <div class="d-flex column-gap-2 cadastros">
-            <label class="fs-4" for="idFilme">ID do g�nero: </label>
+            <label class="fs-4" for="idFilme">ID do genero: </label>
             <input id="idFilme" name="idFilme" type="number" />
           </div>
           <div class="d-flex column-gap-2 cadastros">

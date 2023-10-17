@@ -1,15 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets;
 
+import DAOs.DAOMovies;
+import Entidades.Movie;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -30,7 +30,146 @@ public class acao extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+            HttpSession session = request.getSession();
+            String nextJSP = "";
+            Movie movie = new Movie();
+            String acao = request.getParameter("acao");
+            String where = String.valueOf(session.getAttribute("where"));
+            if (String.valueOf(session.getAttribute("role")).equals("1")) {
+                switch (where) {
+                    case "filme":
+                        DAOMovies daoMovies = new DAOMovies();
+                        String target = "null";
+                        switch (acao) {
+                            case "buscar":
+                                try {
+                                target = daoMovies.obter(Integer.valueOf(request.getParameter("idFilme"))).getTitle();
+                            } catch (Exception e) {
+                                target = "null";
+                            }
+                            if (target.equals("null")) {
+                                session.setAttribute("acao", "salvar");
+                            } else {
+                                session.setAttribute("acao", "alterar");
+                            }
+                            session.setAttribute("id", String.valueOf(request.getParameter("idFilme")));
+                            nextJSP = "/projetoDW/cadastroFilmes.jsp";
+                            break;
+                            case "alterar":
+                                movie = new Movie();
+                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setTitle(String.valueOf(request.getParameter("titulo")));
+                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
+                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
+                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
+                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
+                                
+                                daoMovies.atualizar(movie);
+                                nextJSP = "/projetoDW/cadastroFilmes.jsp";
+                                break;
+                            case "excluir":
+                                movie = daoMovies.obter(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
+
+                                daoMovies.remover(movie);
+                                nextJSP = "/projetoDW/cadastroFilmes.jsp";
+                                break;
+                            case "salvar":
+                                movie = new Movie();
+                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setTitle(String.valueOf(request.getParameter("titulo")));
+                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
+                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
+                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
+                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
+                                
+                                try {
+                                    daoMovies.inserir(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                
+                                nextJSP = "/projetoDW/cadastroFilmes.jsp";
+                                break;
+                            case "cancelar":
+                                session.setAttribute("acao", "buscar");
+                                session.setAttribute("id", "null");
+                                nextJSP = "/projetoDW/cadastroFilmes.jsp";
+                                break;
+                            default:
+                                throw new AssertionError();
+                        }
+
+                        break;
+                    case "genero":
+                        switch (acao) {
+                            case "buscar":
+
+                                break;
+                            case "alterar":
+
+                                break;
+                            case "excluir":
+
+                                break;
+                            case "salvar":
+
+                                break;
+                            case "cancelar":
+
+                                break;
+                            default:
+                                throw new AssertionError();
+                        }
+
+                        break;
+                    case "keyword":
+                        switch (acao) {
+                            case "buscar":
+
+                                break;
+                            case "alterar":
+
+                                break;
+                            case "excluir":
+
+                                break;
+                            case "salvar":
+
+                                break;
+                            case "cancelar":
+
+                                break;
+                            default:
+                                throw new AssertionError();
+                        }
+
+                        break;
+                    case "produtora":
+                        switch (acao) {
+                            case "buscar":
+
+                                break;
+                            case "alterar":
+
+                                break;
+                            case "excluir":
+
+                                break;
+                            case "salvar":
+
+                                break;
+                            case "cancelar":
+
+                                break;
+                            default:
+                                throw new AssertionError();
+                        }
+                        break;
+                }
+            } else {
+                nextJSP = "/projetoDW/filme.html";
+            }
+            response.sendRedirect(nextJSP);
         }
     }
 

@@ -76,7 +76,7 @@
                 </div>
             </nav> -->
           <a href="./cadastroFilmes.jsp">Cadastro Filmes</a>
-          <a href="./cadastroGeneros.jsp">Cadastro Gêneros</a>
+          <a href="./cadastroGeneros.jsp">Cadastro Generos</a>
           <a href="./cadastroPalavrasChaves.jsp">Cadastro Palavras-chaves</a>
           <a href="./cadastroProdutoras.jsp">Cadastro Produtoras</a>
         </div>

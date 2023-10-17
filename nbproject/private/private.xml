@@ -5,8 +5,11 @@
         <group>
             <file>file:/D:/documentos/GitHub/projetoDW/web/index.jsp</file>
             <file>file:/D:/documentos/GitHub/projetoDW/src/java/DAOs/DAOMovies.java</file>
-            <file>file:/D:/documentos/GitHub/projetoDW/web/WEB-INF/web.xml</file>
-            <file>file:/D:/documentos/GitHub/projetoDW/src/java/servlets/buscar.java</file>
+            <file>file:/D:/documentos/GitHub/projetoDW/web/cadastroPalavrasChaves.jsp</file>
+            <file>file:/D:/documentos/GitHub/projetoDW/src/java/servlets/acao.java</file>
+            <file>file:/D:/documentos/GitHub/projetoDW/web/cadastroFilmes.jsp</file>
+            <file>file:/D:/documentos/GitHub/projetoDW/web/cadastroProdutoras.jsp</file>
+            <file>file:/D:/documentos/GitHub/projetoDW/web/cadastroGeneros.jsp</file>
             <file>file:/D:/documentos/GitHub/projetoDW/web/filme.jsp</file>
         </group>
     </open-files>

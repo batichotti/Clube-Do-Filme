@@ -75,7 +75,7 @@
                 </div>
             </nav> -->
             <a href="./cadastroFilmes.jsp">Cadastro Filmes</a>
-            <a href="./cadastroGeneros.jsp">Cadastro Gêneros</a>
+            <a href="./cadastroGeneros.jsp">Cadastro Generos</a>
             <a href="./cadastroPalavrasChaves.jsp">Cadastro Palavras-chaves</a>
             <a href="./cadastroProdutoras.jsp">Cadastro Produtoras</a>
         </header>
@@ -93,7 +93,7 @@
                         </tr>
                         <tr>
                         <div class="d-flex column-gap-2 cadastros">
-                            <label class="fs-4" for="orcamento">Or�amento: </label>
+                            <label class="fs-4" for="orcamento">Orcamento: </label>
                             <input id="orcamento" name="orcamento" type="number" />
                         </div>
                         </tr>
