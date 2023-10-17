@@ -36,7 +36,7 @@
             </div>
             <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
                 <div class="d-flex gap column-gap-4">
-                    <input
+                    <!-- <input
                         class="escolha"
                         id="escolhaFilme"
                         name="escolha"
@@ -62,7 +62,7 @@
                         value="3"
                         onclick="aparecerTela()"
                         />
-                    <label for="escolhaGeneros">Gêneros</label>
+                    <label for="escolhaGeneros">Gï¿½neros</label>
                     <input
                         class="escolha"
                         id="escolhaProdutora"
@@ -73,7 +73,11 @@
                         />
                     <label for="escolhaProdutora">Produtora</label>
                 </div>
-            </nav>
+            </nav> -->
+            <a href="./cadastroFilmes.jsp">Cadastro Filmes</a>
+            <a href="./cadastroGeneros.jsp">Cadastro GÃªneros</a>
+            <a href="./cadastroPalavrasChaves.jsp">Cadastro Palavras-chaves</a>
+            <a href="./cadastroProdutoras.jsp">Cadastro Produtoras</a>
         </header>
 
         <main class="mainAdm pt-5 pb-5">
@@ -89,25 +93,25 @@
                         </tr>
                         <tr>
                         <div class="d-flex column-gap-2 cadastros">
-                            <label class="fs-4" for="orcamento">Orçamento: </label>
+                            <label class="fs-4" for="orcamento">Orï¿½amento: </label>
                             <input id="orcamento" name="orcamento" type="number" />
                         </div>
                         </tr>
                         <tr>
                         <div class="d-flex column-gap-2 cadastros">
-                            <label class="fs-4" for="titulo">Título: </label>
+                            <label class="fs-4" for="titulo">Tï¿½tulo: </label>
                             <input id="titulo" name="titulo" type="text" />
                         </div>
                         </tr>
                         <tr>
                         <div class="d-flex column-gap-2 cadastros">
-                            <label class="fs-4" for="duracao">Duração: </label>
+                            <label class="fs-4" for="duracao">Duraï¿½ï¿½o: </label>
                             <input id="duracao" name="duracao" type="number" />
                         </div>
                         </tr>
                         <tr>
                         <div class="d-flex column-gap-2 cadastros">
-                            <label class="fs-4" for="impressoes">Impressões: </label>
+                            <label class="fs-4" for="impressoes">Impressï¿½es: </label>
                             <input id="impressoes" name="impressoes" type="text" />
                         </div>
                         </tr>
@@ -194,13 +198,13 @@
 
             <form action="telaAdm.jsp" id="generos" method="get" class="telaCadastro p-5" hidden>
                 <div class="principal row-gap-2">
-                    <h1 class="fs-1">Gêneros</h1>
+                    <h1 class="fs-1">Gï¿½neros</h1>
                     <div class="d-flex column-gap-2 cadastros">
                         <label class="fs-4" for="idFilme">ID do filme: </label>
                         <input id="idFilme" name="idFilme" type="number" />
                     </div>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idPalavraChave">ID gênero: </label>
+                        <label class="fs-4" for="idPalavraChave">ID gï¿½nero: </label>
                         <input id="idPalavraChave" name="idGenero" type="number" />
                     </div>
                     <div class="d-flex column-gap-2 align-items-center">
@@ -210,7 +214,7 @@
                             class="botaoPeriferico"
                             onclick="perifericos(genero)"
                             />
-                        <label for="periferico">Adicionar gêneros</label>
+                        <label for="periferico">Adicionar gï¿½neros</label>
                     </div>
                 </div>
 
@@ -240,9 +244,9 @@
             </form>
             <form id="genero" class="telaCadastro p-5" hidden>
                 <div class="principal">
-                    <h1 class="fs-1">Gênero</h1>
+                    <h1 class="fs-1">Gï¿½nero</h1>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idFilme">ID do gênero: </label>
+                        <label class="fs-4" for="idFilme">ID do gï¿½nero: </label>
                         <input id="idFilme" name="idFilme" type="number" />
                     </div>
                     <div class="d-flex column-gap-2 cadastros">
