@@ -109,43 +109,142 @@ public class acao extends HttpServlet {
 
                         break;
                     case "genero":
+                        //DAOMovies daoMovies = new DAOMovies();
+                        //String target = "null";
                         switch (acao) {
                             case "buscar":
-
-                                break;
+                                try {
+                                target = daoMovies.obter(Integer.valueOf(request.getParameter("idFilme"))).getTitle();
+                            } catch (Exception e) {
+                                target = "null";
+                            }
+                            if (target.equals("null")) {
+                                session.setAttribute("acao", "salvar");
+                            } else {
+                                session.setAttribute("acao", "alterar");
+                            }
+                            session.setAttribute("id", String.valueOf(request.getParameter("idFilme")));
+                            nextJSP = "/projetoDW/";
+                            break;
                             case "alterar":
-
+                                movie = new Movie();
+                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setTitle(String.valueOf(request.getParameter("titulo")));
+                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
+                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
+                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
+                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
+                                
+                                try {
+                                    daoMovies.atualizar(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                nextJSP = "/projetoDW/";
                                 break;
                             case "excluir":
+                                movie = daoMovies.obter(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
 
+                                try {
+                                    daoMovies.remover(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                nextJSP = "/projetoDW/";
                                 break;
                             case "salvar":
-
+                                movie = new Movie();
+                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setTitle(String.valueOf(request.getParameter("titulo")));
+                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
+                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
+                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
+                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
+                                
+                                try {
+                                    daoMovies.inserir(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                
+                                nextJSP = "/projetoDW/cadastroFilmes.jsp";
                                 break;
                             case "cancelar":
-
+                                session.setAttribute("acao", "buscar");
+                                session.setAttribute("id", "null");
+                                nextJSP = "";
                                 break;
                             default:
                                 throw new AssertionError();
                         }
 
+
                         break;
                     case "keyword":
+                        //DAOMovies daoMovies = new DAOMovies();
+                        //String target = "null";
                         switch (acao) {
                             case "buscar":
-
-                                break;
+                                try {
+                                target = daoMovies.obter(Integer.valueOf(request.getParameter("idFilme"))).getTitle();
+                            } catch (Exception e) {
+                                target = "null";
+                            }
+                            if (target.equals("null")) {
+                                session.setAttribute("acao", "salvar");
+                            } else {
+                                session.setAttribute("acao", "alterar");
+                            }
+                            session.setAttribute("id", String.valueOf(request.getParameter("idFilme")));
+                            nextJSP = "/projetoDW/";
+                            break;
                             case "alterar":
-
+                                movie = new Movie();
+                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setTitle(String.valueOf(request.getParameter("titulo")));
+                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
+                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
+                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
+                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
+                                
+                                try {
+                                    daoMovies.atualizar(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                nextJSP = "/projetoDW/";
                                 break;
                             case "excluir":
+                                movie = daoMovies.obter(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
 
+                                try {
+                                    daoMovies.remover(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                nextJSP = "/projetoDW/";
                                 break;
                             case "salvar":
-
+                                movie = new Movie();
+                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setTitle(String.valueOf(request.getParameter("titulo")));
+                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
+                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
+                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
+                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
+                                
+                                try {
+                                    daoMovies.inserir(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                
+                                nextJSP = "/projetoDW/cadastroFilmes.jsp";
                                 break;
                             case "cancelar":
-
+                                session.setAttribute("acao", "buscar");
+                                session.setAttribute("id", "null");
+                                nextJSP = "";
                                 break;
                             default:
                                 throw new AssertionError();
@@ -153,21 +252,70 @@ public class acao extends HttpServlet {
 
                         break;
                     case "produtora":
+                        //DAOMovies daoMovies = new DAOMovies();
+                        //String target = "null";
                         switch (acao) {
                             case "buscar":
-
-                                break;
+                                try {
+                                target = daoMovies.obter(Integer.valueOf(request.getParameter("idFilme"))).getTitle();
+                            } catch (Exception e) {
+                                target = "null";
+                            }
+                            if (target.equals("null")) {
+                                session.setAttribute("acao", "salvar");
+                            } else {
+                                session.setAttribute("acao", "alterar");
+                            }
+                            session.setAttribute("id", String.valueOf(request.getParameter("idFilme")));
+                            nextJSP = "/projetoDW/";
+                            break;
                             case "alterar":
-
+                                movie = new Movie();
+                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setTitle(String.valueOf(request.getParameter("titulo")));
+                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
+                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
+                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
+                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
+                                
+                                try {
+                                    daoMovies.atualizar(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                nextJSP = "/projetoDW/";
                                 break;
                             case "excluir":
+                                movie = daoMovies.obter(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
 
+                                try {
+                                    daoMovies.remover(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                nextJSP = "/projetoDW/";
                                 break;
                             case "salvar":
-
+                                movie = new Movie();
+                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setTitle(String.valueOf(request.getParameter("titulo")));
+                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
+                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
+                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
+                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
+                                
+                                try {
+                                    daoMovies.inserir(movie);
+                                } catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                
+                                nextJSP = "/projetoDW/cadastroFilmes.jsp";
                                 break;
                             case "cancelar":
-
+                                session.setAttribute("acao", "buscar");
+                                session.setAttribute("id", "null");
+                                nextJSP = "";
                                 break;
                             default:
                                 throw new AssertionError();
