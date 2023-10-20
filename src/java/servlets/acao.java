@@ -139,17 +139,17 @@ public class acao extends HttpServlet {
                                 movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
                                 
                                 try {
-                                    daoMovies.atualizar(movie);
+                                    daoGenre.atualizar(movie);
                                 } catch (Exception e) {
                                     System.out.println(e);
                                 }
                                 nextJSP = "/projetoDW/";
                                 break;
                             case "excluir":
-                                movie = daoMovies.obter(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
+                                movie = daoGenre.obter(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
 
                                 try {
-                                    daoMovies.remover(movie);
+                                    daoGenre.remover(movie);
                                 } catch (Exception e) {
                                     System.out.println(e);
                                 }
@@ -165,7 +165,7 @@ public class acao extends HttpServlet {
                                 movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
                                 
                                 try {
-                                    daoMovies.inserir(movie);
+                                    daoGenre.inserir(movie);
                                 } catch (Exception e) {
                                     System.out.println(e);
                                 }
