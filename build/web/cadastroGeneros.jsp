@@ -93,8 +93,8 @@
         <div class="principal row-gap-2">
           <h1 class="fs-1">Generos</h1>
           <div class="d-flex column-gap-2 cadastros">
-            <label class="fs-4" for="idFilme">ID do filme: </label>
-            <input id="idFilme" name="idFilme" type="number" />
+            <label class="fs-4" for="idGenre">ID do Gênero: </label>
+            <input id="idGenre" name="idGenre" type="number" />
           </div>
           <div class="d-flex column-gap-2 cadastros">
             <label class="fs-4" for="idPalavraChave">ID genero: </label>

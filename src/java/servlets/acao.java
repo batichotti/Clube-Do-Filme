@@ -1,6 +1,8 @@
 package servlets;
 
+import DAOs.DAOGenre;
 import DAOs.DAOMovies;
+import Entidades.Genre;
 import Entidades.Movie;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
@@ -109,12 +111,13 @@ public class acao extends HttpServlet {
 
                         break;
                     case "genero":
-                        //DAOMovies daoMovies = new DAOMovies();
-                        //String target = "null";
+                        DAOGenre daoGenre = new DAOGenre();
+                        target = "null";
+                        Genre genre = new Genre();
                         switch (acao) {
                             case "buscar":
                                 try {
-                                target = daoMovies.obter(Integer.valueOf(request.getParameter("idFilme"))).getTitle();
+                                target = daoGenre.obter(Integer.valueOf(request.getParameter("idGenre"))).getGenreName();
                             } catch (Exception e) {
                                 target = "null";
                             }
