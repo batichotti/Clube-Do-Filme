@@ -24,6 +24,9 @@
                 if (acao.equals("null")) {
                     acao = "buscar";
                 }
+                if(!String.valueOf(session.getAttribute("where")).equals("filme")){
+                    acao = "buscar";
+                }
             } catch (Exception e) {
                 acao = "buscar";
             }
