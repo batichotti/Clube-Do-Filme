@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@page import="Entidades.ProductionCompany"%> <%@page import="DAOs.DAOProductionCountry"%>
+<%@page import="Entidades.ProductionCompany"%> <%@page import="DAOs.DAOProductionCompany"%>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -17,12 +17,12 @@
             />
     </head>
     <body class="bodyAdm">
-        <% DAOMovies daoMovies = null;
+        <% DAOProductionCompany daoPC = null;
             if (String.valueOf(session.getAttribute("role")).equals("0")
                     || String.valueOf(session.getAttribute("role")).equals("null")) {
                 response.sendRedirect("index.jsp");
             } else {
-                daoMovies = new DAOMovies();
+                daoPC = new DAOProductionCompany();
             }
         %>
         <%
@@ -43,7 +43,7 @@
             if (String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("null")) {
                 response.sendRedirect("index.jsp");
             } else {
-                daoKeyword = new DAOKeyword();
+                daoPC = new DAOProductionCompany();
             }
         %>
         <header
@@ -55,7 +55,7 @@
                 <a href="index.jsp"
                    ><h1>
                         Cadastro - <%
-                out.println(String.valueOf(session.getAttribute("nick")));%>
+                            out.println(String.valueOf(session.getAttribute("nick")));%>
                     </h1></a
                 >
             </div>
@@ -113,11 +113,26 @@
                     <h1 class="fs-1">Produtora</h1>
                     <div class="d-flex column-gap-2 cadastros">
                         <label class="fs-4" for="idProdutora">ID da produtora: </label>
-                        <input id="idProdutora" name="idProdutora" type="number" />
+                        <input id="idProdutora" name="idProdutora" type="number"
+                               <%String id = "null";
+                                   try {
+                                       id = String.valueOf(session.getAttribute("id"));
+                                   } catch (Exception e) {
+                                       id = "null";
+                                   }
+                                   if (!(id.equals("null")) && !(String.valueOf(session.getAttribute("acao")).equals("buscar"))) {
+                                       out.println("value='" + id + "'");
+                                       out.println("readonly");
+                                   }%>/>
                     </div>
                     <div class="d-flex column-gap-2 cadastros">
                         <label class="fs-4" for="idProdutora">Produtora: </label>
-                        <input id="produtora" name="produtora" type="text" />
+                        <input id="produtora" name="produtora" type="text"
+                               <%
+                                   if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                       out.println("value='" + String.valueOf(daoPC.obter(Integer.valueOf(id)).getCompanyName()) + "'");
+                                   }
+                               %>/>
                     </div>
                     <div class="d-flex column-gap-2 align-items-center">
                         <input
