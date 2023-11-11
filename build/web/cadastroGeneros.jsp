@@ -61,44 +61,6 @@
             </div>
             <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
                 <div class="d-flex gap column-gap-4">
-                    <!-- <input
-                                  class="escolha"
-                                  id="escolhaFilme"
-                                  name="escolha"
-                                  type="radio"
-                                  value="0"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaFilme">Filme</label>
-                              <input
-                                  class="escolha"
-                                  id="escolhaPalavras-chave"
-                                  name="escolha"
-                                  type="radio"
-                                  value="2"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaPalavras-chave">Palavras Chave</label>
-                              <input
-                                  class="escolha"
-                                  id="escolhaGeneros"
-                                  name="escolha"
-                                  type="radio"
-                                  value="3"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaGeneros">G�neros</label>
-                              <input
-                                  class="escolha"
-                                  id="escolhaProdutora"
-                                  name="escolha"
-                                  type="radio"
-                                  value="4"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaProdutora">Produtora</label>
-                          </div>
-                      </nav> -->
                     <a href="./cadastroFilmes.jsp">Cadastro Filmes</a>
                     <a href="./cadastroGeneros.jsp">Cadastro Generos</a>
                     <a href="./cadastroPalavrasChaves.jsp">Cadastro Palavras-chaves</a>

@@ -232,7 +232,7 @@
                 <div class="principal">
                     <h1 class="fs-1">Palavra Chave</h1>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idFilme">ID da palavra: </label>
+                        <label class="fs-4" for="idFilme">ID do Filme </label>
                         <input id="idFilme" name="idFilme" type="number" />
                     </div>
                     <div class="d-flex column-gap-2 cadastros">
@@ -260,7 +260,7 @@
                 <div class="principal">
                     <h1 class="fs-1">Produtora</h1>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idFilme">ID da produtora: </label>
+                        <label class="fs-4" for="idFilme">ID do filme: </label>
                         <input id="idFilme" name="idFilme" type="number" />
                     </div>
                     <div class="d-flex column-gap-2 cadastros">

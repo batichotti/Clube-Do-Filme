@@ -62,44 +62,6 @@
             </div>
             <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
                 <div class="d-flex gap column-gap-4">
-                    <!-- <input
-                                  class="escolha"
-                                  id="escolhaFilme"
-                                  name="escolha"
-                                  type="radio"
-                                  value="0"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaFilme">Filme</label>
-                              <input
-                                  class="escolha"
-                                  id="escolhaPalavras-chave"
-                                  name="escolha"
-                                  type="radio"
-                                  value="2"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaPalavras-chave">Palavras Chave</label>
-                              <input
-                                  class="escolha"
-                                  id="escolhaGeneros"
-                                  name="escolha"
-                                  type="radio"
-                                  value="3"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaGeneros">G�neros</label>
-                              <input
-                                  class="escolha"
-                                  id="escolhaProdutora"
-                                  name="escolha"
-                                  type="radio"
-                                  value="4"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaProdutora">Produtora</label>
-                          </div>
-                      </nav> -->
                     <a href="./cadastroFilmes.jsp">Cadastro Filmes</a>
                     <a href="./cadastroGeneros.jsp">Cadastro Generos</a>
                     <a href="./cadastroPalavrasChaves.jsp">Cadastro Palavras-chaves</a>
@@ -111,9 +73,9 @@
         <main class="mainAdm pt-5 pb-5">
             <form id="palavrasChave" class="telaCadastro p-5">
                 <div class="principal">
-                    <h1 class="fs-1">Palavras Chave</h1>
+                    <h1 class="fs-1">Palavras Chave HAS</h1>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idFilme">ID Keyword: </label>
+                        <label class="fs-4" for="idFilme">ID Filme </label>
                         <input id="idKeyword" name="idKeyword" type="number"
                                <%String id = "null";
                                    try {

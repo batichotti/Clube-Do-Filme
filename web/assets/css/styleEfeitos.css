@@ -73,7 +73,7 @@ header > nav > div > a:hover::before {
 .inputEntrar:focus {
   transition: 0.3s;
   border: 2px solid var(--colorAccent);
-  width: 75%;
+  width:100%;
 }
 
 .botaoLogin:hover {
