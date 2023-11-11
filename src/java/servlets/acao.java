@@ -59,13 +59,13 @@ public class acao extends HttpServlet {
                             break;
                             case "alterar":
                                 movie = new Movie();
-                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
                                 movie.setTitle(String.valueOf(request.getParameter("titulo")));
-                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
-                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
-                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
-                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
-                                
+                                movie.setOverview(String.valueOf(request.getParameter("sinopse")));
+                                movie.setRuntime(Integer.valueOf(String.valueOf(request.getParameter("duracao"))));
+                                movie.setBudget(Integer.valueOf(String.valueOf(request.getParameter("orcamento"))));
+                                movie.setHomepage(String.valueOf(request.getParameter("homepage")));
+
                                 try {
                                     daoMovies.atualizar(movie);
                                 } catch (Exception e) {
@@ -85,19 +85,19 @@ public class acao extends HttpServlet {
                                 break;
                             case "salvar":
                                 movie = new Movie();
-                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
                                 movie.setTitle(String.valueOf(request.getParameter("titulo")));
-                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
-                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
-                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
-                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
-                                
+                                movie.setOverview(String.valueOf(request.getParameter("sinopse")));
+                                movie.setRuntime(Integer.valueOf(String.valueOf(request.getParameter("duracao"))));
+                                movie.setBudget(Integer.valueOf(String.valueOf(request.getParameter("orcamento"))));
+                                movie.setHomepage(String.valueOf(request.getParameter("homepage")));
+
                                 try {
                                     daoMovies.inserir(movie);
                                 } catch (Exception e) {
                                     System.out.println(e);
                                 }
-                                
+
                                 nextJSP = "/projetoDW/cadastroFilmes.jsp";
                                 break;
                             case "cancelar":
@@ -131,13 +131,13 @@ public class acao extends HttpServlet {
                             break;
                             case "alterar":
                                 movie = new Movie();
-                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
                                 movie.setTitle(String.valueOf(request.getParameter("titulo")));
-                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
-                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
-                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
-                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
-                                
+                                movie.setOverview(String.valueOf(request.getParameter("sinopse")));
+                                movie.setRuntime(Integer.valueOf(String.valueOf(request.getParameter("duracao"))));
+                                movie.setBudget(Integer.valueOf(String.valueOf(request.getParameter("orcamento"))));
+                                movie.setHomepage(String.valueOf(request.getParameter("homepage")));
+
                                 try {
                                     daoGenre.atualizar(movie);
                                 } catch (Exception e) {
@@ -157,19 +157,19 @@ public class acao extends HttpServlet {
                                 break;
                             case "salvar":
                                 movie = new Movie();
-                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
                                 movie.setTitle(String.valueOf(request.getParameter("titulo")));
-                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
-                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
-                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
-                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
-                                
+                                movie.setOverview(String.valueOf(request.getParameter("sinopse")));
+                                movie.setRuntime(Integer.valueOf(String.valueOf(request.getParameter("duracao"))));
+                                movie.setBudget(Integer.valueOf(String.valueOf(request.getParameter("orcamento"))));
+                                movie.setHomepage(String.valueOf(request.getParameter("homepage")));
+
                                 try {
                                     daoGenre.inserir(movie);
                                 } catch (Exception e) {
                                     System.out.println(e);
                                 }
-                                
+
                                 nextJSP = "/projetoDW/cadastroFilmes.jsp";
                                 break;
                             case "cancelar":
@@ -180,7 +180,6 @@ public class acao extends HttpServlet {
                             default:
                                 throw new AssertionError();
                         }
-
 
                         break;
                     case "keyword":
@@ -203,13 +202,13 @@ public class acao extends HttpServlet {
                             break;
                             case "alterar":
                                 movie = new Movie();
-                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
                                 movie.setTitle(String.valueOf(request.getParameter("titulo")));
-                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
-                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
-                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
-                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
-                                
+                                movie.setOverview(String.valueOf(request.getParameter("sinopse")));
+                                movie.setRuntime(Integer.valueOf(String.valueOf(request.getParameter("duracao"))));
+                                movie.setBudget(Integer.valueOf(String.valueOf(request.getParameter("orcamento"))));
+                                movie.setHomepage(String.valueOf(request.getParameter("homepage")));
+
                                 try {
                                     daoMovies.atualizar(movie);
                                 } catch (Exception e) {
@@ -229,19 +228,19 @@ public class acao extends HttpServlet {
                                 break;
                             case "salvar":
                                 movie = new Movie();
-                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
                                 movie.setTitle(String.valueOf(request.getParameter("titulo")));
-                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
-                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
-                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
-                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
-                                
+                                movie.setOverview(String.valueOf(request.getParameter("sinopse")));
+                                movie.setRuntime(Integer.valueOf(String.valueOf(request.getParameter("duracao"))));
+                                movie.setBudget(Integer.valueOf(String.valueOf(request.getParameter("orcamento"))));
+                                movie.setHomepage(String.valueOf(request.getParameter("homepage")));
+
                                 try {
                                     daoMovies.inserir(movie);
                                 } catch (Exception e) {
                                     System.out.println(e);
                                 }
-                                
+
                                 nextJSP = "/projetoDW/cadastroFilmes.jsp";
                                 break;
                             case "cancelar":
@@ -274,13 +273,13 @@ public class acao extends HttpServlet {
                             break;
                             case "alterar":
                                 movie = new Movie();
-                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
                                 movie.setTitle(String.valueOf(request.getParameter("titulo")));
-                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
-                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
-                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
-                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
-                                
+                                movie.setOverview(String.valueOf(request.getParameter("sinopse")));
+                                movie.setRuntime(Integer.valueOf(String.valueOf(request.getParameter("duracao"))));
+                                movie.setBudget(Integer.valueOf(String.valueOf(request.getParameter("orcamento"))));
+                                movie.setHomepage(String.valueOf(request.getParameter("homepage")));
+
                                 try {
                                     daoMovies.atualizar(movie);
                                 } catch (Exception e) {
@@ -300,19 +299,19 @@ public class acao extends HttpServlet {
                                 break;
                             case "salvar":
                                 movie = new Movie();
-                                movie.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                movie.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
                                 movie.setTitle(String.valueOf(request.getParameter("titulo")));
-                                movie.setOverview( String.valueOf(request.getParameter("sinopse")) );
-                                movie.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
-                                movie.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
-                                movie.setHomepage( String.valueOf(request.getParameter("homepage")) );
-                                
+                                movie.setOverview(String.valueOf(request.getParameter("sinopse")));
+                                movie.setRuntime(Integer.valueOf(String.valueOf(request.getParameter("duracao"))));
+                                movie.setBudget(Integer.valueOf(String.valueOf(request.getParameter("orcamento"))));
+                                movie.setHomepage(String.valueOf(request.getParameter("homepage")));
+
                                 try {
                                     daoMovies.inserir(movie);
                                 } catch (Exception e) {
                                     System.out.println(e);
                                 }
-                                
+
                                 nextJSP = "/projetoDW/cadastroFilmes.jsp";
                                 break;
                             case "cancelar":

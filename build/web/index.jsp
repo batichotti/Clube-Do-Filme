@@ -82,7 +82,7 @@
                     <form action="search" method="get">
                         <input
                             type="text"
-                            class="inputBuscar rounded-pill"
+                            class="inputBuscar"
                             placeholder="Buscar"
                             id="buscar"
                             name="target"

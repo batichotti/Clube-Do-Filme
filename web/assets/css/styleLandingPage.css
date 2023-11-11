@@ -104,7 +104,6 @@ h4 > mark {
 
   transition: 0.3s;
   padding: 0px 0px 1px 10px;
-  width: 30%;
 
   background-color: var(--colorBackGroundTransparent);
   border: 2px solid var(--colorText);
