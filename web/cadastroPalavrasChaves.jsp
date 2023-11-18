@@ -35,6 +35,7 @@
                 }
                 if (!String.valueOf(session.getAttribute("where")).equals("keyword")) {
                     acao = "buscar";
+                    session.setAttribute("id", "null");
                 }
             } catch (Exception e) {
                 acao = "buscar";
@@ -71,12 +72,12 @@
         </header>
 
         <main class="mainAdm pt-5 pb-5">
-            <form id="palavrasChave" class="telaCadastro p-5">
+            <form id="palavrasChave" class="telaCadastro p-5" method="post" action="acaoKeywords">
                 <div class="principal">
-                    <h1 class="fs-1">Palavras Chave HAS</h1>
+                    <h1 class="fs-1">Palavras Chave</h1>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idFilme">ID Filme </label>
-                        <input id="idKeyword" name="idKeyword" type="number"
+                        <label class="fs-4" for="idFilme">ID Keyword:</label>
+                        <input id="idKeyword" name="idKeyword" type="number" min="1" required
                                <%String id = "null";
                                    try {
                                        id = String.valueOf(session.getAttribute("id"));
@@ -91,11 +92,17 @@
                     </div>
                     <div class="d-flex column-gap-2 cadastros">
                         <label class="fs-4" for="idPalavraChave"> Keyword: </label>
-                        <input id="keyword" name="keyword" type="text" <%
-                            if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
-                                out.println("value='" + String.valueOf(daoKeyword.obter(Integer.valueOf(id)).getKeywordName()) + "'");
-                            }
-                               %>/>
+                        <input id="keyword" name="keyword" type="text"
+                               <%
+                                   try {
+                                       if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                           out.println("value='" + String.valueOf(daoKeyword.obter(Integer.valueOf(id)).getKeywordName()) + "'");
+                                       }
+                                   } catch (Exception e) {
+                                       out.println("value=\'\'");
+                                   }
+                               %>
+                               />
                     </div>
                     <div class="d-flex column-gap-2 align-items-center">
                         <input
@@ -117,6 +124,16 @@
                             }%>
                         >
                         Buscar
+                    </button>
+                    <button
+                        name="acao"
+                        value="listar"
+                        class="botaoAdm buscar"
+                        <%if (!(acao.equals("buscar"))) {
+                                out.println("hidden");
+                            }%>
+                        >
+                        Listar
                     </button>
                     <button
                         name="acao"

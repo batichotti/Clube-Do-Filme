@@ -266,11 +266,11 @@
                 </button>
                 <div class="gallery-wrapper">
                     <div class="gallery">
-                        <img
+                        <a href="<%out.println("/projetoDW/filme.jsp?id=459489");%>"><img
                             src="./assets/images/4.png"
                             class="item current-item"
                             alt=""
-                            />
+                            /></a>
                         <img
                             src="./assets/images/3.png"
                             class="item current-item"

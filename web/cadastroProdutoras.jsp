@@ -32,14 +32,14 @@
                 if (acao.equals("null")) {
                     acao = "buscar";
                 }
-                if (!String.valueOf(session.getAttribute("where")).equals("keyword")) {
+                if (!String.valueOf(session.getAttribute("where")).equals("produtora")) {
                     acao = "buscar";
                 }
             } catch (Exception e) {
                 acao = "buscar";
             }
             session.setAttribute("acao", acao);
-            session.setAttribute("where", "keyword");
+            session.setAttribute("where", "produtora");
             if (String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("null")) {
                 response.sendRedirect("index.jsp");
             } else {
@@ -70,12 +70,12 @@
         </header>
 
         <main class="mainAdm pt-5 pb-5">
-            <form id="produtora" class="telaCadastro p-5">
+            <form id="produtora" class="telaCadastro p-5" method="post" action="acaoProdutora">
                 <div class="principal">
-                    <h1 class="fs-1">Produtora HAS</h1>
+                    <h1 class="fs-1">Produtora</h1>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idProdutora">ID do Filme </label>
-                        <input id="idProdutora" name="idProdutora" type="number"
+                        <label class="fs-4" for="idProdutora">ID da Produtora: </label>
+                        <input id="idProdutora" name="idProdutora" type="number" min="1" required
                                <%String id = "null";
                                    try {
                                        id = String.valueOf(session.getAttribute("id"));
@@ -88,11 +88,15 @@
                                    }%>/>
                     </div>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idProdutora">Produtora: </label>
+                        <label class="fs-4" for="idProdutora">Nome da produtora: </label>
                         <input id="produtora" name="produtora" type="text"
                                <%
-                                   if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
-                                       out.println("value='" + String.valueOf(daoPC.obter(Integer.valueOf(id)).getCompanyName()) + "'");
+                                   try {
+                                       if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                           out.println("value='" + String.valueOf(daoPC.obter(Integer.valueOf(id)).getCompanyName()) + "'");
+                                       }
+                                   } catch (Exception e) {
+                                   out.println("value=\'\'");
                                    }
                                %>/>
                     </div>
@@ -117,6 +121,16 @@
                             }%>
                         >
                         Buscar
+                    </button>
+                    <button
+                        name="acao"
+                        value="listar"
+                        class="botaoAdm buscar"
+                        <%if (!(acao.equals("buscar"))) {
+                                out.println("hidden");
+                            }%>
+                        >
+                        Listar
                     </button>
                     <button
                         name="acao"

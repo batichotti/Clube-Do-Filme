@@ -24,7 +24,7 @@
                 if (acao.equals("null")) {
                     acao = "buscar";
                 }
-                if(!String.valueOf(session.getAttribute("where")).equals("filme")){
+                if (!String.valueOf(session.getAttribute("where")).equals("filme")) {
                     acao = "buscar";
                 }
             } catch (Exception e) {
@@ -53,44 +53,6 @@
             </div>
             <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
                 <div class="d-flex gap column-gap-4">
-                    <!-- <input
-                                  class="escolha"
-                                  id="escolhaFilme"
-                                  name="escolha"
-                                  type="radio"
-                                  value="0"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaFilme">Filme</label>
-                              <input
-                                  class="escolha"
-                                  id="escolhaPalavras-chave"
-                                  name="escolha"
-                                  type="radio"
-                                  value="2"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaPalavras-chave">Palavras Chave</label>
-                              <input
-                                  class="escolha"
-                                  id="escolhaGeneros"
-                                  name="escolha"
-                                  type="radio"
-                                  value="3"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaGeneros">G�neros</label>
-                              <input
-                                  class="escolha"
-                                  id="escolhaProdutora"
-                                  name="escolha"
-                                  type="radio"
-                                  value="4"
-                                  onclick="aparecerTela()"
-                                  />
-                              <label for="escolhaProdutora">Produtora</label>
-                          </div>
-                      </nav> -->
                     <a href="./cadastroFilmes.jsp">Cadastro Filmes</a>
                     <a href="./cadastroGeneros.jsp">Cadastro Generos</a>
                     <a href="./cadastroPalavrasChaves.jsp">Cadastro Palavras-chaves</a>
@@ -100,7 +62,7 @@
         </header>
 
         <main class="mainAdm pt-5 pb-5">
-            <form id="filmes" class="telaCadastro p-5" method="post" name="filmes" action="acao">
+            <form id="filmes" class="telaCadastro p-5" method="post" name="filmes" action="acaoFilme">
                 <div class="principal">
                     <table>
                         <tr>
@@ -128,9 +90,14 @@
                             <label class="fs-4" for="orcamento">Orcamento: </label>
                             <input id="orcamento" name="orcamento" type="number"
                                    <%
-                                       if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
-                                           out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getBudget()) + "'");
+                                       try {
+                                           if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                               out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getBudget()) + "'");
+                                           }
+                                       } catch (Exception e) {
+                                           out.println("value=\'\'");
                                        }
+
                                    %>
                                    />
                         </div>
@@ -140,9 +107,13 @@
                             <label class="fs-4" for="titulo">Titulo: </label>
                             <input id="titulo" name="titulo" type="text"
                                    <%
-                                       if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
-                                           out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getTitle()) + "'");
-                                       }
+                                        try {
+                                           if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                            out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getTitle()) + "'");
+                                            }
+                                            } catch (Exception e) {
+                                            out.println("value=\'\'");
+                                            }
                                    %>/>
                         </div>
                         </tr>
@@ -151,9 +122,13 @@
                             <label class="fs-4" for="duracao">Duracao: </label>
                             <input id="duracao" name="duracao" type="number"
                                    <%
-                                       if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                      try {
+                                               if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
                                            out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getRuntime()) + "'");
                                        }
+                                          } catch (Exception e) {
+                                          out.println("value=\'\'");
+                                          }
                                    %>
                                    />
                         </div>
@@ -163,9 +138,13 @@
                             <label class="fs-4" for="impressoes">Sinopse: </label>
                             <input id="sinopse" name="sinopse" type="text"
                                    <%
-                                       if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                       try {
+                                               if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
                                            out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getOverview()) + "'");
                                        }
+                                           } catch (Exception e) {
+                                           out.println("value=\'\'");
+                                           }
                                    %>
                                    />
                         </div>
@@ -175,9 +154,13 @@
                             <label class="fs-4" for="homepage">Homepage: </label>
                             <input id="homepage" name="homepage" type="text"
                                    <%
-                                       if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                       try {
+                                               if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
                                            out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getHomepage()) + "'");
                                        }
+                                           } catch (Exception e) {
+                                           out.println("value=\'\'");
+                                           }
                                    %>
                                    />
                         </div>
@@ -194,6 +177,16 @@
                             }%>
                         >
                         Buscar
+                    </button>
+                    <button
+                        name="acao"
+                        value="listar"
+                        class="botaoAdm buscar"
+                        <%if (!(acao.equals("buscar"))) {
+                                out.println("hidden");
+                            }%>
+                        >
+                        Listar
                     </button>
                     <button
                         name="acao"
