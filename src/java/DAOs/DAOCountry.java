@@ -36,7 +36,7 @@ public class DAOCountry extends DAOGenerico<Country> {
     }
 
     public List<Country> listInOrderNome() {
-        return em.createQuery("SELECT e FROM Country e ORDER BY e.email").getResultList();
+        return em.createQuery("SELECT e FROM Country e ORDER BY e.countryName").getResultList();
     }
 
     public List<Country> listInOrderId() {
@@ -57,10 +57,22 @@ public class DAOCountry extends DAOGenerico<Country> {
         }
         return ls;
     }
+    
+    public Integer getIdByCountryName(String countryName) {
+        List<Integer> result = em.createQuery("SELECT e.countryId FROM Country e WHERE e.countryName = :countryName")
+                .setParameter("countryName", countryName)
+                .getResultList();
+
+        if (!result.isEmpty()) {
+            return result.get(0);
+        } else {
+            return null;
+        }
+    }
 
     public static void main(String[] args) {
         DAOCountry daoCountry = new DAOCountry();
-        List<Country> listaCountry = daoCountry.list();
+        List<Country> listaCountry = daoCountry.listInOrderNome();
         for (Country arma : listaCountry) {
             System.out.println(arma.getCountryId()+ "-" + arma.getCountryName());
         }

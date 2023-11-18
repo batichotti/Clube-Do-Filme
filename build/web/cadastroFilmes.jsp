@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<%@page import="Entidades.ProductionCountry"%>
+<%@page import="Entidades.ProductionCountryPK"%>
+<%@page import="DAOs.DAOProductionCountry"%>
+<%@page import="DAOs.DAOCountry"%>
+<%@page import="Entidades.Country"%>
 <%@page import="Entidades.Movie"%> <%@page import="DAOs.DAOMovies"%>
 <html lang="en">
     <head>
@@ -106,14 +111,13 @@
                         <div class="d-flex column-gap-2 cadastros">
                             <label class="fs-4" for="titulo">Titulo: </label>
                             <input id="titulo" name="titulo" type="text"
-                                   <%
-                                        try {
+                                   <%                                       try {
                                            if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
-                                            out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getTitle()) + "'");
-                                            }
-                                            } catch (Exception e) {
-                                            out.println("value=\'\'");
-                                            }
+                                               out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getTitle()) + "'");
+                                           }
+                                       } catch (Exception e) {
+                                           out.println("value=\'\'");
+                                       }
                                    %>/>
                         </div>
                         </tr>
@@ -122,13 +126,13 @@
                             <label class="fs-4" for="duracao">Duracao: </label>
                             <input id="duracao" name="duracao" type="number"
                                    <%
-                                      try {
-                                               if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
-                                           out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getRuntime()) + "'");
+                                       try {
+                                           if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                               out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getRuntime()) + "'");
+                                           }
+                                       } catch (Exception e) {
+                                           out.println("value=\'\'");
                                        }
-                                          } catch (Exception e) {
-                                          out.println("value=\'\'");
-                                          }
                                    %>
                                    />
                         </div>
@@ -139,12 +143,12 @@
                             <input id="sinopse" name="sinopse" type="text"
                                    <%
                                        try {
-                                               if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
-                                           out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getOverview()) + "'");
-                                       }
-                                           } catch (Exception e) {
-                                           out.println("value=\'\'");
+                                           if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                               out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getOverview()) + "'");
                                            }
+                                       } catch (Exception e) {
+                                           out.println("value=\'\'");
+                                       }
                                    %>
                                    />
                         </div>
@@ -155,17 +159,26 @@
                             <input id="homepage" name="homepage" type="text"
                                    <%
                                        try {
-                                               if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
-                                           out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getHomepage()) + "'");
-                                       }
-                                           } catch (Exception e) {
-                                           out.println("value=\'\'");
+                                           if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                               out.println("value='" + String.valueOf(daoMovies.obter(Integer.valueOf(id)).getHomepage()) + "'");
                                            }
+                                       } catch (Exception e) {
+                                           out.println("value=\'\'");
+                                       }
                                    %>
                                    />
                         </div>
                         </tr>
                     </table>
+                    <div class="d-flex column-gap-2 align-items-center">
+                        <input
+                            id="periferico"
+                            type="checkbox"
+                            class="botaoPeriferico"
+                            onclick="perifericos(pais)"
+                            />
+                        <label for="periferico">Adicionar País</label>
+                    </div>
                 </div>
                 <div class="botoesCRUD d-flex flex-column row-gap-2">
                     <button
@@ -230,7 +243,46 @@
                     </button>
                 </div>
             </form>
+
+            <form id="pais" class="telaCadastro p-5" hidden method="post" action="acaoPais">
+                <div class="principal">
+                    <h1 class="fs-1">País</h1>
+                    <div class="d-flex column-gap-2 cadastros">
+                        <select id="listaOpcoes" name="listaOpcoes" style="color: white; background-color: black;">
+                            <%
+                                DAOCountry daoPC = new DAOCountry();
+                                for (Country c : daoPC.listInOrderNome()) {
+                                    out.println("<option value=" + c.getCountryId() + ">" + c.getCountryName() + "</option>");
+                                }
+                            %>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="botaoAdm botaoAdd">Adicionar</button>
+            </form>
         </main>
+
+        <script>
+            document.getElementById("listaOpcoes").value = "<%
+                String country = "null";
+                DAOProductionCountry daoProdCount = new DAOProductionCountry();
+                try {
+                    String movie_title = daoMovies.obter(Integer.valueOf(String.valueOf(session.getAttribute("id")))).getTitle();
+                    
+                    for (ProductionCountry m: daoProdCount.encontrarPaisesPorFilmeId( movie_title )) {
+                            country = String.valueOf( m.getCountry().getCountryId() );
+                        }
+                    
+                    if (!country.equals("null")) {
+                        out.print(country);
+                    } else {
+                        out.print("139");
+                    }
+                } catch (Exception e) {
+                    out.print(e.getMessage());
+                }
+            %>";
+        </script>
         <script src="./assets/js/cadastroAdm.js"></script>
     </body>
 </html>

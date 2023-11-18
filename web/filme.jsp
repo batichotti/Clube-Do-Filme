@@ -4,6 +4,7 @@
     Author     : Mateus Cohuzer
 --%>
 
+<%@page import="Entidades.ProductionCountry"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Entidades.User"%>
 <%@page import="Entidades.Movie"%>
@@ -130,23 +131,21 @@
                         %>
                     </h5>
                     
-                    <h6>
+                    <h5 style="color: gold">
                         <%
                             if(!id.equals("null") && !id.equals("err")){
                                 int x = 0;
-                                for(String i : daoProductionCountry.getCountryByProductionTitle(String.valueOf(movie.getTitle()))){
+                                for(ProductionCountry i : daoProductionCountry.encontrarPaisesPorFilmeId(String.valueOf(movie.getTitle()))){
                                     x += 1;
-                                    if(!(daoProductionCountry.getCountryByProductionTitle(String.valueOf(movie.getTitle())).size() == x)){
-                                        out.println(i + ", ");
+                                    if(!(daoProductionCountry.encontrarPaisesPorFilmeId(String.valueOf(movie.getTitle())).size() == x)){
+                                        out.println(i.getCountry().getCountryName() + ", ");
                                     } else {
-                                        out.println(i);
+                                        out.println(i.getCountry().getCountryName());
                                     }
                                 }
                             }
                         %>
-                    </h6>
-                    
-                    <div class="rating debug">⭐⭐⭐⭐⭐</div>
+                    </h5>
                     <h5>
                         <%
                             if(!id.equals("null") && !id.equals("err")){

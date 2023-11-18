@@ -36,15 +36,43 @@ public class search extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet search</title>");            
+            out.println("<link rel=\"stylesheet\" href=\"./assets/css/styleEfeitos.css\" />\n"
+                    + "        <link rel=\"stylesheet\" href=\"./assets/css/styleLandingPage.css\" />\n"
+                    + "        <link rel=\"stylesheet\" href=\"./assets/css/styleFilmeIndividual.css\" />\n"
+                    + "        <link rel=\"stylesheet\" href=\"assets/css/styleAdm.css\" /> ");
+            out.println("<title>Servlet search</title>");
+            out.println("<style>\n"
+                    + "    a {\n"
+                    + "      text-decoration: none;\n"
+                    + "      position: relative;\n"
+                    + "      color: #FFFFFF;\n"
+                    + "    }\n"
+                    + "\n"
+                    + "    a:hover::after {\n"
+                    + "      content: ''; \n"
+                    + "      display: block; \n"
+                    + "      position: absolute;\n"
+                    + "      bottom: -2px; \n"
+                    + "      left: 0; \n"
+                    + "      width: 100%;\n"
+                    + "      height: 2px; \n"
+                    + "      background-color: #FFFFFF;\n"
+                    + "    }\n"
+                    + "  </style>");
             out.println("</head>");
             out.println("<body>");
-            
+
+            out.println("<div class=\"d-flex gap column-gap-2 ps-5\" style=\"display: flex; flex-direction: row;\">\n"
+                    + "            <h1 class=\".img-fluid\">🧼</h1>\n"
+                    + "            <a href=\"/projetoDW/index.jsp\"><h1>Clube do Filme</h1></a>\n"
+                    + "        </div>");
+            out.println("<hr/>");
+
             String buscado = String.valueOf(request.getParameter("target"));
             DAOMovies daoMovies = new DAOMovies();
-            
-            for (Movie m:daoMovies.searchByTitle(buscado)) {
-                out.println("<a href='/projetoDW/filme.jsp?id="+String.valueOf(m.getMovieId())+"'>"+m.getTitle()+"</a>");
+
+            for (Movie m : daoMovies.searchByTitle(buscado)) {
+                out.println("<a href='/projetoDW/filme.jsp?id=" + String.valueOf(m.getMovieId()) + "'>" + m.getTitle() + "</a>");
                 out.println("<br/>");
             }
             out.println("</body>");

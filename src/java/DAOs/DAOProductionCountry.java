@@ -38,24 +38,19 @@ public class DAOProductionCountry extends DAOGenerico<ProductionCountry> {
         return ls;
     }
     
-    public List<String> getCountryByProductionTitle(String movieTitle) {
-        TypedQuery<ProductionCountry> query = em.createQuery("SELECT e FROM ProductionCountry e WHERE e.movie.title = :title", ProductionCountry.class);
-        query.setParameter("title", movieTitle);
+    public List<ProductionCountry> encontrarPaisesPorFilmeId(String idFilme) {
+        TypedQuery<ProductionCountry> query = em.createQuery("SELECT pc FROM ProductionCountry pc WHERE pc.movie.title = :idFilme", ProductionCountry.class);
+        query.setParameter("idFilme", idFilme);
         List<ProductionCountry> resultList = query.getResultList();
-        List<String> genresList = new ArrayList<>();
-
-        for (ProductionCountry movieCountry : resultList) {
-            genresList.add(movieCountry.getCountry().getCountryName());
-        }
-
-        return genresList;
+        return resultList;
     }
 
     public static void main(String[] args) {
         DAOProductionCountry daoProduction = new DAOProductionCountry();
-        List<ProductionCountry> listaProduction = daoProduction.list();
-        for (ProductionCountry arma : listaProduction) {
-            System.out.println(arma.getMovie().getTitle() + " - " + arma.getCountry().getCountryName());
-        }
+        //List<ProductionCountry> listaProduction = daoProduction.list();
+        //for (ProductionCountry arma : listaProduction) {
+        //    System.out.println(arma.getMovie().getTitle() + " - " + arma.getCountry().getCountryName());
+        //}
+        System.out.println(daoProduction.encontrarPaisesPorFilmeId("American Beauty").get(0).getCountry().getCountryName());
     }
 }
