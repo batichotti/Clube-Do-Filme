@@ -130,6 +130,7 @@ public class acao extends HttpServlet {
                             nextJSP = "/projetoDW/";
                             break;
                             case "alterar":
+<<<<<<< Updated upstream
                                 movie = new Movie();
                                 movie.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("idFilme"))));
                                 movie.setTitle(String.valueOf(request.getParameter("titulo")));
@@ -138,6 +139,16 @@ public class acao extends HttpServlet {
                                 movie.setBudget(Integer.valueOf(String.valueOf(request.getParameter("orcamento"))));
                                 movie.setHomepage(String.valueOf(request.getParameter("homepage")));
 
+=======
+                                genre = new Genre();
+                                genre.setMovieId( Integer.valueOf(String.valueOf(request.getParameter("idFilme"))) );
+                                genre.setTitle(String.valueOf(request.getParameter("titulo")));
+                                genre.setOverview( String.valueOf(request.getParameter("sinopse")) );
+                                genre.setRuntime( Integer.valueOf(String.valueOf(request.getParameter("duracao"))) );
+                                genre.setBudget(Integer.valueOf( String.valueOf(request.getParameter("orcamento")) ));
+                                genre.setHomepage( String.valueOf(request.getParameter("homepage")) );
+                                
+>>>>>>> Stashed changes
                                 try {
                                     daoGenre.atualizar(movie);
                                 } catch (Exception e) {

@@ -79,7 +79,7 @@
 
                         %>
                     </div>
-                    <form action="search" method="get">
+                    <form action="search" method="post">
                         <input
                             type="text"
                             class="inputBuscar w-75 rounded-pill"
