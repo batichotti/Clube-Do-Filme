@@ -7,6 +7,7 @@ package servlets;
 import DAOs.DAOMovies;
 import DAOs.DAOCountry;
 import DAOs.DAOProductionCountry;
+import Entidades.Country;
 import Entidades.ProductionCountry;
 import Entidades.ProductionCountryPK;
 import java.io.IOException;
@@ -33,37 +34,43 @@ public class acaoPais extends HttpServlet {
                 if (String.valueOf(session.getAttribute("role")).equals("1")) {
                     DAOMovies daoMovies = new DAOMovies();
                     DAOProductionCountry daoProductionCountry = new DAOProductionCountry();
+                    DAOCountry daoCountry = new DAOCountry();
 
                     String new_country = request.getParameter("listaOpcoes"); //id
 
                     String movie_title = daoMovies.obter(Integer.valueOf(String.valueOf(session.getAttribute("id")))).getTitle();
                     String old_country = "1";
                     try {
-                        for (ProductionCountry m: daoProductionCountry.encontrarPaisesPorFilmeId( movie_title )) {
-                            old_country = String.valueOf( m.getCountry().getCountryId() );
+                        for (ProductionCountry m : daoProductionCountry.encontrarPaisesPorFilmeId(movie_title)) {
+                            old_country = String.valueOf(m.getCountry().getCountryId());
                         }
                     } catch (Exception e) {
                         old_country = "1";
                     }
 
-                    String act_movie = String.valueOf(daoMovies.obter(Integer.valueOf(String.valueOf(session.getAttribute("id")))).getMovieId());
-
-                    ProductionCountryPK pcpk = new ProductionCountryPK();
-                    if (!(old_country.equals("null"))) {
-                        pcpk.setCountryId(Integer.valueOf(old_country));
-                        pcpk.setMovieId(Integer.valueOf(act_movie));
-                        ProductionCountry tchau = daoProductionCountry.obter(pcpk);
-                        daoProductionCountry.remover(tchau);
+                    Country selecionado = daoCountry.obter(Integer.valueOf(new_country));
+                    ProductionCountryPK vaiseradicionado = new ProductionCountryPK();
+                    vaiseradicionado.setCountryId(Integer.valueOf(String.valueOf(selecionado)));
+                    vaiseradicionado.setMovieId(Integer.valueOf(String.valueOf(request.getAttribute("id"))));
+                    ProductionCountry tchau = daoProductionCountry.obter(vaiseradicionado);
+                    
+                    if (tchau == null) {
+                        tchau = new ProductionCountry();
+                        tchau.setProductionCountryPK(vaiseradicionado);
+                        tchau.setProductionCountrycol("adicionado pelo programa");
+                        
+                        ProductionCountryPK vaiserexcluido = new ProductionCountryPK();
+                        vaiserexcluido.setCountryId(Integer.valueOf(old_country));
+                        vaiserexcluido.setMovieId(Integer.valueOf(String.valueOf(request.getAttribute("id"))));
+                        ProductionCountry vaiserdeletado = daoProductionCountry.obter(vaiserexcluido);
+                        if (!old_country.equals("1")) {
+                            daoProductionCountry.remover(vaiserdeletado);
+                        }
                     }
-
-                    pcpk.setCountryId(Integer.valueOf(new_country));
-                    pcpk.setMovieId(Integer.valueOf(act_movie));
-                    ProductionCountry added = new ProductionCountry(pcpk);
-                    daoProductionCountry.inserir(added);
-
+                    daoProductionCountry.inserir(tchau);
                 }
             } catch (Exception e) {
-                nextJSP = e.getMessage();
+                out.println(e);
             }
             response.sendRedirect(nextJSP);
         }

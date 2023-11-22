@@ -191,7 +191,7 @@
                 %>
             </aside>
 
-            <section class="areaUser debug">
+            <section class="areaUser debug" hidden>
                 <div class="comentarios debug">
                     Lorem ipsum dolor sit amet consectetur
                 </div>
