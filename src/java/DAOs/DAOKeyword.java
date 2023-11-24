@@ -63,7 +63,7 @@ public class DAOKeyword extends DAOGenerico<Keyword> {
         DAOKeyword daoKeyword = new DAOKeyword();
         List<Keyword> listaKeyword = daoKeyword.list();
         for (Keyword arma : listaKeyword) {
-            System.out.println(arma.getKeywordId()+ "-" + arma.getKeywordName());
+            System.out.println(arma.getKeywordId() + "-" + arma.getKeywordName());
         }
     }
 }

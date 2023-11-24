@@ -25,22 +25,21 @@
             } else {
                 daoGenre = new DAOGenre();
             }
-        %>
-        <%
+
             String acao = "";
             try {
                 acao = String.valueOf(session.getAttribute("acao"));
                 if (acao.equals("null")) {
                     acao = "buscar";
                 }
-                if (!String.valueOf(session.getAttribute("where")).equals("genre")) {
+                if (!String.valueOf(session.getAttribute("where")).equals("genero")) {
                     acao = "buscar";
                 }
             } catch (Exception e) {
                 acao = "buscar";
             }
             session.setAttribute("acao", acao);
-            session.setAttribute("where", "genre");
+            session.setAttribute("where", "genero");
             if (String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("null")) {
                 response.sendRedirect("index.jsp");
             } else {
@@ -71,17 +70,16 @@
 
         <main class="mainAdm pt-5 pb-5">
             <form
-                action="telaAdm.jsp"
                 id="generos"
-                method="get"
+                method="post"
                 class="telaCadastro p-5"
-
+                action="acaoGenero"
                 >
                 <div class="principal row-gap-2">
                     <h1 class="fs-1">Generos</h1>
                     <div class="d-flex column-gap-2 cadastros">
                         <label class="fs-4" for="idGenre">ID do Gênero: </label>
-                        <input id="idGenre" name="idGenre" type="number" 
+                        <input id="idGenre" name="idGenre" type="number" min="1" required
                                <%
                                    String id = "null";
                                    try {
@@ -96,11 +94,15 @@
                                %>/>
                     </div>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="genre_name">ID genero: </label>
+                        <label class="fs-4" for="genre_name">Nome gênero: </label>
                         <input id="genre_name" name="genre_name" type="text"
                                <%
-                                   if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
-                                       out.println("value='" + String.valueOf(daoGenre.obter(Integer.valueOf(id)).getGenreName()) + "'");
+                                   try {
+                                       if (!(id.equals("null")) && (String.valueOf(session.getAttribute("acao")).equals("alterar"))) {
+                                           out.println("value='" + String.valueOf(daoGenre.obter(Integer.valueOf(id)).getGenreName()) + "'");
+                                       }
+                                   } catch (Exception e) {
+                                     out.println("value=\'\'");
                                    }
                                %>
                                />
@@ -126,6 +128,16 @@
                             }%>
                         >
                         Buscar
+                    </button>
+                    <button
+                        name="acao"
+                        value="listar"
+                        class="botaoAdm buscar"
+                        <%if (!(acao.equals("buscar"))) {
+                                out.println("hidden");
+                            }%>
+                        >
+                        Listar
                     </button>
                     <button
                         name="acao"

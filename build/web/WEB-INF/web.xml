@@ -28,6 +28,26 @@
         <servlet-name>acao</servlet-name>
         <servlet-class>servlets.acao</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>acaoFilme</servlet-name>
+        <servlet-class>servlets.acaoFilme</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>acaoGenero</servlet-name>
+        <servlet-class>servlets.acaoGenero</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>acaoKeywords</servlet-name>
+        <servlet-class>servlets.acaoKeywords</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>acaoProdutora</servlet-name>
+        <servlet-class>servlets.acaoProdutora</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>acaoPais</servlet-name>
+        <servlet-class>servlets.acaoPais</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registro</servlet-name>
         <url-pattern>/registro</url-pattern>
@@ -55,6 +75,26 @@
     <servlet-mapping>
         <servlet-name>acao</servlet-name>
         <url-pattern>/acao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acaoFilme</servlet-name>
+        <url-pattern>/acaoFilme</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acaoGenero</servlet-name>
+        <url-pattern>/acaoGenero</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acaoKeywords</servlet-name>
+        <url-pattern>/acaoKeywords</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acaoProdutora</servlet-name>
+        <url-pattern>/acaoProdutora</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acaoPais</servlet-name>
+        <url-pattern>/acaoPais</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
