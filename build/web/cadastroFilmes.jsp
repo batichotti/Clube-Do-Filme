@@ -249,13 +249,12 @@
                     <h1 class="fs-1">País</h1>
                     <div class="d-flex column-gap-2 cadastros">
                         <select id="listaOpcoes" name="listaOpcoes" style="color: white; background-color: black;">
-                            <%
-                                DAOCountry daoPC = new DAOCountry();
-                                for (Country c : daoPC.listInOrderNome()) {
-                                    out.println("<option value=" + c.getCountryId() + ">" + c.getCountryName() + "</option>");
-                                }
-                            %>
+                            <% DAOCountry daoPC = new DAOCountry(); %>
+                            <% for (Country c : daoPC.listInOrderNome()) {%>
+                            <option value="<%= c.getCountryId()%>"><%= c.getCountryName()%></option>
+                            <% } %>
                         </select>
+
                     </div>
                 </div>
                 <button type="submit" class="botaoAdm botaoAdd">Adicionar</button>
@@ -263,25 +262,37 @@
         </main>
 
         <script>
-            document.getElementById("listaOpcoes").value = "<%
+            function selectElement(id, valueToSelect) {
+                let element = document.getElementById(id);
+                element.value = valueToSelect;
+            }
+
+            selectElement('listaOpcoes', <%
                 String country = "null";
                 DAOProductionCountry daoProdCount = new DAOProductionCountry();
                 try {
                     String movie_title = daoMovies.obter(Integer.valueOf(String.valueOf(session.getAttribute("id")))).getTitle();
-                    
-                    for (ProductionCountry m: daoProdCount.encontrarPaisesPorFilmeId( movie_title )) {
-                            country = String.valueOf( m.getCountry().getCountryId() );
+
+                    try {
+                        for (ProductionCountry m : daoProdCount.encontrarPaisesPorFilmeId(movie_title)) {
+                            country = String.valueOf(m.getProductionCountryPK().getCountryId());
                         }
-                    
+                    } catch (Exception e) {
+                        if (country.equals("null")) {
+                            out.print("139");
+                        } else {
+                            out.print("140");
+                        }
+                    }
+
                     if (!country.equals("null")) {
                         out.print(country);
-                    } else {
-                        out.print("139");
                     }
                 } catch (Exception e) {
                     out.print(e.getMessage());
                 }
-            %>";
+            %>);
+
         </script>
         <script src="./assets/js/cadastroAdm.js"></script>
     </body>

@@ -1,3 +1,5 @@
+<%@page import="DAOs.DAOMovieGenres"%>
+<%@page import="Entidades.Genre"%>
 <%@page import="DAOs.DAOGenre"%>
 <!DOCTYPE html>
 <%@page import="Entidades.Movie"%> <%@page import="DAOs.DAOMovies"%>
@@ -102,7 +104,7 @@
                                            out.println("value='" + String.valueOf(daoGenre.obter(Integer.valueOf(id)).getGenreName()) + "'");
                                        }
                                    } catch (Exception e) {
-                                     out.println("value=\'\'");
+                                       out.println("value=\'\'");
                                    }
                                %>
                                />
@@ -112,7 +114,7 @@
                             id="periferico"
                             type="checkbox"
                             class="botaoPeriferico"
-                            onclick="perifericos(genero)"
+                            onclick="perifericos(generoHas)"
                             />
                         <label for="periferico">Adicionar generos</label>
                     </div>
@@ -183,21 +185,100 @@
                 <!-- CHAMA O GENERO -->
             </form>
 
-            <form id="genero" class="telaCadastro p-5" hidden>
-                <div class="principal">
-                    <h1 class="fs-1">Genero</h1>
+            <form id="generoHas" class="telaCadastro p-5" hidden method="post" action="acaoGeneroHas">
+                <div class="principal" style="flex-direction: row; width: 100%;align-content: space-around;justify-content: space-between;">
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idFilme">ID do genero: </label>
-                        <input id="idFilme" name="idFilme" type="number" />
+                        <h1 class="fs-1"><label for="listaOpcoes2">Filme</label></h1>
+                        <select id="listaOpcoes2" name="listaOpcoes2" style="color: white; background-color: black;">
+                            <% DAOMovies daoMovies = new DAOMovies();%>
+                            <% for (Movie c : daoMovies.listInOrderNome()) {%>
+                            <option value="<%= c.getMovieId()%>"><%= c.getTitle()%></option>
+                            <% } %>
+                        </select>
                     </div>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idPalavraChave">Nome: </label>
-                        <input id="idPalavraChave" name="idPalavraChave" type="text" />
+                        <h1 class="fs-1"><label for="listaOpcoes">Gênero</label></h1>
+                        <select id="listaOpcoes" name="listaOpcoes" style="color: white; background-color: black;">
+                            <% DAOGenre daoPC = new DAOGenre();
+                                String acao2 = "null";
+                                try {
+                                    acao2 = String.valueOf(session.getAttribute("acao2"));
+                                } catch (Exception e) {
+                                    acao2 = "buscar";
+                                }
+                                if (acao2.equals("null")) {
+                                    acao2 = "buscar";
+                                }
+                            %>
+                            <% for (Genre c : daoGenre.list()) {%>
+                            <option value="<%= c.getGenreId()%>"><%= c.getGenreName()%></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="botoesCRUD d-flex flex-column row-gap-2">
+                        <button name="acaoHas"  value="cancelar" class="botaoAdm excluir"
+                                <%if ((acao2.equals("buscar"))) {
+                                        out.println("hidden");
+                                    }%>
+                                >
+                            Cancelar
+                        </button>
+                        <button name="acao"  value="adicionar" class="botaoAdm excluir"
+                                <%if (!(acao2.equals(""))) {
+                                        out.println("hidden");
+                                    }%>
+                                >
+                            Adicionar
+                        </button>
+                        <button name="acao"  value="excluir" class="botaoAdm excluir"
+                                <%if (!(acao2.equals(""))) {
+                                        out.println("hidden");
+                                    }%>
+                                >
+                            Excluir
+                        </button>
+                        <button name="acao"  value="buscar" class="botaoAdm excluir"
+                                <%if (!(acao2.equals("buscar"))) {
+                                        out.println("hidden");
+                                    }%>
+                                >
+                            Buscar
+                        </button>
                     </div>
                 </div>
-                <button action="submit" class="botaoAdm botaoAdd">Adicionar</button>
             </form>
         </main>
+
+        <script>
+            function selectElement(id, valueToSelect) {
+                let element = document.getElementById(id);
+                element.value = valueToSelect;
+            }
+
+            selectElement('listaOpcoes3', <%
+                String country = "null";
+                DAOMovieGenres daoGH = new DAOMovieGenres();
+                try {
+                    //Buscar os generos e filmes
+                    try {
+
+                    } catch (Exception e) {
+                        if (country.equals("null")) {
+                            out.print("139");
+                        } else {
+                            out.print("140");
+                        }
+                    }
+
+                    if (!country.equals("null")) {
+                        out.print(country);
+                    }
+                } catch (Exception e) {
+                    out.print(e.getMessage());
+                }
+            %>);
+
+        </script>
         <script src="./assets/js/cadastroAdm.js"></script>
     </body>
 </html>

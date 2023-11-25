@@ -28,7 +28,7 @@ public class acaoPais extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String nextJSP = "/ProjetoDW/acaoPais";
+            String nextJSP = "/projetoDW/telaAdm.jsp";
             try {
                 HttpSession session = request.getSession();
                 if (String.valueOf(session.getAttribute("role")).equals("1")) {
@@ -50,27 +50,31 @@ public class acaoPais extends HttpServlet {
 
                     Country selecionado = daoCountry.obter(Integer.valueOf(new_country));
                     ProductionCountryPK vaiseradicionado = new ProductionCountryPK();
-                    vaiseradicionado.setCountryId(Integer.valueOf(String.valueOf(selecionado)));
-                    vaiseradicionado.setMovieId(Integer.valueOf(String.valueOf(request.getAttribute("id"))));
+                    vaiseradicionado.setCountryId(selecionado.getCountryId());
+                    vaiseradicionado.setMovieId(Integer.valueOf(String.valueOf(session.getAttribute("id"))));
                     ProductionCountry tchau = daoProductionCountry.obter(vaiseradicionado);
-                    
-                    if (tchau == null) {
-                        tchau = new ProductionCountry();
-                        tchau.setProductionCountryPK(vaiseradicionado);
-                        tchau.setProductionCountrycol("adicionado pelo programa");
-                        
-                        ProductionCountryPK vaiserexcluido = new ProductionCountryPK();
-                        vaiserexcluido.setCountryId(Integer.valueOf(old_country));
-                        vaiserexcluido.setMovieId(Integer.valueOf(String.valueOf(request.getAttribute("id"))));
-                        ProductionCountry vaiserdeletado = daoProductionCountry.obter(vaiserexcluido);
-                        if (!old_country.equals("1")) {
-                            daoProductionCountry.remover(vaiserdeletado);
+
+                    for (ProductionCountry m:daoProductionCountry.encontrarPaisesPorFilmeId(movie_title)) {
+                        try {
+                            ProductionCountryPK pk_del = new ProductionCountryPK();
+                            pk_del.setCountryId(m.getProductionCountryPK().getCountryId());
+                            pk_del.setMovieId(m.getProductionCountryPK().getMovieId());
+                            ProductionCountry prod_del = daoProductionCountry.obter(pk_del);
+                            daoProductionCountry.remover(prod_del);
+                        } catch (Exception e) {
+                            System.out.println(e);
                         }
                     }
+                    
+                    tchau = new ProductionCountry();
+                    tchau.setProductionCountryPK(vaiseradicionado);
+                    tchau.setProductionCountrycol("adicionado pelo programa");
+
                     daoProductionCountry.inserir(tchau);
                 }
             } catch (Exception e) {
-                out.println(e);
+                //nextJSP = e.getMessage();
+                System.out.println("123");
             }
             response.sendRedirect(nextJSP);
         }

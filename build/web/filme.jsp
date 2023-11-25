@@ -4,6 +4,7 @@
     Author     : Mateus Cohuzer
 --%>
 
+<%@page import="DAOs.DAOCountry"%>
 <%@page import="Entidades.ProductionCountry"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Entidades.User"%>
@@ -48,6 +49,7 @@
                     <a href="filme.jsp">Filmes (jsp)</a>
                     <%
                         DAOUser daoUser = new DAOUser();
+                        DAOCountry daoCountry = new DAOCountry();
                         DAOMovies daoMovies = new DAOMovies();
                         DAOMovieGenres daoMovieGenres = new DAOMovieGenres();
                         DAOMovieKeywords daoMovieKeywords = new DAOMovieKeywords();
@@ -138,9 +140,9 @@
                                 for(ProductionCountry i : daoProductionCountry.encontrarPaisesPorFilmeId(String.valueOf(movie.getTitle()))){
                                     x += 1;
                                     if(!(daoProductionCountry.encontrarPaisesPorFilmeId(String.valueOf(movie.getTitle())).size() == x)){
-                                        out.println(i.getCountry().getCountryName() + ", ");
+                                        out.println(daoCountry.obter(i.getProductionCountryPK().getCountryId()).getCountryName() + ", ");
                                     } else {
-                                        out.println(i.getCountry().getCountryName());
+                                        out.println(daoCountry.obter(i.getProductionCountryPK().getCountryId()).getCountryName());
                                     }
                                 }
                             }

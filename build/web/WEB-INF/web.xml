@@ -48,6 +48,10 @@
         <servlet-name>acaoPais</servlet-name>
         <servlet-class>servlets.acaoPais</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>acaoGeneroHas</servlet-name>
+        <servlet-class>servlets.acaoGeneroHas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registro</servlet-name>
         <url-pattern>/registro</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>acaoPais</servlet-name>
         <url-pattern>/acaoPais</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acaoGeneroHas</servlet-name>
+        <url-pattern>/acaoGeneroHas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
