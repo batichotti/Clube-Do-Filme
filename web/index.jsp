@@ -52,7 +52,6 @@
                 class="d-flex justify-content-between align-items-center pt-4 w-100"
                 >
                 <div class="d-flex gap column-gap-2 ps-5">
-                    <!-- <img src="" alt="Logo" class=".img-fluid"> -->
                     <h1 class=".img-fluid">🧼</h1>
                     <a href="index.jsp"><h1>Clube do Filme</h1></a>
                 </div>
@@ -79,7 +78,7 @@
 
                         %>
                     </div>
-                    <form action="search" method="post">
+                    <form action="buscar.jsp" method="post">
                         <input
                             type="text"
                             class="inputBuscar w-75 rounded-pill"
@@ -267,10 +266,10 @@
                 <div class="gallery-wrapper">
                     <div class="gallery">
                         <a href="<%out.println("/projetoDW/filme.jsp?id=459489");%>"><img
-                            src="./assets/images/4.png"
-                            class="item current-item"
-                            alt=""
-                            /></a>
+                                src="./assets/images/4.png"
+                                class="item current-item"
+                                alt=""
+                                /></a>
                         <img
                             src="./assets/images/3.png"
                             class="item current-item"
@@ -282,35 +281,35 @@
                             alt=""
                             />
                         <a href="<%out.println("/projetoDW/filme.jsp?id=194662");%>"><img
-                            src="./assets/images/2.png"
-                            class="item current-item"
-                            alt=""
-                            /></a>
+                                src="./assets/images/2.png"
+                                class="item current-item"
+                                alt=""
+                                /></a>
                         <img
                             src="./assets/images/6.png"
                             class="item current-item"
                             alt=""
                             />
                         <a href="<%out.println("/projetoDW/filme.jsp?id=10315");%>"><img
-                            src="./assets/images/1.png"
-                            class="item current-item"
-                            alt=""
-                            /></a>
+                                src="./assets/images/1.png"
+                                class="item current-item"
+                                alt=""
+                                /></a>
                         <a href="<%out.println("/projetoDW/filme.jsp?id=274");%>"><img
-                            src="./assets/images/7.png"
-                            class="item current-item"
-                            alt=""
-                            /></a>
+                                src="./assets/images/7.png"
+                                class="item current-item"
+                                alt=""
+                                /></a>
                         <img
                             src="./assets/images/8.png"
                             class="item current-item"
                             alt=""
                             />
                         <a href="<%out.println("/projetoDW/filme.jsp?id=9552");%>"><img
-                            src="./assets/images/9.png"
-                            class="item current-item"
-                            alt=""
-                            /></a>
+                                src="./assets/images/9.png"
+                                class="item current-item"
+                                alt=""
+                                /></a>
                         <img
                             src="./assets/images/10.png"
                             class="item current-item"
