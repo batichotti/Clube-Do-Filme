@@ -4,6 +4,7 @@
     Author     : Mateus Cohuzer
 --%>
 
+<%@page import="DAOs.DAOGenre"%>
 <%@page import="DAOs.DAOCountry"%>
 <%@page import="Entidades.ProductionCountry"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -156,9 +157,10 @@
                         %>
                          | 
                         <%
+                            DAOGenre daoGenre = new DAOGenre();
                             if(!id.equals("null") && !id.equals("err")){
                                 for(String i : daoMovieGenres.getGenresByMovieTitle(String.valueOf(movie.getTitle()))){
-                                    out.println(i + " ");
+                                    out.println(daoGenre.obter(Integer.valueOf(i)).getGenreName() + " ");
                                 }
                             }
                         %></h5>

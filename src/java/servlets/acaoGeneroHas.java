@@ -3,13 +3,10 @@ package servlets;
 import DAOs.DAOGenre;
 import DAOs.DAOMovieGenres;
 import DAOs.DAOMovies;
-import DAOs.DAOProductionCountry;
 import Entidades.Genre;
 import Entidades.Movie;
 import Entidades.MovieGenres;
 import Entidades.MovieGenresPK;
-import Entidades.ProductionCountry;
-import Entidades.ProductionCountryPK;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,7 +31,7 @@ public class acaoGeneroHas extends HttpServlet {
                 if (String.valueOf(session.getAttribute("role")).equals("1")) {
                     DAOMovies daoMovies = new DAOMovies();
                     DAOGenre daoGenre = new DAOGenre();
-                    DAOProductionCountry daoProductionCountry = new DAOProductionCountry();
+                    DAOMovieGenres daoMovieGenres = new DAOMovieGenres();
 
                     String acao2 = String.valueOf(request.getParameter("acao2"));
                     switch (acao2) {
@@ -43,7 +40,6 @@ public class acaoGeneroHas extends HttpServlet {
                             MovieGenres target = new MovieGenres();
 
                             try {
-                                DAOMovieGenres daoMovieGenres = new DAOMovieGenres();
                                 Movie film = daoMovies.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes2"))));
                                 Genre genero = daoGenre.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes"))));
                                 MovieGenresPK mgpk = new MovieGenresPK();
@@ -64,30 +60,28 @@ public class acaoGeneroHas extends HttpServlet {
 
                             break;
                         case "adicionar":
-                            //ARRUMAR
-                            Genre selecionado = daoGenre.obter(Integer.valueOf("1"));
-                            ProductionCountryPK vaiseradicionado = new ProductionCountryPK();
-                            vaiseradicionado.setCountryId(selecionado.getGenreId());
-                            vaiseradicionado.setMovieId(Integer.valueOf(String.valueOf(session.getAttribute("id"))));
-                            ProductionCountry tchau = daoProductionCountry.obter(vaiseradicionado);
+                            Genre selecionado = daoGenre.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes"))));
+                            MovieGenresPK vaiseradicionado = new MovieGenresPK();
+                            vaiseradicionado.setGenreId(selecionado.getGenreId());
+                            vaiseradicionado.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes2"))));
+                            MovieGenres tchau = new MovieGenres();
 
-                            for (ProductionCountry m : daoProductionCountry.encontrarPaisesPorFilmeId("1")) {
-                                try {
-                                    ProductionCountryPK pk_del = new ProductionCountryPK();
-                                    pk_del.setCountryId(m.getProductionCountryPK().getCountryId());
-                                    pk_del.setMovieId(m.getProductionCountryPK().getMovieId());
-                                    ProductionCountry prod_del = daoProductionCountry.obter(pk_del);
-                                    daoProductionCountry.remover(prod_del);
-                                } catch (Exception e) {
-                                    System.out.println(e);
-                                }
-                            }
+                            tchau.setMovieGenresPK(vaiseradicionado);
+                            tchau.setMovieGenrescol("adicionado pelo programa");
 
-                            tchau = new ProductionCountry();
-                            tchau.setProductionCountryPK(vaiseradicionado);
-                            tchau.setProductionCountrycol("adicionado pelo programa");
-
-                            daoProductionCountry.inserir(tchau);
+                            daoMovieGenres.inserir(tchau);
+                            session.setAttribute("acao2", "buscar");
+                            break;
+                        case "excluir":
+                            Genre selecao = daoGenre.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes"))));
+                            MovieGenresPK vaiserexcluido = new MovieGenresPK();
+                            vaiserexcluido.setGenreId(selecao.getGenreId());
+                            vaiserexcluido.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes2"))));
+                            MovieGenres tchautchau = daoMovieGenres.obter(vaiserexcluido);
+                            
+                            daoMovieGenres.remover(tchautchau);
+                            session.setAttribute("acao2", "buscar");
+                            break;
                         case "cancelar":
                             session.setAttribute("acao2", "buscar");
                             break;

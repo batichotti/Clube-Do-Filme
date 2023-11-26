@@ -58,6 +58,9 @@ public class search extends HttpServlet {
                     + "      height: 2px; \n"
                     + "      background-color: #FFFFFF;\n"
                     + "    }\n"
+                    + "    p {"
+                    + "      font-size: 30px;"
+                    + "    }\n"
                     + "  </style>");
             out.println("</head>");
             out.println("<body>");
@@ -72,8 +75,7 @@ public class search extends HttpServlet {
             DAOMovies daoMovies = new DAOMovies();
 
             for (Movie m : daoMovies.searchByTitle(buscado)) {
-                out.println("<a href='/projetoDW/filme.jsp?id=" + String.valueOf(m.getMovieId()) + "'>" + m.getTitle() + "</a>");
-                out.println("<br/>");
+                out.println("<a href='/projetoDW/filme.jsp?id=" + String.valueOf(m.getMovieId()) + "'> <p>" + m.getTitle() + "</p></a>");
             }
             out.println("</body>");
             out.println("</html>");

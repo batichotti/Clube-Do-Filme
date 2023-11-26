@@ -45,7 +45,7 @@ public class DAOMovieGenres extends DAOGenerico<MovieGenres> {
         List<String> genresList = new ArrayList<>();
         
         for (MovieGenres movieGenres : resultList) {
-            genresList.add(movieGenres.getGenre().getGenreName());
+            genresList.add(String.valueOf( movieGenres.getMovieGenresPK().getGenreId()) );
         }
         
         return genresList;
