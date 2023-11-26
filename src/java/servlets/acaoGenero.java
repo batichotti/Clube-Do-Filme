@@ -62,6 +62,7 @@ public class acaoGenero extends HttpServlet {
                         genre.setGenreName(String.valueOf(request.getParameter("genre_name")));
                         try {
                             daoGenre.atualizar(genre);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }
@@ -72,6 +73,7 @@ public class acaoGenero extends HttpServlet {
 
                         try {
                             daoGenre.remover(genre);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }
@@ -84,6 +86,7 @@ public class acaoGenero extends HttpServlet {
 
                         try {
                             daoGenre.inserir(genre);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }

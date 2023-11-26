@@ -67,6 +67,7 @@ public class acaoFilme extends HttpServlet {
 
                         try {
                             daoMovies.atualizar(movie);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }
@@ -77,6 +78,7 @@ public class acaoFilme extends HttpServlet {
 
                         try {
                             daoMovies.remover(movie);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }
@@ -93,6 +95,7 @@ public class acaoFilme extends HttpServlet {
 
                         try {
                             daoMovies.inserir(movie);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }

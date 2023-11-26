@@ -47,8 +47,8 @@
             </div>
             <nav class="d-flex justify-content-around align-items-center pe-5 w-50">
                 <div class="d-flex gap column-gap-5">
-                    <a href="filme.html">Filmes</a>
-                    <a href="filme.jsp">Filmes (jsp)</a>
+                    <a href="https://drive.google.com/drive/folders/1nt9zQMq7ZKlN-1fmwHGqy_q5ckygzEXk">Gratuitos</a>
+                    <a href="filme.jsp">Filmes</a>
                     <%
                         DAOUser daoUser = new DAOUser();
                         DAOCountry daoCountry = new DAOCountry();

@@ -259,6 +259,7 @@
                     out.print("selectElement('listaOpcoes2', " + String.valueOf(session.getAttribute("lop2")) + ");");
                 }
             %>
+
         </script>
         <script src="./assets/js/cadastroAdm.js"></script>
     </body>

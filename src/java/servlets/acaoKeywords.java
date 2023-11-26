@@ -63,6 +63,7 @@ public class acaoKeywords extends HttpServlet {
 
                         try {
                             daoKeyword.atualizar(keyword);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }
@@ -73,10 +74,11 @@ public class acaoKeywords extends HttpServlet {
 
                         try {
                             daoKeyword.remover(keyword);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }
-                        nextJSP = "/projetoDW/";
+                        nextJSP = "/projetoDW/cadastroPalavrasChaves.jsp";
                         break;
                     case "salvar":
                         keyword = new Keyword();
@@ -85,6 +87,7 @@ public class acaoKeywords extends HttpServlet {
 
                         try {
                             daoKeyword.inserir(keyword);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }

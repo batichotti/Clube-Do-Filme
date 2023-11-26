@@ -63,6 +63,7 @@ public class acaoProdutora extends HttpServlet {
 
                         try {
                             daoProdutora.atualizar(produtora);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }
@@ -73,6 +74,7 @@ public class acaoProdutora extends HttpServlet {
 
                         try {
                             daoProdutora.remover(produtora);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }
@@ -85,6 +87,7 @@ public class acaoProdutora extends HttpServlet {
 
                         try {
                             daoProdutora.inserir(produtora);
+                            session.setAttribute("acao", "buscar");
                         } catch (Exception e) {
                             System.out.println(e);
                         }
