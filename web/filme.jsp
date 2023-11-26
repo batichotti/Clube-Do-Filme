@@ -4,6 +4,7 @@
     Author     : Mateus Cohuzer
 --%>
 
+<%@page import="DAOs.DAOKeyword"%>
 <%@page import="DAOs.DAOGenre"%>
 <%@page import="DAOs.DAOCountry"%>
 <%@page import="Entidades.ProductionCountry"%>
@@ -166,14 +167,15 @@
                         %></h5>
                     <h6>
                         <%
+                            DAOKeyword daoKeyword = new DAOKeyword();
                             if(!id.equals("null") && !id.equals("err")){
                                 int x = 0;
                                 for(String i : daoMovieKeywords.getKeywordsByMovieTitle(String.valueOf(movie.getTitle()))){
                                     x += 1;
                                     if(!(daoMovieKeywords.getKeywordsByMovieTitle(String.valueOf(movie.getTitle())).size() == x)){
-                                        out.println(i + ", ");
+                                        out.println(daoKeyword.obter(Integer.valueOf(i)).getKeywordName() + ", ");
                                     } else {
-                                        out.println(i);
+                                        out.println(daoKeyword.obter(Integer.valueOf(i)).getKeywordName());
                                     }
                                 }
                             }

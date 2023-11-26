@@ -24,7 +24,7 @@ public class DAOProductionCompany extends DAOGenerico<ProductionCompany> {
     }
 
     public List<ProductionCompany> listInOrderNome() {
-        TypedQuery<ProductionCompany> query = em.createQuery("SELECT e FROM ProductionCompany e ORDER BY e.escopo", ProductionCompany.class);
+        TypedQuery<ProductionCompany> query = em.createQuery("SELECT e FROM ProductionCompany e ORDER BY e.companyName", ProductionCompany.class);
         List<ProductionCompany> resultList = query.getResultList();
         return resultList;
     }

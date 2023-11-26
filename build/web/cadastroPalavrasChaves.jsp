@@ -1,3 +1,5 @@
+<%@page import="Entidades.Movie"%>
+<%@page import="DAOs.DAOMovies"%>
 <!DOCTYPE html>
 <%@page import="Entidades.Keyword"%>
 <%@page import="DAOs.DAOKeyword"%>
@@ -19,8 +21,7 @@
     </head>
     <body class="bodyAdm">
         <% DAOKeyword daoKeyword = null;
-            if (String.valueOf(session.getAttribute("role")).equals("0")
-                    || String.valueOf(session.getAttribute("role")).equals("null")) {
+            if (String.valueOf(session.getAttribute("role")).equals("0") || String.valueOf(session.getAttribute("role")).equals("null")) {
                 response.sendRedirect("index.jsp");
             } else {
                 daoKeyword = new DAOKeyword();
@@ -36,6 +37,9 @@
                 if (!String.valueOf(session.getAttribute("where")).equals("keyword")) {
                     acao = "buscar";
                     session.setAttribute("id", "null");
+                    session.setAttribute("acao2", "buscar");
+                    session.setAttribute("lop", "");
+                    session.setAttribute("lop2", "");
                 }
             } catch (Exception e) {
                 acao = "buscar";
@@ -109,7 +113,7 @@
                             id="periferico"
                             type="checkbox"
                             class="botaoPeriferico"
-                            onclick="perifericos(palavraChave)"
+                            onclick="perifericos(keywordHas)"
                             />
                         <label for="periferico">Adicionar palavras</label>
                     </div>
@@ -180,21 +184,85 @@
                 <!-- CHAMA O PALAVRA -->
             </form>
 
-            <form id="palavraChave" class="telaCadastro p-5" hidden>
-                <div class="principal">
-                    <h1 class="fs-1">Palavra Chave</h1>
+            <form id="keywordHas" class="telaCadastro p-5" hidden method="post" action="acaoKeywordHas">
+                <div class="principal" style="flex-direction: row; width: 100%;align-content: space-around;justify-content: space-between;">
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idFilme">ID da palavra: </label>
-                        <input id="idFilme" name="idFilme" type="number" />
+                        <h1 class="fs-1"><label for="listaOpcoes2">Filme</label></h1>
+                        <select id="listaOpcoes2" name="listaOpcoes2" style="color: white; background-color: black;">
+                            <% DAOMovies daoMovies = new DAOMovies();%>
+                            <% for (Movie c : daoMovies.listInOrderNome()) {%>
+                            <option value="<%= c.getMovieId()%>"><%= c.getTitle()%></option>
+                            <% } %>
+                        </select>
                     </div>
                     <div class="d-flex column-gap-2 cadastros">
-                        <label class="fs-4" for="idPalavraChave">Nome: </label>
-                        <input id="idPalavraChave" name="idPalavraChave" type="text" />
+                        <h1 class="fs-1"><label for="listaOpcoes">Keyword</label></h1>
+                        <select id="listaOpcoes" name="listaOpcoes" style="color: white; background-color: black;">
+                            <% DAOKeyword daoPC = new DAOKeyword();
+                                String acao2 = "null";
+                                try {
+                                    acao2 = String.valueOf(session.getAttribute("acao2"));
+                                } catch (Exception e) {
+                                    acao2 = "buscar";
+                                    session.setAttribute("acao2", "buscar");
+                                }
+                                if (acao2.equals("null")) {
+                                    acao2 = "buscar";
+                                    session.setAttribute("acao2", "buscar");
+                                }
+                            %>
+                            <% for (Keyword c : daoKeyword.listInOrderNome()) {%>
+                            <option value="<%= c.getKeywordId()%>"><%= c.getKeywordName()%></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="botoesCRUD d-flex flex-column row-gap-2">
+                        <button name="acao2"  value="cancelar" class="botaoAdm excluir"
+                                <%if ((acao2.equals("buscar"))) {
+                                        out.println("hidden");
+                                    }%>
+                                >
+                            Cancelar
+                        </button>
+                        <button name="acao2"  value="adicionar" class="botaoAdm excluir"
+                                <%if (!(acao2.equals("adicionar"))) {
+                                        out.println("hidden");
+                                    }%>
+                                >
+                            Adicionar
+                        </button>
+                        <button name="acao2"  value="excluir" class="botaoAdm excluir"
+                                <%if (!(acao2.equals("excluir"))) {
+                                        out.println("hidden");
+                                    }%>
+                                >
+                            Excluir
+                        </button>
+                        <button name="acao2"  value="buscar" class="botaoAdm excluir"
+                                <%if (!(acao2.equals("buscar"))) {
+                                        out.println("hidden");
+                                    }%>
+                                >
+                            Buscar
+                        </button>
                     </div>
                 </div>
-                <button action="submit" class="botaoAdm botaoAdd">Adicionar</button>
             </form>
         </main>
+        <script>
+            function selectElement(id, valueToSelect) {
+                let element = document.getElementById(id);
+                element.value = valueToSelect; //valueToSelect == id do banco de dados
+            }
+
+            <%
+                if (!String.valueOf(session.getAttribute("acao2")).equals("buscar")) {
+                    out.print("selectElement('listaOpcoes', " + String.valueOf(session.getAttribute("lop")) + ");");
+                    out.print("selectElement('listaOpcoes2', " + String.valueOf(session.getAttribute("lop2")) + ");");
+                }
+            %>
+
+        </script>
         <script src="./assets/js/cadastroAdm.js"></script>
     </body>
 </html>

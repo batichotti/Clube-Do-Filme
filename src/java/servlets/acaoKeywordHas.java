@@ -1,51 +1,68 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package servlets;
 
-import DAOs.DAOGenre;
-import DAOs.DAOMovieGenres;
+import DAOs.DAOKeyword;
+import DAOs.DAOMovieKeywords;
 import DAOs.DAOMovies;
-import Entidades.Genre;
+import Entidades.Keyword;
 import Entidades.Movie;
-import Entidades.MovieGenres;
-import Entidades.MovieGenresPK;
-import jakarta.servlet.http.HttpSession;
+import Entidades.MovieKeywords;
+import Entidades.MovieKeywordsPK;
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
+import javax.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Mateus
  */
-public class acaoGeneroHas extends HttpServlet {
+public class acaoKeywordHas extends HttpServlet {
 
-    protected void processRequest(jakarta.servlet.http.HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response)
-            throws jakarta.servlet.ServletException, IOException {
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String nextJSP = "/projetoDW/cadastroGeneros.jsp";
+            String nextJSP = "/projetoDW/cadastroPalavrasChaves.jsp";
             try {
                 HttpSession session = request.getSession();
                 if (String.valueOf(session.getAttribute("role")).equals("1")) {
                     DAOMovies daoMovies = new DAOMovies();
-                    DAOGenre daoGenre = new DAOGenre();
-                    DAOMovieGenres daoMovieGenres = new DAOMovieGenres();
+                    DAOKeyword daoKeyword = new DAOKeyword();
+                    DAOMovieKeywords daoMovieKeywords = new DAOMovieKeywords();
 
                     String acao2 = String.valueOf(request.getParameter("acao2"));
                     switch (acao2) {
                         case "buscar":
 
-                            MovieGenres target = new MovieGenres();
+                            MovieKeywords target = new MovieKeywords();
 
                             try {
                                 Movie film = daoMovies.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes2"))));
-                                Genre genero = daoGenre.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes"))));
-                                MovieGenresPK mgpk = new MovieGenresPK();
-                                mgpk.setGenreId(genero.getGenreId());
+                                Keyword genero = daoKeyword.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes"))));
+                                MovieKeywordsPK mgpk = new MovieKeywordsPK();
+                                mgpk.setKeywordId(genero.getKeywordId());
                                 mgpk.setMovieId(film.getMovieId());
-                                session.setAttribute("lop", mgpk.getGenreId());
+                                session.setAttribute("lop", mgpk.getKeywordId());
                                 session.setAttribute("lop2", mgpk.getMovieId());
-                                target = daoMovieGenres.obter(mgpk);
+                                target = daoMovieKeywords.obter(mgpk);
                             } catch (Exception e) {
                                 target = null;
                             }
@@ -58,26 +75,26 @@ public class acaoGeneroHas extends HttpServlet {
 
                             break;
                         case "adicionar":
-                            Genre selecionado = daoGenre.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes"))));
-                            MovieGenresPK vaiseradicionado = new MovieGenresPK();
-                            vaiseradicionado.setGenreId(selecionado.getGenreId());
+                            Keyword selecionado = daoKeyword.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes"))));
+                            MovieKeywordsPK vaiseradicionado = new MovieKeywordsPK();
+                            vaiseradicionado.setKeywordId(selecionado.getKeywordId());
                             vaiseradicionado.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes2"))));
-                            MovieGenres tchau = new MovieGenres();
+                            MovieKeywords tchau = new MovieKeywords();
 
-                            tchau.setMovieGenresPK(vaiseradicionado);
-                            tchau.setMovieGenrescol("adicionado pelo programa");
+                            tchau.setMovieKeywordsPK(vaiseradicionado);
+                            tchau.setMovieKeywordscol("adicionado pelo programa");
 
-                            daoMovieGenres.inserir(tchau);
+                            daoMovieKeywords.inserir(tchau);
                             session.setAttribute("acao2", "buscar");
                             break;
                         case "excluir":
-                            Genre selecao = daoGenre.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes"))));
-                            MovieGenresPK vaiserexcluido = new MovieGenresPK();
-                            vaiserexcluido.setGenreId(selecao.getGenreId());
+                            Keyword selecao = daoKeyword.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes"))));
+                            MovieKeywordsPK vaiserexcluido = new MovieKeywordsPK();
+                            vaiserexcluido.setKeywordId(selecao.getKeywordId());
                             vaiserexcluido.setMovieId(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes2"))));
-                            MovieGenres tchautchau = daoMovieGenres.obter(vaiserexcluido);
+                            MovieKeywords tchautchau = daoMovieKeywords.obter(vaiserexcluido);
                             
-                            daoMovieGenres.remover(tchautchau);
+                            daoMovieKeywords.remover(tchautchau);
                             session.setAttribute("acao2", "buscar");
                             break;
                         case "cancelar":
@@ -106,7 +123,11 @@ public class acaoGeneroHas extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void doGet(jakarta.servlet.http.HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response) throws jakarta.servlet.ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ServletException ex) {
+            Logger.getLogger(acaoKeywordHas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -118,7 +139,11 @@ public class acaoGeneroHas extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void doPost(jakarta.servlet.http.HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response) throws jakarta.servlet.ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ServletException ex) {
+            Logger.getLogger(acaoKeywordHas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

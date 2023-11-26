@@ -45,7 +45,7 @@ public class DAOMovieKeywords extends DAOGenerico<MovieKeywords> {
         List<String> genresList = new ArrayList<>();
 
         for (MovieKeywords movieKeywords : resultList) {
-            genresList.add(movieKeywords.getKeyword().getKeywordName());
+            genresList.add(String.valueOf(movieKeywords.getMovieKeywordsPK().getKeywordId()));
         }
 
         return genresList;

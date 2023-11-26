@@ -52,6 +52,14 @@
         <servlet-name>acaoGeneroHas</servlet-name>
         <servlet-class>servlets.acaoGeneroHas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>acaoKeywordHas</servlet-name>
+        <servlet-class>servlets.acaoKeywordHas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>acaoProdutoraHas</servlet-name>
+        <servlet-class>servlets.acaoProdutoraHas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>registro</servlet-name>
         <url-pattern>/registro</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>acaoGeneroHas</servlet-name>
         <url-pattern>/acaoGeneroHas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acaoKeywordHas</servlet-name>
+        <url-pattern>/acaoKeywordHas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acaoProdutoraHas</servlet-name>
+        <url-pattern>/acaoProdutoraHas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

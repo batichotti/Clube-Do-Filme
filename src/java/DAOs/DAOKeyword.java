@@ -37,7 +37,7 @@ public class DAOKeyword extends DAOGenerico<Keyword> {
     }
 
     public List<Keyword> listInOrderNome() {
-        return em.createQuery("SELECT e FROM Keyword e ORDER BY e.email").getResultList();
+        return em.createQuery("SELECT e FROM Keyword e ORDER BY e.keywordName").getResultList();
     }
 
     public List<Keyword> listInOrderId() {
