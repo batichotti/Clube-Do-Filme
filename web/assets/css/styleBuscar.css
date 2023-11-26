@@ -16,14 +16,14 @@
   text-decoration: none;
 }
 
-.linkBuscar > a > p{
-    transition: 0.3s;
-    color: var(--colorText);
+.linkBuscar > a > p {
+  transition: 0.3s;
+  color: var(--colorText);
 }
-.linkBuscar > a > p:hover{
-    transition: 0.3s;
-    color: var(--colorAccent);
-    transform: scale(1.1,1.1);
+.linkBuscar > a > p:hover {
+  transition: 0.3s;
+  color: var(--colorAccent);
+  transform: scale(1.1, 1.1);
 }
 
 .bodyBuscar {
@@ -34,17 +34,23 @@
 
 .filmesBuscados {
   margin: 5vh 0 5vh 5vh;
-  width:40%;
+  width: 40%;
 }
-.filmesBuscados > ul > li > a{
+.filmesBuscados > ul > li > a {
   font-family: var(--fonteSecondary);
   font-size: 4vh;
 }
-.marcado{
-    background-color: var(--colorAccent);
-    padding:1vh;
-    color: var(--colorBackground);
+.marcado {
+  background-color: var(--colorAccent);
+  padding: 1vh;
+  color: var(--colorBackground);
 }
-main{
-    border-right: 2px solid var(--colorAccent);
+main {
+  border-right: 2px solid var(--colorAccent);
+}
+
+#sabao {
+  position: absolute;
+  top: 200px;
+  left: 500px;
 }
