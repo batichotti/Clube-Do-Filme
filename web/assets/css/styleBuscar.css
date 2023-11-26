@@ -1,0 +1,32 @@
+:root {
+  --colorBackground: #050004;
+  --colorBackGroundTransparent: rgba(5, 0, 4, 0);
+  --colorPrimary: #03fc20;
+  --colorSecondary: #012316;
+  --colorAccent: #e8a1e0;
+  --colorText: #ffffff;
+
+  --fontPrimary: "Bebas neue", sans-serif;
+  --fonteSecondary: "Oswald";
+}
+
+.linkBuscar {
+  color: var(--colorText);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.bodyBuscar {
+  background-color: var(--colorBackground);
+  display: flex;
+  flex-direction: column;
+}
+
+.filmesBuscados {
+  margin: 5vh 0 0 5vh;
+  outline: 1px dashed green;
+}
+.filmesBuscados > ul > li {
+  font-family: var(--fonteSecondary);
+  font-size: 4vh;
+}
