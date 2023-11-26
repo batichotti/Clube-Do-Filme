@@ -1,22 +1,22 @@
 package servlets;
 
-import DAOs.DAOCountry;
 import DAOs.DAOGenre;
+import DAOs.DAOMovieGenres;
 import DAOs.DAOMovies;
 import DAOs.DAOProductionCountry;
-import Entidades.Country;
 import Entidades.Genre;
 import Entidades.Movie;
 import Entidades.MovieGenres;
+import Entidades.MovieGenresPK;
 import Entidades.ProductionCountry;
 import Entidades.ProductionCountryPK;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -28,24 +28,30 @@ public class acaoGeneroHas extends HttpServlet {
             throws jakarta.servlet.ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String nextJSP = "/projetoDW/telaAdm.jsp";
+            String nextJSP = "/projetoDW/cadastroGeneros.jsp";
             try {
                 HttpSession session = request.getSession();
                 if (String.valueOf(session.getAttribute("role")).equals("1")) {
                     DAOMovies daoMovies = new DAOMovies();
                     DAOGenre daoGenre = new DAOGenre();
                     DAOProductionCountry daoProductionCountry = new DAOProductionCountry();
-                    DAOCountry daoCountry = new DAOCountry();
 
-                    String acao2 = String.valueOf(session.getAttribute("acao2"));
+                    String acao2 = String.valueOf(request.getParameter("acao2"));
                     switch (acao2) {
                         case "buscar":
 
                             MovieGenres target = new MovieGenres();
 
                             try {
+                                DAOMovieGenres daoMovieGenres = new DAOMovieGenres();
                                 Movie film = daoMovies.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes2"))));
                                 Genre genero = daoGenre.obter(Integer.valueOf(String.valueOf(request.getParameter("listaOpcoes"))));
+                                MovieGenresPK mgpk = new MovieGenresPK();
+                                mgpk.setGenreId(genero.getGenreId());
+                                mgpk.setMovieId(film.getMovieId());
+                                session.setAttribute("lop", mgpk.getGenreId());
+                                session.setAttribute("lop2", mgpk.getMovieId());
+                                target = daoMovieGenres.obter(mgpk);
                             } catch (Exception e) {
                                 target = null;
                             }
@@ -59,9 +65,9 @@ public class acaoGeneroHas extends HttpServlet {
                             break;
                         case "adicionar":
                             //ARRUMAR
-                            Country selecionado = daoCountry.obter(Integer.valueOf("1"));
+                            Genre selecionado = daoGenre.obter(Integer.valueOf("1"));
                             ProductionCountryPK vaiseradicionado = new ProductionCountryPK();
-                            vaiseradicionado.setCountryId(selecionado.getCountryId());
+                            vaiseradicionado.setCountryId(selecionado.getGenreId());
                             vaiseradicionado.setMovieId(Integer.valueOf(String.valueOf(session.getAttribute("id"))));
                             ProductionCountry tchau = daoProductionCountry.obter(vaiseradicionado);
 
@@ -82,6 +88,9 @@ public class acaoGeneroHas extends HttpServlet {
                             tchau.setProductionCountrycol("adicionado pelo programa");
 
                             daoProductionCountry.inserir(tchau);
+                        case "cancelar":
+                            session.setAttribute("acao2", "buscar");
+                            break;
                         default:
                             throw new AssertionError();
                     }

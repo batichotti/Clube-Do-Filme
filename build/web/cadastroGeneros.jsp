@@ -36,6 +36,9 @@
                 }
                 if (!String.valueOf(session.getAttribute("where")).equals("genero")) {
                     acao = "buscar";
+                    session.setAttribute("acao2", "buscar");
+                    session.setAttribute("lop", "");
+                    session.setAttribute("lop2", "");
                 }
             } catch (Exception e) {
                 acao = "buscar";
@@ -205,9 +208,11 @@
                                     acao2 = String.valueOf(session.getAttribute("acao2"));
                                 } catch (Exception e) {
                                     acao2 = "buscar";
+                                    session.setAttribute("acao2", "buscar");
                                 }
                                 if (acao2.equals("null")) {
                                     acao2 = "buscar";
+                                    session.setAttribute("acao2", "buscar");
                                 }
                             %>
                             <% for (Genre c : daoGenre.list()) {%>
@@ -216,28 +221,28 @@
                         </select>
                     </div>
                     <div class="botoesCRUD d-flex flex-column row-gap-2">
-                        <button name="acaoHas"  value="cancelar" class="botaoAdm excluir"
+                        <button name="acao2"  value="cancelar" class="botaoAdm excluir"
                                 <%if ((acao2.equals("buscar"))) {
                                         out.println("hidden");
                                     }%>
                                 >
                             Cancelar
                         </button>
-                        <button name="acao"  value="adicionar" class="botaoAdm excluir"
-                                <%if (!(acao2.equals(""))) {
+                        <button name="acao2"  value="adicionar" class="botaoAdm excluir"
+                                <%if (!(acao2.equals("adicionar"))) {
                                         out.println("hidden");
                                     }%>
                                 >
                             Adicionar
                         </button>
-                        <button name="acao"  value="excluir" class="botaoAdm excluir"
-                                <%if (!(acao2.equals(""))) {
+                        <button name="acao2"  value="excluir" class="botaoAdm excluir"
+                                <%if (!(acao2.equals("excluir"))) {
                                         out.println("hidden");
                                     }%>
                                 >
                             Excluir
                         </button>
-                        <button name="acao"  value="buscar" class="botaoAdm excluir"
+                        <button name="acao2"  value="buscar" class="botaoAdm excluir"
                                 <%if (!(acao2.equals("buscar"))) {
                                         out.println("hidden");
                                     }%>
@@ -252,31 +257,15 @@
         <script>
             function selectElement(id, valueToSelect) {
                 let element = document.getElementById(id);
-                element.value = valueToSelect;
+                element.value = valueToSelect; //valueToSelect == id do banco de dados
             }
 
-            selectElement('listaOpcoes3', <%
-                String country = "null";
-                DAOMovieGenres daoGH = new DAOMovieGenres();
-                try {
-                    //Buscar os generos e filmes
-                    try {
-
-                    } catch (Exception e) {
-                        if (country.equals("null")) {
-                            out.print("139");
-                        } else {
-                            out.print("140");
-                        }
-                    }
-
-                    if (!country.equals("null")) {
-                        out.print(country);
-                    }
-                } catch (Exception e) {
-                    out.print(e.getMessage());
+            <%
+                if (!String.valueOf(session.getAttribute("acao2")).equals("buscar")) {
+                    out.print("selectElement('listaOpcoes', " + String.valueOf(session.getAttribute("lop")) + ");");
+                    out.print("selectElement('listaOpcoes2', " + String.valueOf(session.getAttribute("lop2")) + ");");
                 }
-            %>);
+            %>
 
         </script>
         <script src="./assets/js/cadastroAdm.js"></script>

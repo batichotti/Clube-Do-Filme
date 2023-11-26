@@ -1,0 +1,16 @@
+Entidades/Country_.java
+Entidades/Genre_.java
+Entidades/MovieKeywords_.java
+Entidades/Keyword_.java
+Entidades/MovieKeywordsPK_.java
+Entidades/MovieCompanyPK_.java
+Entidades/Movie_.java
+Entidades/MovieCompany_.java
+Entidades/ProductionCountry_.java
+Entidades/MovieHasUser_.java
+Entidades/MovieGenresPK_.java
+Entidades/MovieHasUserPK_.java
+Entidades/MovieGenres_.java
+Entidades/ProductionCompany_.java
+Entidades/ProductionCountryPK_.java
+Entidades/User_.java
