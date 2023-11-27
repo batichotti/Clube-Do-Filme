@@ -2,8 +2,9 @@ import * as th from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 // configuracoes
+const canvas = document.querySelector("#sabao");
 const scene = new th.Scene();
-const renderizador = new th.WebGLRenderer();
+const renderizador = new th.WebGLRenderer({ antialias: true, canvas });
 
 renderizador.setSize(window.innerHeight, window.innerWidth);
 document.body.appendChild(renderizador.domElement);
@@ -23,23 +24,21 @@ scene.add(luz);
 
 const loader = new GLTFLoader();
 
-loader.load(
-  "fight_club_soap.glb",
-  function (glb) {
-    const modeloComEscala = glb.scene;
-    modeloComEscala.scale.set(0.03, 0.03, 0.03);
-    modeloComEscala.position.set(0, 2, 0);
-    scene.add(modeloComEscala);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
-
 function animate() {
   requestAnimationFrame(animate);
-
+  loader.load(
+    "fight_club_soap.glb",
+    function (glb) {
+      const modeloComEscala = glb.scene;
+      modeloComEscala.scale.set(0.03, 0.03, 0.03);
+      modeloComEscala.position.set(0, 2, 0);
+      scene.add(modeloComEscala);
+    },
+    undefined,
+    function (error) {
+      console.error(error);
+    }
+  );
   renderizador.render(scene, camera);
 }
 animate();

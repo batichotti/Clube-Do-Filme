@@ -51,7 +51,8 @@
         %>
         <main class="filmesBuscados">
             <ul class="d-flex flex-column flex-lg-wrap gap row-gap-2">
-                <h1>Filmes com o termo: <span class="marcado"><%=buscado%></span></h1>
+                <h1>Filmes com o termo: <span class="marcado" style="border-radius: 20px;"><%=buscado%></span></h1>
+                <hr/>
                 <%
                     for (Movie m : daoMovies.searchByTitle(buscado)) {
                         out.println("<li class='linkBuscar'><a href='/projetoDW/filme.jsp?id=" + String.valueOf(m.getMovieId()) + "'> <p>" + m.getTitle() + "</p></a></li>");

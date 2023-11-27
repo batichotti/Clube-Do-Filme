@@ -109,6 +109,9 @@
                                    } catch (Exception e) {
                                        out.println("value=\'\'");
                                    }
+                                   if ((String.valueOf(session.getAttribute("acao")).equals("buscar"))) {
+                                           out.println("readonly");
+                                       }
                                %>
                                />
                     </div>
@@ -119,7 +122,7 @@
                             class="botaoPeriferico"
                             onclick="perifericos(generoHas)"
                             />
-                        <label for="periferico">Adicionar generos</label>
+                        <label for="periferico">Linkar Gênero</label>
                     </div>
                 </div>
 

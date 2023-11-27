@@ -105,6 +105,9 @@
                                    } catch (Exception e) {
                                        out.println("value=\'\'");
                                    }
+                                   if ((String.valueOf(session.getAttribute("acao")).equals("buscar"))) {
+                                           out.println("readonly");
+                                       }
                                %>
                                />
                     </div>
@@ -115,7 +118,7 @@
                             class="botaoPeriferico"
                             onclick="perifericos(keywordHas)"
                             />
-                        <label for="periferico">Adicionar palavras</label>
+                        <label for="periferico">Linkar Palavra Chave</label>
                     </div>
                 </div>
                 <div class="botoesCRUD d-flex flex-column row-gap-2">

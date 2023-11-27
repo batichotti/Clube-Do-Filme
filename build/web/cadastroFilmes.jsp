@@ -102,7 +102,9 @@
                                        } catch (Exception e) {
                                            out.println("value=\'\'");
                                        }
-
+                                       if ((String.valueOf(session.getAttribute("acao")).equals("buscar"))) {
+                                           out.println("readonly");
+                                       }
                                    %>
                                    />
                         </div>
@@ -118,7 +120,11 @@
                                        } catch (Exception e) {
                                            out.println("value=\'\'");
                                        }
-                                   %>/>
+                                       if ((String.valueOf(session.getAttribute("acao")).equals("buscar"))) {
+                                           out.println("readonly");
+                                       }
+                                   %>
+                                   />
                         </div>
                         </tr>
                         <tr>
@@ -132,6 +138,9 @@
                                            }
                                        } catch (Exception e) {
                                            out.println("value=\'\'");
+                                       }
+                                       if ((String.valueOf(session.getAttribute("acao")).equals("buscar"))) {
+                                           out.println("readonly");
                                        }
                                    %>
                                    />
@@ -149,6 +158,9 @@
                                        } catch (Exception e) {
                                            out.println("value=\'\'");
                                        }
+                                       if ((String.valueOf(session.getAttribute("acao")).equals("buscar"))) {
+                                           out.println("readonly");
+                                       }
                                    %>
                                    />
                         </div>
@@ -165,6 +177,9 @@
                                        } catch (Exception e) {
                                            out.println("value=\'\'");
                                        }
+                                       if ((String.valueOf(session.getAttribute("acao")).equals("buscar"))) {
+                                           out.println("readonly");
+                                       }
                                    %>
                                    />
                         </div>
@@ -177,7 +192,7 @@
                             class="botaoPeriferico"
                             onclick="perifericos(pais)"
                             />
-                        <label for="periferico">Adicionar País</label>
+                        <label for="periferico">Linkar País</label>
                     </div>
                 </div>
                 <div class="botoesCRUD d-flex flex-column row-gap-2">

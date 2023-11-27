@@ -103,6 +103,9 @@
                                    } catch (Exception e) {
                                        out.println("value=\'\'");
                                    }
+                                   if ((String.valueOf(session.getAttribute("acao")).equals("buscar"))) {
+                                           out.println("readonly");
+                                       }
                                %>/>
                     </div>
                     <div class="d-flex column-gap-2 align-items-center">
@@ -112,7 +115,7 @@
                             class="botaoPeriferico"
                             onclick="perifericos(produtoraHas)"
                             />
-                        <label for="periferico">Adicionar produtora</label>
+                        <label for="periferico">Linkar Produtora</label>
                     </div>
                 </div>
 

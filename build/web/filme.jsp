@@ -60,41 +60,45 @@
                         User usuario = new User();
                         Movie movie = new Movie();
                         String is_logged = "False";
-                        
-                        try{
+
+                        try {
                             is_logged = String.valueOf(session.getAttribute("logado"));
-                            if(is_logged.equals("True")){
+                            if (is_logged.equals("True")) {
                                 out.println("<a href='deslogin'>Deslogar</a>");
                             } else {
                                 out.println("<a>Login</a>");
                             }
-                        }catch(Exception e){
-                            out.println("<a>Login (Err): "+e+"</a>");
+                        } catch (Exception e) {
+                            out.println("<a>Login (Err): " + e + "</a>");
                         }
 
-                        if(String.valueOf(session.getAttribute("role")).equals("1") && String.valueOf(session.getAttribute("logado")).equals("True")){
+                        if (String.valueOf(session.getAttribute("role")).equals("1") && String.valueOf(session.getAttribute("logado")).equals("True")) {
                             out.println("<a href='telaAdm.jsp'> ADM </a>");
                         }
-                        
+
                         String id = String.valueOf(request.getParameter("id"));
                         if (!id.equals("null") && !id.equals("")) {
-                            try{
+                            try {
                                 movie = daoMovies.obter(Integer.valueOf(id));
-                            } catch(Exception bangcock){
+                            } catch (Exception bangcock) {
                                 id = "err";
                             }
-                        } else if (id.equals("null")){
-                            id="null";
+                        } else if (id.equals("null")) {
+                            id = "null";
                         } else {
-                            id="err";
+                            id = "err";
                         }
                     %>
                 </div>
-                <input
-                    type="text"
-                    class="inputBuscar rounded-pill"
-                    placeholder="Buscar"
-                    />
+                <form action="buscar.jsp" method="post">
+                    <input
+                        type="text"
+                        class="inputBuscar w-75 rounded-pill"
+                        placeholder="Buscar"
+                        id="buscar"
+                        name="target"
+                        />
+                </form>
             </nav>
         </header>
 
@@ -103,14 +107,14 @@
                 <div class="info">
                     <h1>
                         <%
-                            if(id.equals("null")){
+                            if (id.equals("null")) {
                                 out.println("Insira um id");
-                            }else if (id.equals("err")){
+                            } else if (id.equals("err")) {
                                 out.println("ID inválido");
                             } else {
-                                try{
+                                try {
                                     out.println(String.valueOf(movie.getTitle()));
-                                }catch(Exception salzburg){
+                                } catch (Exception salzburg) {
                                     out.println("ID Inválido");
                                     movie = new Movie();
                                     id = "err";
@@ -118,14 +122,14 @@
                             }
                         %>
                     </h1>
-                    
+
                     <h5>
                         <%
-                            if(!id.equals("null") && !id.equals("err")){
+                            if (!id.equals("null") && !id.equals("err")) {
                                 int x = 0;
-                                for(String i : daoMovieCompany.getCompanyByMovieTitle(String.valueOf(movie.getTitle()))){
+                                for (String i : daoMovieCompany.getCompanyByMovieTitle(String.valueOf(movie.getTitle()))) {
                                     x += 1;
-                                    if(!(daoMovieCompany.getCompanyByMovieTitle(String.valueOf(movie.getTitle())).size() == x)){
+                                    if (!(daoMovieCompany.getCompanyByMovieTitle(String.valueOf(movie.getTitle())).size() == x)) {
                                         out.println(i + ", ");
                                     } else {
                                         out.println(i);
@@ -134,14 +138,14 @@
                             }
                         %>
                     </h5>
-                    
+
                     <h5 style="color: gold">
                         <%
-                            if(!id.equals("null") && !id.equals("err")){
+                            if (!id.equals("null") && !id.equals("err")) {
                                 int x = 0;
-                                for(ProductionCountry i : daoProductionCountry.encontrarPaisesPorFilmeId(String.valueOf(movie.getTitle()))){
+                                for (ProductionCountry i : daoProductionCountry.encontrarPaisesPorFilmeId(String.valueOf(movie.getTitle()))) {
                                     x += 1;
-                                    if(!(daoProductionCountry.encontrarPaisesPorFilmeId(String.valueOf(movie.getTitle())).size() == x)){
+                                    if (!(daoProductionCountry.encontrarPaisesPorFilmeId(String.valueOf(movie.getTitle())).size() == x)) {
                                         out.println(daoCountry.obter(i.getProductionCountryPK().getCountryId()).getCountryName() + ", ");
                                     } else {
                                         out.println(daoCountry.obter(i.getProductionCountryPK().getCountryId()).getCountryName());
@@ -152,15 +156,15 @@
                     </h5>
                     <h5>
                         <%
-                            if(!id.equals("null") && !id.equals("err")){
+                            if (!id.equals("null") && !id.equals("err")) {
                                 out.println(String.valueOf(movie.getRuntime()) + " min");
                             }
                         %>
-                         | 
+                        | 
                         <%
                             DAOGenre daoGenre = new DAOGenre();
-                            if(!id.equals("null") && !id.equals("err")){
-                                for(String i : daoMovieGenres.getGenresByMovieTitle(String.valueOf(movie.getTitle()))){
+                            if (!id.equals("null") && !id.equals("err")) {
+                                for (String i : daoMovieGenres.getGenresByMovieTitle(String.valueOf(movie.getTitle()))) {
                                     out.println(daoGenre.obter(Integer.valueOf(i)).getGenreName() + " ");
                                 }
                             }
@@ -168,11 +172,11 @@
                     <h6>
                         <%
                             DAOKeyword daoKeyword = new DAOKeyword();
-                            if(!id.equals("null") && !id.equals("err")){
+                            if (!id.equals("null") && !id.equals("err")) {
                                 int x = 0;
-                                for(String i : daoMovieKeywords.getKeywordsByMovieTitle(String.valueOf(movie.getTitle()))){
+                                for (String i : daoMovieKeywords.getKeywordsByMovieTitle(String.valueOf(movie.getTitle()))) {
                                     x += 1;
-                                    if(!(daoMovieKeywords.getKeywordsByMovieTitle(String.valueOf(movie.getTitle())).size() == x)){
+                                    if (!(daoMovieKeywords.getKeywordsByMovieTitle(String.valueOf(movie.getTitle())).size() == x)) {
                                         out.println(daoKeyword.obter(Integer.valueOf(i)).getKeywordName() + ", ");
                                     } else {
                                         out.println(daoKeyword.obter(Integer.valueOf(i)).getKeywordName());
@@ -187,9 +191,9 @@
 
             <aside class="sinopse debug">
                 <%
-                    if(!id.equals("null") && !id.equals("err")){
-                        if(!String.valueOf(movie.getHomepage()).equals("null") && !String.valueOf(movie.getHomepage()).equals("")){
-                            out.println("<p>WHERE TO WATCH: <a href='"+String.valueOf(movie.getHomepage())+"' target='_blank'> "+String.valueOf(movie.getHomepage())+" </a></p>");
+                    if (!id.equals("null") && !id.equals("err")) {
+                        if (!String.valueOf(movie.getHomepage()).equals("null") && !String.valueOf(movie.getHomepage()).equals("")) {
+                            out.println("<p>WHERE TO WATCH: <a href='" + String.valueOf(movie.getHomepage()) + "' target='_blank'> " + String.valueOf(movie.getHomepage()) + " </a></p>");
                             out.println("<br/>");
                         }
                         out.println(String.valueOf(movie.getOverview()));

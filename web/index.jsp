@@ -228,26 +228,30 @@
                             />
                     </div>
                     <button type="submit" class="botaoLogin btn">Entrar</button>
-                    <%
-                        String email = String.valueOf(session.getAttribute("email"));
-                        String senha = String.valueOf(session.getAttribute("senha"));
+                    <div class="d-flex gap column-gap-2" style="justify-content: space-around;">
+                        <%
+                            String email = String.valueOf(session.getAttribute("email"));
+                            String senha = String.valueOf(session.getAttribute("senha"));
 
-                        DAOUser daoUser = new DAOUser();
+                            DAOUser daoUser = new DAOUser();
 
-                        try {
-                            if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
-                                if (email.equals("null")) {
-                                    out.println("<p style='color:red;'>Efetue seu login</p>");
+                            try {
+                                if (email.equals(daoUser.obter(email).getEmail()) && senha.equals(daoUser.obter(email).getPassword())) {
+                                    if (email.equals("null")) {
+                                        out.println("<p style='color:red;'>Efetue seu login</p>");
+                                    }
+                                } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
+                                    out.println("Efetue seu login aqui");
+                                } else {
+                                    out.println("<p style='color:red;'>Login inválido</p>");
                                 }
-                            } else if (String.valueOf(session.getAttribute("nick")).equals("null")) {
-                                out.println("👌 Efetue seu login");
-                            } else {
-                                out.println("<p style='color:red;'>Login inválido</p>");
+                            } catch (Exception e) {
+                                out.println("<p> Erro:" + e.getMessage() + "</p>");
                             }
-                        } catch (Exception e) {
-                            out.println("<p> Erro:" + e.getMessage() + "</p>");
-                        }
-                    %>
+
+                            out.println("<a href='https://youtu.be/xm3YgoEiEDc?si=qjorxKe3_x4P1aP5' target='_blank'><p style='color:cyan;'>Esqueceu sua senha?</p></a>");
+                        %>
+                    </div>
                 </form>
             </article>
         </main>
