@@ -36,13 +36,7 @@
                 class="d-flex justify-content-center align-items-center column-gap-4 rounded-pill"
                 onmouseenter="navbarInferior()"
                 >
-                <a href=""
-                   ><img src="./assets/images/icons/iconFavoritos.png" alt="❤"
-                      /></a>
-                <a href=""
-                   ><img src="./assets/images/icons/iconConta.png" alt="👦"
-                      /></a>
-                <a href=""
+                <a href="#buscar"
                    ><img src="./assets/images/icons/iconPesquisa.png" alt="🔍"
                       /></a>
             </nav>
