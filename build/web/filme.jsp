@@ -127,7 +127,7 @@
                         <%
                             if (!id.equals("null") && !id.equals("err")) {
                                 int x = 0;
-                                for (String i : daoMovieCompany.getCompanyByMovieTitle(String.valueOf(movie.getTitle()))) {
+                                for (String i : daoMovieCompany.getCompanyByMovieTitle(movie.getTitle())) {
                                     x += 1;
                                     if (!(daoMovieCompany.getCompanyByMovieTitle(String.valueOf(movie.getTitle())).size() == x)) {
                                         out.println(i + ", ");
